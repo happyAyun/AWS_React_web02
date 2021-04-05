@@ -1,6 +1,7 @@
 import './App.css';
 import {Link, Route} from 'react-router-dom';
 import Home from './components/Home';
+import Header from './components/Header';
 
 function App() {
   return (
@@ -8,9 +9,11 @@ function App() {
 
         <div>
             <Link className="mainView" to="/">Bookshelf</Link>
-            <button className="login-button">login</button>
         </div>
-        <Route path="/" component={Home} />
+        <div className="navbar">
+            <Route path="/" component={Home} />
+            <Header />
+        </div>
     </div>
   );
 }
