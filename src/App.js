@@ -10,8 +10,7 @@ function App() {
             <Link className="mainView" to="/">Bookshelf</Link>
             <button className="login-button">login</button>
         </div>
-        <Route path="/" component={App} />
-        <Home />
+        <Route path="/" component={Home} />
     </div>
   );
 }

@@ -10,7 +10,7 @@ const Home = () => {
 
           <div>
           <Link to="/main">홈</Link>
-           <link to="/Books">우리들의 도서관</link>
+           <Link to="/Books">우리들의 도서관</Link>
            {/* <link to="/"> 커뮤니케이션</link> */}
            {/* <link to="/">도서찾기</link> */}
           </div>
