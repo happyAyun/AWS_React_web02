@@ -1,3 +1,14 @@
 .mainView {
     font-size: xx-large;
+    margin-right: 65%;
 }
+
+.login-button {
+    width: 5%;
+    font-size: 5%;
+    border: 1px solid skyblue;
+    background-color: rgba(0,0,0,0);
+    color: skyblue;
+    padding: 5px;
+}
+

@@ -7,8 +7,8 @@ function App() {
   return (
     <div >
         <div>
-    <Link className="mainView" to="/">Bookshelf</Link>
-            <button><Link to="/login">login</Link></button>
+            <Link className="mainView" to="/">Bookshelf</Link>
+            <Link to="/login"><button className="login-button">login</button></Link>
         </div>
         <Route path="/" component={Home} exact />
         <Route path="/Login" component={Login} />
