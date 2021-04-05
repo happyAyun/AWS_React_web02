@@ -1,8 +1,9 @@
 import React from 'react';
-
+import SearchBar from '../SearchBar.js';
 function ListCommunication(props) {
   return (
         <div>
+            <SearchBar />
             <Item.Group>
                 <Item>
                     <Item.Image size='tiny' src='/images/wireframe/image.png' />
