@@ -11,13 +11,14 @@ function App() {
   const switchKey = (value) => {
     setKey(value);
   };
+
   return (
     <div className="App">
 
         <div>
             <Link className="mainView" to="/">Bookshelf</Link>
         </div>
-        {key === true ? <HeaderLogin switchKey={switchKey} /> : <Header switchKey={switchKey} />}
+        {key === true ? <HeaderLogin onSubmit={switchKey} /> : <Header switchKey={switchKey} />}
         <div>
             <Route path="/" component={Home} />
         </div>
