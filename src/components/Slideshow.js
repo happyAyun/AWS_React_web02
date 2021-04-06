@@ -1,6 +1,6 @@
 import React from 'react';
-import '../App.css';
 import { Slide } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css';
 
 const slideImages = [
   'images/1.jpg',
@@ -14,8 +14,8 @@ const slideImages = [
 
 const Slideshow = () => {
   return (
-        <div>
-            <Slide easing="ease">
+        <div className="slide-container">
+            <Slide>
                 <div className="each-slide">
                     <div style={{backgroundImage: `url(${slideImages[0]})`}}>
                         <span>Slide 1</span>
@@ -29,26 +29,6 @@ const Slideshow = () => {
                 <div className="each-slide">
                     <div style={{backgroundImage: `url(${slideImages[2]})`}}>
                         <span>Slide 3</span>
-                    </div>
-                </div>
-                <div className="each-slide">
-                    <div style={{backgroundImage: `url(${slideImages[3]})`}}>
-                        <span>Slide 4</span>
-                    </div>
-                </div>
-                <div className="each-slide">
-                    <div style={{backgroundImage: `url(${slideImages[4]})`}}>
-                        <span>Slide 5</span>
-                    </div>
-                </div>
-                <div className="each-slide">
-                    <div style={{backgroundImage: `url(${slideImages[5]})`}}>
-                        <span>Slide 6</span>
-                    </div>
-                </div>
-                <div className="each-slide">
-                    <div style={{backgroundImage: `url(${slideImages[6]})`}}>
-                        <span>Slide 7</span>
                     </div>
                 </div>
             </Slide>
