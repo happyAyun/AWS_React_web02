@@ -1,19 +1,23 @@
+.App {
+    margin: 2%;
+}
+
 .mainView {
     font-size: xx-large;
     margin-right: 65%;
 }
 
-.login-button {
-    width: 5%;
-    font-size: 5%;
-    border: 1px solid skyblue;
-    background-color: rgba(0,0,0,0);
-    color: skyblue;
-    padding: 5px;
-}
-
-.navbar{
+.menu-Bar {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
+}
+
+.menu-Bar a {
+    margin-right: 2%;
+}
+
+.nav {
+    flex-direction: row;
+    justify-content: flex-end;
 }

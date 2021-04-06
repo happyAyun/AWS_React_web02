@@ -5,14 +5,14 @@ import Header from './components/Header';
 
 function App() {
   return (
-    <div >
+    <div className="App">
 
         <div>
             <Link className="mainView" to="/">Bookshelf</Link>
         </div>
-        <div className="navbar">
+        <Header />
+        <div>
             <Route path="/" component={Home} />
-            <Header />
         </div>
     </div>
   );

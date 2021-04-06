@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { Navbar, Nav, Button, Container } from 'react-bootstrap';
 import LoginModal from './modals/LoginModal';
 import SignupModal from './modals/SignupModal';
+import '../App.css';
 
 const Header = () => {
   const [loginModalOn, setLoginModalOn] = useState(false);
   const [signupModalOn, setSignupModalOn] = useState(false);
 
   return (
-      <div>
+      <div className="LoginModal">
           <LoginModal
               show={loginModalOn}
               onHide={() => setLoginModalOn(false)}
