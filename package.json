@@ -2,7 +2,6 @@
   "name": "front_end",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://book.interpark.com/api/search.api",
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@testing-library/jest-dom": "^5.11.10",
@@ -18,7 +17,7 @@
     "react-bootstrap": "^1.5.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
+    "react-scripts": "^4.0.3",
     "react-slideshow-image": "^3.4.5",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3",
