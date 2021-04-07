@@ -1,38 +1,49 @@
-import React, { Component } from 'react';
+import React, {Component, useEffect, useState} from 'react';
 import axios from 'axios';
 import Movies from '../components/Movies';
 import './Home.css';
 
-class Home extends Component {
-    state = {
-      isLoading: true,
-      documents: [],
-    };
+const Search = () => {
+  const [documents, setDocuments] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-    getMovies = async () => {
-      const {
-        data: { documents },
-      } = await axios.get(
+  useEffect(() => {
+    const take = async () => {
+      const { data } = await axios.get(
         'https://dapi.kakao.com/v3/search/book?sort=accuracy&page=1&size=10&target=title',
         {
           headers: {
-            Authorization: 'KakaoAK b2097d36d494cbe565a431b90c53c9c6',
+            Authorization: 'KakaoAK d810699d948758e4d87e68dd78bb3e90',
           },
           params: {
             query: '어린왕자',
           },
         }
       );
-      this.setState({ documents, isLoading: false });
+      console.log(data.documents);
+      setDocuments(data.documents);
+      setIsLoading(false);
     };
+    take();
+  }, []);
 
-    componentDidMount() {
-      this.getMovies();
-    }
+  const renderResults = documents.map((document) => {
+    return (
+                <div className="movie">
+                    <a href={document.url}
+                    >
+                        <img src={document.thumbnail} alt={document.title} title={document.title} />
+                        <div className="movie__data">
+                            <h3 className="movie__title">{document.title}</h3>
 
-    render() {
-      const { isLoading, documents } = this.state;
-      return (
+                            <p className="movie__summary">{document.contents.slice(0, 150)}...</p>
+                        </div>
+                    </a>
+                </div>
+    );
+  });
+
+  return (
             <div>
                 <div className="ui form">
                     <label>Enter Search Term</label>
@@ -44,27 +55,14 @@ class Home extends Component {
                         <div className="loader">
                             <span className="loader__text">loading...</span>
                         </div>
-
                     ) : (
-
                         <div className="movies">
-                            {documents.map((movie) => {
-                              // console.log(movie);
-                              return (
-                                    <Movies
-                                        id={movie.isbn}
-                                        title={movie.title}
-                                        summary={movie.contents}
-                                        poster={movie.thumbnail}
-                                    />
-                              );
-                            })}
+                            {renderResults}
                         </div>
                     )}
                 </section>
             </div>
-      );
-    }
-}
+  );
+};
 
-export default Home;
+export default Search;
