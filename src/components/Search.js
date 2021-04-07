@@ -5,24 +5,26 @@ const Search = () => {
   const [term, setTerm] = useState('programming');
   const [results, setResults] = useState([]);
 
-  useEffect(() => {
+  const headers = {
+    'Content-Type': 'text/plain'
+  };
+    
+  useEffect((url, config) => {
     const search = async () => {
-      const { data } = await axios.get('https://en.wikipedia.org/w/api.php', {
+      const data = await axios.get('https://dapi.kakao.com/v3/search/book?sort=accuracy&page=1&size=10&target=title', {
+        headers: {
+          Authorization: 'KakaoAK b2097d36d494cbe565a431b90c53c9c6'
+        },
         params: {
-          action: 'query',
-          list: 'search',
-          origin: '*',
-          format: 'json',
-          srsearch: term
+          query: '어린왕자'
         }
+      }).then(response => {
+        console.log(response);
       });
-
-      setResults(data.query.search);
+      console.log(data);
     };
-    if (term) {
-      search();
-    }
-  }, [term]);
+    search();
+  });
 
   const renderedResults = results.map((result) => {
     return (
