@@ -1,9 +1,12 @@
 import React from 'react';
+import BookNav from './BookNav';
 
-const Books = () => {
-  return (<div>
-        Books
-    </div>);
-};
+function Books(props) {
+  return (
+        <div style={{margin: '50px 0px 0px 0px' }}>
+            <BookNav />
+        </div>
+  );
+}
 
 export default Books;
