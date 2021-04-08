@@ -5,6 +5,7 @@ import Search from './Search';
 import Books from './WeBook/Books';
 import ListCommunication from './Communication/ListCommunication';
 import MyPage from './MyPage/MyPage';
+import MemoDetail from './Memo/MemoDetail';
 
 const Home = () => {
   return (
@@ -22,6 +23,7 @@ const Home = () => {
           <Route path="/ListCommunication" component={ListCommunication} />
           <Route path="/search" component={Search} />
           <Route path="/mypage" component={MyPage}/>
+          <Route path="/mypage/ListMyQnA/MemoDetail" component={MemoDetail}/>
       </div>
   );
 };

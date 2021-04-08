@@ -1,4 +1,5 @@
 import React from 'react';
+import { Image, Item } from 'semantic-ui-react';
 import SearchBar from '../SearchBar.js';
 function ListCommunication(props) {
   return (
