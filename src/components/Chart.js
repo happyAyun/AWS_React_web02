@@ -3,7 +3,7 @@ import ReactApexChart from 'react-apexcharts';
 
 function generateData(count, yrange) {
   let i = 0;
-  let series = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  let series = [];
   while (i < count) {
     let x = (i + 1).toString();
     let y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;

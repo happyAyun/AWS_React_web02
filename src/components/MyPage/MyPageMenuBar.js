@@ -1,10 +1,8 @@
 import React, {useState} from 'react';
-import {Button, Icon, Image, Item, Menu} from 'semantic-ui-react';
-import { Label } from 'semantic-ui-react';
-function MyPageMenuBar(props) {
+import {Menu} from 'semantic-ui-react';
+function MyPageMenuBar() {
   const [state, setState] = useState({});
   const handleItemClick = (e, {name}) => setState({activeItem: name});
-  const paragraph = <Image src='/images/wireframe/short-paragraph.png' />;
   return (
         <div>
             <Menu vertical>
