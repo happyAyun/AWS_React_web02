@@ -1,66 +1,67 @@
-import React, {useState, useEffect} from 'react';
+import React, {Component, useEffect, useState} from 'react';
 import axios from 'axios';
+import Movies from '../components/Movies';
+import './Home.css';
 
 const Search = () => {
-  const [term, setTerm] = useState('programming');
-  const [results, setResults] = useState([]);
+  const [documents, setDocuments] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const search = async () => {
-      const { data } = await axios.get('https://en.wikipedia.org/w/api.php', {
-        params: {
-          action: 'query',
-          list: 'search',
-          origin: '*',
-          format: 'json',
-          srsearch: term
+    const take = async () => {
+      const { data } = await axios.get(
+        'https://dapi.kakao.com/v3/search/book?sort=accuracy&page=1&size=10&target=title',
+        {
+          headers: {
+            Authorization: 'KakaoAK d810699d948758e4d87e68dd78bb3e90',
+          },
+          params: {
+            query: '어린왕자',
+          },
         }
-      });
-
-      setResults(data.query.search);
+      );
+      console.log(data.documents);
+      setDocuments(data.documents);
+      setIsLoading(false);
     };
-    if (term) {
-      search();
-    }
-  }, [term]);
+    take();
+  }, []);
 
-  const renderedResults = results.map((result) => {
+  const renderResults = documents.map((document) => {
     return (
-            <div className="item" key={result.pageid}>
-                <div className="right floated content">
-                    <a
-                        className="ui button"
-                        href={`https://en.wikipedia.org?curid=${result.pageid}`}
+                <div className="movie">
+                    <a href={document.url}
                     >
-                        Go
+                        <img src={document.thumbnail} alt={document.title} title={document.title} />
+                        <div className="movie__data">
+                            <h3 className="movie__title">{document.title}</h3>
+
+                            <p className="movie__summary">{document.contents.slice(0, 150)}...</p>
+                        </div>
                     </a>
                 </div>
-                <div className="content">
-                    <div className="header">
-                        {result.title}
-                    </div>
-                    <span dangerouslySetInnerHTML={{ __html: result.snippet }} >
-              </span>
-                </div>
-            </div>
     );
   });
 
   return (
-        <div>
-            <div className="ui form">
-                <div className="field">
+            <div>
+                <div className="ui form">
                     <label>Enter Search Term</label>
                     <input
-                        value={term}
-                        onChange={e => setTerm(e.target.value)}
                         className="input" />
                 </div>
+                <section className="container">
+                    {isLoading ? (
+                        <div className="loader">
+                            <span className="loader__text">loading...</span>
+                        </div>
+                    ) : (
+                        <div className="movies">
+                            {renderResults}
+                        </div>
+                    )}
+                </section>
             </div>
-            <div className="ui called list">
-                {renderedResults}
-            </div>
-        </div>
   );
 };
 

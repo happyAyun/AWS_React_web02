@@ -20,6 +20,7 @@ module.exports = {
     'object-curly-spacing': 'off',
     'no-trailing-spaces': 'off',
     'no-template-curly-in-string': 'off',
-    quotes: ['error', 'single', { allowTemplateLiterals: true }]
-  }
+    'linebreak-style': 'off',
+    'comma-dangle': 'off',
+  },
 };
