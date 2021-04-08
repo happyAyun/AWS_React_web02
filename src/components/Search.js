@@ -1,7 +1,6 @@
-import React, {Component, useEffect, useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import axios from 'axios';
-import Movies from '../components/Movies';
-import './Home.css';
+import './Search.css';
 
 const Search = () => {
   const [documents, setDocuments] = useState([]);
