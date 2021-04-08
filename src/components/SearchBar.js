@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Icon, Input } from 'semantic-ui-react';
 
 function SearchBar(props) {

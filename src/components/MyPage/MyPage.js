@@ -10,6 +10,7 @@ import {
   Segment,
   Sidebar
 } from 'semantic-ui-react';
+
 function MyPage(props) {
   const segmentRef = React.useRef();
   const [visible, setVisible] = React.useState(false);
