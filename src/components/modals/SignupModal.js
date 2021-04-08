@@ -75,24 +75,24 @@ function SignupModal(props) {
     // e.preventDefault();
     console.log(Password1);
     // let body = {
-    // id: Id,
-    // name: Name,
-    // password: Password1,
-    // nickname: Nickname,
-    // email: Email,
-    // phone: Phonenumber
+    //   id: Id,
+    //   name: Name,
+    //   password: Password1,
+    //   nickname: Nickname,
+    //   email: Email,
+    //   phone: Phonenumber
     //
     // };
 
     // dispatch(registerUser(body))
-    // .then(response =>{
-    // if (response.payload.success) {
-    // alert('회원가입이 완료되었습니다!');
-    // props.history.push('/login'); // react 에서의 페이지 이동 코드
-    // } else {
-    // alert('Error!!');
-    // }
-    // });
+    //   .then(response =>{
+    //     if (response.payload.success) {
+    //       alert('회원가입이 완료되었습니다!');
+    //       props.history.push('/login'); // react 에서의 페이지 이동 코드
+    //     } else {
+    //       alert('Error!!');
+    //     }
+    //   });
   };
 
   return (
@@ -117,7 +117,7 @@ function SignupModal(props) {
                         <Form.Group value={Id}>
                             <Form.Label>ID</Form.Label>
                             <Form.Control placeholder="Enter your ID" onChange={idCheck}/>
-                            <sub style={{color: 'red'}}>{iMessage}</sub>
+                            <sub style={{color: `${Id.match(/^[a-z0-9]{2,15}$/) ? 'blue' : 'red'}`}}>{iMessage}</sub>
                         </Form.Group>
 
                         <Form.Group value={Nickname}>
