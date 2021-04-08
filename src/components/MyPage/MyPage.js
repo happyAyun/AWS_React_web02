@@ -10,6 +10,8 @@ import {
   Segment,
   Sidebar
 } from 'semantic-ui-react';
+import Chart from './Chart';
+
 function MyPage(props) {
   const segmentRef = React.useRef();
   const [visible, setVisible] = React.useState(false);
@@ -53,6 +55,7 @@ function MyPage(props) {
                   </Sidebar.Pushable>
               </Grid.Column>
           </Grid>
+          <Chart/>
         </div>
   );
 }
