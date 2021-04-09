@@ -4,13 +4,13 @@ import {Link, Route} from 'react-router-dom';
 import ListCourse from '../MyPage_Route/ListCourse';
 import ListMemo from '../MyPage_Route/ListMemo';
 import ListMyQnA from '../MyPage_Route/ListMyQnA';
-
+import MyProfile from './MyProfile';
 function MyPageMenuBar() {
   return (
         <div style={{display: 'flex'}}>
             <Menu vertical >
                 <Menu.Item>
-                    <Menu.Header>마이 페이지</Menu.Header>
+                    <Link to='/mypage'><Menu.Header>마이 페이지</Menu.Header></Link>
                 </Menu.Item>
                 <Menu.Item>
                     <Menu.Header>나의 학습관리</Menu.Header>
@@ -73,6 +73,7 @@ function MyPageMenuBar() {
                 </Menu.Item>
             </Menu>
             <div style={{marginLeft: '100px'}}>
+                <Route path='/mypage' component={MyProfile} />
                 <Route path='/mypage/ListCourse' component={ListCourse} />
                 <Route path='/mypage/ListMemo' component={ListMemo} />
                 <Route path='/mypage/ListMyQnA' component={ListMyQnA} />

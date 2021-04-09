@@ -1,5 +1,4 @@
 import React from 'react';
-import MyPageMenuBar from './MyPageMenuBar';
 import { Button, Icon, Image, Item } from 'semantic-ui-react';
 import {Grid, Header, Ref, Segment, Sidebar} from 'semantic-ui-react';
 import Chart from './Chart';
@@ -13,7 +12,6 @@ function MyPage(props) {
           
       <div style={{display: 'flex'}}>
             <div style={{paddingRight: '100px'}}>
-            <MyPageMenuBar/>
             </div>
           <Grid columns={1}>
               <Grid.Column>
