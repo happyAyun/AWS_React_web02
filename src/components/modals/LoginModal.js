@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Button, FormControl, Modal, Container, Form} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import './LoginModal.css';
 
 function LoginModal(props) {
   const [id, setId] = useState('');
