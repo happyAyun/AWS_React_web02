@@ -1,8 +1,8 @@
 import React from 'react';
-import {Card, Icon, Image} from "semantic-ui-react";
+import { Card, Icon, Image } from 'semantic-ui-react';
 
 function ListWrite(props) {
-    return (
+  return (
         <div>
             <Card>
                 <Image src='/images/avatar/large/matthew.png' wrapped ui={false} />
@@ -23,7 +23,7 @@ function ListWrite(props) {
                 </Card.Content>
             </Card>
         </div>
-    );
+  );
 }
 
 export default ListWrite;

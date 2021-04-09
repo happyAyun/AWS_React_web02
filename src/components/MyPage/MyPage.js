@@ -5,11 +5,13 @@ import ListCourse from '../MyPage_Route/ListCourse';
 import ListMemo from '../MyPage_Route/ListMemo';
 import ListMyQnA from '../MyPage_Route/ListMyQnA';
 import ListWrite from '../MyPage_Route/ListWrite';
-
+import ListReceivedQnA from '../MyPage_Route/ListReceivedQnA';
+import ListCourseReview from '../MyPage_Route/ListCourseReview';
 import MyProfile from './MyProfile';
 import QnADetail from './QnA/QnADetail';
 import MemoList from './Memo/MemoList';
 import MemoDetail from './Memo/MemoDetail';
+// import Review from './MyBook/Review';
 import '../../App.css';
 function MyPageMenuBar() {
   return (
@@ -86,14 +88,15 @@ function MyPageMenuBar() {
                 <Route path='/mypage/ListMemo' component={ListMemo} />
                 <Route path='/mypage/ListMyQnA' component={ListMyQnA} />
                 <Route path='/mypage/ListWrite' component={ListWrite} />
-                {/* <Route path='/ListReceivedQnA' component={ListReceivedQnA} /> */}
-                {/* <Route path='/ListCourseReview' component={ListCourseReview} /> */}
+                 <Route path='/mypage/ListReceivedQnA' component={ListReceivedQnA} />
+                 <Route path='/mypage/ListCourseReview' component={ListCourseReview} />
                 {/* <Route path='/ListMyCommunication' component={ListMyCommunication} /> */}
                 {/* <Route path='/ChangeMyInfo' component={ChangeMyInfo} /> */}
                 {/* <Route path='/ChangeMyProfile' component={ChangeMyProfile} /> */}
                 <Route path='/mypage/QnADetail' component={QnADetail}/>
                 <Route path='/mypage/MemoList' component={MemoList}/>
                 <Route path='/mypage/MemoDetail' component={MemoDetail}/>
+                {/* <Route path='/mypage/Review' component={Review}/> */}
             </div>
         </div>
   );
