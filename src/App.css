@@ -70,3 +70,9 @@
 .myPageMenubar {
     width: 5%;
 }
+
+.myPageMenu-Bar {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1%;
+}

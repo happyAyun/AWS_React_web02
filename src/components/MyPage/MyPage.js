@@ -4,10 +4,17 @@ import {Link, Route} from 'react-router-dom';
 import ListCourse from '../MyPage_Route/ListCourse';
 import ListMemo from '../MyPage_Route/ListMemo';
 import ListMyQnA from '../MyPage_Route/ListMyQnA';
+import ListWrite from '../MyPage_Route/ListWrite';
+
 import MyProfile from './MyProfile';
+import QnADetail from './QnA/QnADetail';
+import MemoList from './Memo/MemoList';
+import MemoDetail from './Memo/MemoDetail';
+import '../../App.css';
 function MyPageMenuBar() {
   return (
-        <div style={{display: 'flex'}}>
+        <div className="myPageMenu-Bar" style={{display: 'flex'}}>
+            <div style={{float: 'left'}}>
             <Menu vertical >
                 <Menu.Item>
                     <Link to='/mypage'><Menu.Header>마이 페이지</Menu.Header></Link>
@@ -72,17 +79,21 @@ function MyPageMenuBar() {
                     </Menu.Menu>
                 </Menu.Item>
             </Menu>
+            </div>
             <div style={{marginLeft: '100px'}}>
-                <Route path='/mypage' component={MyProfile} />
+                <Route path='/mypage' component={MyProfile} exact/>
                 <Route path='/mypage/ListCourse' component={ListCourse} />
                 <Route path='/mypage/ListMemo' component={ListMemo} />
                 <Route path='/mypage/ListMyQnA' component={ListMyQnA} />
-                {/* <Route path='/ListWrite' component={ListWrite} /> */}
+                <Route path='/mypage/ListWrite' component={ListWrite} />
                 {/* <Route path='/ListReceivedQnA' component={ListReceivedQnA} /> */}
                 {/* <Route path='/ListCourseReview' component={ListCourseReview} /> */}
                 {/* <Route path='/ListMyCommunication' component={ListMyCommunication} /> */}
                 {/* <Route path='/ChangeMyInfo' component={ChangeMyInfo} /> */}
                 {/* <Route path='/ChangeMyProfile' component={ChangeMyProfile} /> */}
+                <Route path='/mypage/QnADetail' component={QnADetail}/>
+                <Route path='/mypage/MemoList' component={MemoList}/>
+                <Route path='/mypage/MemoDetail' component={MemoDetail}/>
             </div>
         </div>
   );
