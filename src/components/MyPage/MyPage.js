@@ -11,7 +11,7 @@ import MyProfile from './MyProfile';
 import QnADetail from './QnA/QnADetail';
 import MemoList from './Memo/MemoList';
 import MemoDetail from './Memo/MemoDetail';
-// import Review from './MyBook/Review';
+import Review from './MyBook/Review';
 import '../../App.css';
 function MyPageMenuBar() {
   return (
@@ -96,7 +96,7 @@ function MyPageMenuBar() {
                 <Route path='/mypage/QnADetail' component={QnADetail}/>
                 <Route path='/mypage/MemoList' component={MemoList}/>
                 <Route path='/mypage/MemoDetail' component={MemoDetail}/>
-                {/* <Route path='/mypage/Review' component={Review}/> */}
+                <Route path='/mypage/Review' component={Review}/>
             </div>
         </div>
   );
