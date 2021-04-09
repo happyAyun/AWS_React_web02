@@ -10,7 +10,6 @@ import Article from './WeBook/Article';
 
 const Home = () => {
   return (
-
       <div className="main-bar">
           <div className="menu-Bar">
           <Link to="/">홈</Link>
