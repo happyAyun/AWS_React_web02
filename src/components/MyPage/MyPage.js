@@ -5,6 +5,7 @@ import ListCourse from '../MyPage_Route/ListCourse';
 import ListMemo from '../MyPage_Route/ListMemo';
 import ListMyQnA from '../MyPage_Route/ListMyQnA';
 import MyProfile from './MyProfile';
+import QnADetail from './QnA/QnADetail';
 function MyPageMenuBar() {
   return (
         <div style={{display: 'flex'}}>
@@ -73,7 +74,7 @@ function MyPageMenuBar() {
                 </Menu.Item>
             </Menu>
             <div style={{marginLeft: '100px'}}>
-                <Route path='/mypage' component={MyProfile} />
+                <Route path='/mypage' component={MyProfile} exact />
                 <Route path='/mypage/ListCourse' component={ListCourse} />
                 <Route path='/mypage/ListMemo' component={ListMemo} />
                 <Route path='/mypage/ListMyQnA' component={ListMyQnA} />
@@ -83,6 +84,8 @@ function MyPageMenuBar() {
                 {/* <Route path='/ListMyCommunication' component={ListMyCommunication} /> */}
                 {/* <Route path='/ChangeMyInfo' component={ChangeMyInfo} /> */}
                 {/* <Route path='/ChangeMyProfile' component={ChangeMyProfile} /> */}
+                <Route path='/mypage/QnADetail' component={QnADetail}/>
+
             </div>
         </div>
   );

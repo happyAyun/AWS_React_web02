@@ -1,6 +1,7 @@
 import React from 'react';
 import { Message, Button } from 'semantic-ui-react';
-
+import {Link, Route} from 'react-router-dom';
+import QnADetail from '../MyPage/QnA/QnADetail';
 function ListMyQnA(props) {
   return (
         <div>
@@ -10,7 +11,7 @@ function ListMyQnA(props) {
                     We updated our privacy policy here to better service our customers. We
                     recommend reviewing the changes.
                 </p>
-                <Button style={{marginLeft: '600px'}} content='질문 보기' />
+               <Link to='/mypage/QnADetail'><Button style={{marginLeft: '600px'}} content='질문 보기' /></Link>
             </Message>
         </div>
   );
