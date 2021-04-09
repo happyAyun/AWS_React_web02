@@ -6,6 +6,7 @@ import Books from './WeBook/Books';
 import ListCommunication from './Communication/ListCommunication';
 import MyPage from './MyPage/MyPage';
 import CreateCommunication from './Communication/CreateCommunication';
+import Article from './WeBook/Article';
 
 const Home = () => {
   return (
@@ -24,6 +25,7 @@ const Home = () => {
           <Route path="/search" component={Search} />
           <Route path="/mypage" component={MyPage}/>
           <Route path="/CreateCommunication" component={CreateCommunication}/>
+          <Route path={'/Article'} component={Article}/>
       </div>
   );
 };

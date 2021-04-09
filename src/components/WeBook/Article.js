@@ -5,7 +5,7 @@ import {
   Segment,
   Sidebar,
 } from 'semantic-ui-react';
-import './BookNav.css';
+import './Article.css';
 import Verticalsidebarmenu from './Verticalsidebarmenu';
 import Verticalsidebarmemo from './Verticalsidebarmemo';
 import Verticalsidebarqna from './Verticalsidebarqna';
@@ -23,7 +23,7 @@ function exampleReducer(state, action) {
   }
 }
 
-function SidebarExampleTransitions(props) {
+function Article(props) {
   const [state, dispatch] = React.useReducer(exampleReducer, {
     animation: 'scale down',
     direction: 'right',
@@ -39,7 +39,7 @@ function SidebarExampleTransitions(props) {
           <div className='container'>
               <div className='buttons'>
                   <div className='padding'>
-                      <Button size='big' color='olive' animated='vertical' onClick={() => dispatch({ type: 'CHANGE_ANIMATION', animation: 'scale down', key: 'menu'})
+                      <Button style={{backgroundColor: '#BF8450'}} size='big' color='olive' animated='vertical' onClick={() => dispatch({ type: 'CHANGE_ANIMATION', animation: 'scale down', key: 'menu'})
                       } >
                           <Button.Content hidden>메뉴</Button.Content>
                           <Button.Content visible>
@@ -48,7 +48,7 @@ function SidebarExampleTransitions(props) {
                       </Button>
                   </div>
                   <div className='padding'>
-                      <Button size='big' color='olive' animated='vertical' onClick={() => dispatch({ type: 'CHANGE_ANIMATION', animation: 'scale down', key: 'memo'})
+                      <Button style={{backgroundColor: '#BF8450'}} size='big' color='olive' animated='vertical' onClick={() => dispatch({ type: 'CHANGE_ANIMATION', animation: 'scale down', key: 'memo'})
                       }>
                           <Button.Content hidden>메모장</Button.Content>
                           <Button.Content visible>
@@ -57,7 +57,7 @@ function SidebarExampleTransitions(props) {
                       </Button>
                   </div>
                   <div className='padding'>
-                      <Button size='big' color='olive' animated='vertical' onClick={() => dispatch({ type: 'CHANGE_ANIMATION', animation: 'scale down', key: 'qna'})
+                      <Button style={{backgroundColor: '#BF8450'}} size='big' color='olive' animated='vertical' onClick={() => dispatch({ type: 'CHANGE_ANIMATION', animation: 'scale down', key: 'qna'})
                       }>
                           <Button.Content hidden>Q&A</Button.Content>
                           <Button.Content visible>
@@ -105,4 +105,4 @@ function SidebarExampleTransitions(props) {
   );
 }
 
-export default SidebarExampleTransitions;
+export default Article;
