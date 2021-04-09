@@ -1,16 +1,15 @@
+.Login {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
-        .Login {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+.Login form {
+    margin: 0 auto;
+    max-width: 320px;
+}
 
-        .Login form {
-            margin: 0 auto;
-            max-width: 320px;
-        }
-
-        .signup_text{
-            color:white;
-        }
+.signup_text{
+    color:white;
+}
