@@ -9,7 +9,6 @@ import CreateCommunication from './Communication/CreateCommunication';
 
 const Home = () => {
   return (
-
         <div className="main-bar">
             <div className="menu-Bar">
                 <Link to="/">홈</Link>
@@ -25,6 +24,7 @@ const Home = () => {
             <Route path="/mypage" component={MyPage}/>
             <Route path="/CreateCommunication" component={CreateCommunication}/>
         </div>
+
   );
 };
 
