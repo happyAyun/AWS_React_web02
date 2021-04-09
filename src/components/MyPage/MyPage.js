@@ -74,10 +74,6 @@ function MyPageMenuBar() {
                         <Link to='/mypage/ChangeMyInfo'>
                             개인 정보 수정
                         </Link>
-                        <br/><br/>
-                        <Link to='/mypage/ChangeMyProfile'>
-                            프로필 수정
-                        </Link>
                     </Menu.Menu>
                 </Menu.Item>
             </Menu>
