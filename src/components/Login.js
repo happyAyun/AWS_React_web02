@@ -8,7 +8,7 @@ function Login() {
         <div>
             <h1>login</h1>
             <input
-                onChage={e => setId(e.target.value)}
+                onChange={e => setId(e.target.value)}
                 type="text"
                 placeholder="id"
             />
