@@ -18,9 +18,7 @@ function ListMemo(props) {
                 </Item.Meta>
                 <Item.Description>{paragraph}</Item.Description>
                 <Item.Extra>
-                  <Link to='/mypage/ListMyQnA/MemoDetail'> <button>
-                    질문 보기</button>
-                  </Link>
+                  <Link to='/mypage/MemoList'> <button>메모장 보기</button></Link>
                     <Icon name='right chevron' />
                 </Item.Extra>
               </Item.Content>
