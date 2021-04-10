@@ -1,99 +1,120 @@
-import React, {useState} from 'react';
-import {Button, FormControl, Modal, Container, Form} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router';
 import './LoginModal.css';
+// import GoogleLogin from 'react-google-login';
 
 function LoginModal(props) {
-  const [id, setId] = useState('');
-  const [password, setPassword] = useState('');
-  const [idError, setIdError] = useState('');
-  const [passError, setPassError] = useState('');
+  let [JoinLoign, setJoinLogin] = useState('로그인');
+  const history = useHistory();
 
-  const idCheck = (e) => {
-    if (id.length >= 3) {
-      return true;
-    }
-    setIdError('3자리 이상 입력해주세요');
-    return false;
-  };
+  let [username, setUsername] = useState();
+  let [userpassword, setUserPassword] = useState();
 
-  const passCheck = (e) => {
-    if (password.length >= 8) {
-      return true;
-    }
-    setPassError('8자리 이상 입력해주세요');
-    return false;
-  };
-
-  const onSubmitHandler = (event) => {
-    event.preventDefault();
-    idCheck();
-    passCheck();
-    if (idCheck() && passCheck()) {
-      alert('wow');
-      // props.switchKey();
-    }
-  };
+  const data = {username: username, password: userpassword};
 
   return (
-        <div className="container">
-            <div className="Login">
-                <Modal
-                    show={props.show}
-                    onHide={props.onHide}
-                    size="lg"
-                    aria-labelledby="contained-modal-title-vcenter"
-                    centered
-                >
-                    <Container>
-                        <Modal.Header closeButton>
-                            <Modal.Title id="contained-modal-title-vcenter">로그인</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <Form>
-                                <Form.Group>
-                                    <Form.Label>아이디</Form.Label>
-                                    <FormControl
-                                        autoFocus
-                                        value={id}
-                                        onChange={e => setId(e.target.value)}
-                                    />
-                                    <div style={{ color: 'red', fontSize: '12px' }}>{idError}</div>
-                                </Form.Group>
+        <>
+            <div className="login-container">
+                <div className="login-box">
+                    <div className="exit">
+                        <button onClick={()=>{ history.goBack(); }}>
+                            <svg stroke="currentColor" fill="currentColor" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+                        </button>
+                    </div>
+                    <span>{JoinLoign}</span>
+                    <form>
+                        {
+                            JoinLoign === '로그인'
+                              ? (
+                                    <>
+                                        <input type="text" placeholder="아이디를 입력하세요" onChange={e => setUsername(e.target.value)}/>
+                                        <input type="password" placeholder="비밀번호를 입력하세요" id="password" onChange={(e) => setUserPassword(e.target.value)}/>
+                                        <button className="JoinLoign-button" onClick={(e)=>{
+                                          e.preventDefault();
+                                          fetch('http://localhost:8080/login/', {
+                                            method: 'POST',
+                                            headers: {
+                                              'Content-Type': 'application/json'
+                                            },
+                                            body: JSON.stringify(data)
+                                          })
+                                            .then(res => res.json())
+                                            .then(json => {
+                                              // user data와 token정보가 일치하면 로그인 성공
+                                              if (json.user && json.user.username && json.token) {
+                                                props.userHasAuthenticated(
+                                                  true,
+                                                  json.user.username,
+                                                  json.token);
+                                                history.push('/');
+                                                props.setModal(true);
+                                              } else {
+                                                alert('아이디 또는 비밀번호를 확인해주세요.');
+                                              }
+                                            })
+                                            .catch(error => alert(error));
+                                        }}>{JoinLoign}</button>
+                                    </>
+                              )
+                              : (
+                                    <>
+                                        <input type="text" placeholder="아이디를 입력하세요" onChange={e => setUsername(e.target.value)}/>
+                                        <input type="password" placeholder="비밀번호를 입력하세요" onChange={(e) => setUserPassword(e.target.value)}/>
+                                        <button className="JoinLoign-button" onClick={(e)=>{
+                                          e.preventDefault();
+                                          fetch('http://localhost:8080/user/', {
+                                            method: 'POST',
+                                            headers: {
+                                              'Content-Type': 'application/json'
+                                            },
+                                            body: JSON.stringify(data)
+                                          }).then(res => res.json())
+                                            .then(json => {
+                                              if (json.username && json.token) {
+                                                props.userHasAuthenticated(
+                                                  true,
+                                                  json.username,
+                                                  json.token);
+                                                history.push('/');
+                                                props.setModal(true);
+                                              } else {
+                                                alert('사용불가능한 아이디입니다.');
+                                              }
+                                            })
+                                            .catch(error => alert(error));
+                                        }}
+                                        >{JoinLoign}</button>
+                                    </>
+                              )
+                        }
 
-                                <Form.Group>
-                                    <Form.Label>비밀번호</Form.Label>
-                                    <FormControl
-                                        value={password}
-                                        onChange={e => setPassword(e.target.value)}
-                                        type="password"
-                                    />
-                                    <div style={{ color: 'red', fontSize: '12px' }}>{passError}</div>
-                                </Form.Group>
-
-                                <Button
-                                    block
-                                    bsSize="large"
-                                    variant="info"
-                                    type="submit"
-                                    onClick={onSubmitHandler}
-                                >
-                                    Login
-                                </Button>
-                                <Button
-                                    block
-                                    bsSize="large"
-                                    type="submit"
-                                >
-                                    <Link to="/Signup"><span className="signup_text">Signup</span></Link>
-                                </Button>
-                            </Form>
-                        </Modal.Body>
-                    </Container>
-                </Modal>
+                    </form>
+                    <div className="login-foot">
+                        {
+                            JoinLoign === '회원가입'
+                              ? (
+                                    <>
+                                        <span>이미 회원이신가요  ?</span>
+                                        <div className="foot-link" onClick={(e)=>{
+                                          e.preventDefault();
+                                          setJoinLogin('로그인');
+                                        }}>로그인</div>
+                                    </>
+                              )
+                              : (
+                                    <>
+                                        <span>아직 회원이 아니신가요 ?</span>
+                                        <div className="foot-link" onClick={(e)=>{
+                                          e.preventDefault();
+                                          setJoinLogin('회원가입');
+                                        }}>회원가입</div>
+                                    </>
+                              )
+                        }
+                    </div>
+                </div>
             </div>
-        </div>
+        </>
   );
 }
-
 export default LoginModal;
