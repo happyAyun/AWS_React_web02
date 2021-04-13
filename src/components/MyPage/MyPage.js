@@ -12,6 +12,7 @@ import QnADetail from './QnA/QnADetail';
 import MemoList from './Memo/MemoList';
 import MemoDetail from './Memo/MemoDetail';
 import Review from './MyBook/Review';
+import EditInfo from './EditInfo';
 import '../../App.css';
 import EditProfile from './EditProfile';
 function MyPageMenuBar() {
@@ -72,7 +73,7 @@ function MyPageMenuBar() {
                     <Menu.Header>내 정보</Menu.Header>
 
                     <Menu.Menu>
-                        <Link to='/mypage/ChangeMyInfo'>
+                        <Link to='/mypage/EditInfo'>
                             개인 정보 수정
                         </Link>
                     </Menu.Menu>
@@ -95,6 +96,7 @@ function MyPageMenuBar() {
                 <Route path='/mypage/MemoDetail' component={MemoDetail}/>
                 <Route path='/mypage/Review' component={Review}/>
                 <Route path='/mypage/EditProfile' component={EditProfile}/>
+                <Route path='/mypage/EditInfo' component={EditInfo}/>
             </div>
         </div>
   );
