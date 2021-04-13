@@ -7,17 +7,19 @@ function LoginModal(props) {
   let [JoinLoign, setJoinLogin] = useState('로그인');
   const history = useHistory();
 
-  let [userId, setUserId] = useState();
-  let [pw, setPw] = useState();
-  let [pw1, setPw1] = useState();
-  let [nickname, setNickname] = useState('');
-  let [name, setname] = useState('');
-  let [email, setEmail] = useState('');
-  let [phone, setPhone] = useState('');
+  const [info, setInfo] = useState([]);
 
-  const data = {userId: userId, pw: pw, pw1: pw1, nickname: nickname, email: email, phone: phone};
+  const inputChange = (e) => {
+    e.preventDefault();
+    setInfo({
+      ...info,
+      [e.target.name]: e.target.value
+    });
+    console.log(info);
+  };
 
   const handleIdChange = (e) => {
+    setInfo(info);
     setUserId(e.target.value);
   };
   const handlePasswordChange = (e) => {
@@ -27,6 +29,7 @@ function LoginModal(props) {
   console.log(props);
   return (
         <>
+            {JSON.stringify(info)}
             <div className="login-container">
                 <div className="login-box">
                     <div className="exit">
@@ -40,8 +43,8 @@ function LoginModal(props) {
                             JoinLoign === '로그인'
                               ? (
                                     <>
-                                        <input type="user_id" placeholder="아이디를 입력하세요" onChange={handleIdChange}/>
-                                        <input type="pw" placeholder="비밀번호를 입력하세요" id="pw" onChange={handlePasswordChange}/>
+                                        <input type="user_id" placeholder="아이디를 입력하세요" onChange={inputChange} name='userId'/>
+                                        <input type="pw" placeholder="비밀번호를 입력하세요" id="pw" onChange={inputChange} name='pw'/>
                                         <button className="JoinLoign-button" onClick={(e)=>{
                                           e.preventDefault();
                                           fetch('http://localhost:8000/login/', {
@@ -49,7 +52,7 @@ function LoginModal(props) {
                                             headers: {
                                               'Content-Type': 'application/json'
                                             },
-                                            body: JSON.stringify(data)
+                                            body: JSON.stringify(info)
                                           })
                                             .then(res => res.json())
                                             .then(json => {
@@ -69,14 +72,13 @@ function LoginModal(props) {
                               )
                               : (
                                     <>
-                                        <input type="userId" placeholder="아이디를 입력하세요" onChange={(e)=>setUserId(e.target.value)}/>
-                                        <input type="pw" placeholder="비밀번호를 입력하세요" onChange={(e)=>setPw(e.target.value)}/>
-                                        <input type="pw1" placeholder="비밀번호를 입력하세요" onChange={(e)=>setPw1(e.target.value)}/>
-                                        <input type="name" placeholder="이름을 입력하세요" onChange={(e)=>setname(e.target.value)}/>
-                                        <input type="nickname" placeholder="닉네임을 입력하세요"/>
-                                        <input type="phone" placeholder="핸드폰 번호 입력하세요"/>
-                                        <input type="email" placeholder="이메일을 입력하세요"/>
-                                        <input type="name" placeholder="이름을 입력하세요"/>
+                                        <input name='userId' type="userId" placeholder="아이디를 입력하세요" onChange={inputChange}/>
+                                        <input name='pw' type="pw" placeholder="비밀번호를 입력하세요" onChange={inputChange} />
+                                        <input name='pw1' type="pw1" placeholder="비밀번호를 입력하세요" onChange={inputChange} />
+                                        <input name='name' type="name" placeholder="이름을 입력하세요" onChange={inputChange}/>
+                                        <input name='nickname' type="nickname" placeholder="닉네임을 입력하세요" onChange={inputChange}/>
+                                        <input name='phone' type="phone" placeholder="핸드폰 번호 입력하세요" onChange={inputChange}/>
+                                        <input name='email' type="email" placeholder="이메일을 입력하세요" onChange={inputChange}/>
                                         <button className="JoinLoign-button" onClick={(e)=>{
                                           e.preventDefault();
                                           fetch('http://localhost:8000/user/', {
@@ -84,7 +86,7 @@ function LoginModal(props) {
                                             headers: {
                                               'Content-Type': 'application/json'
                                             },
-                                            body: JSON.stringify(data)
+                                            body: JSON.stringify(info)
                                           }).then(res => res.json())
                                             .then(json => {
                                               if (json.username && json.token) {
