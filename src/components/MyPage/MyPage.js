@@ -13,6 +13,7 @@ import MemoList from './Memo/MemoList';
 import MemoDetail from './Memo/MemoDetail';
 import Review from './MyBook/Review';
 import '../../App.css';
+import EditProfile from './EditProfile';
 function MyPageMenuBar() {
   return (
         <div className="myPageMenu-Bar" style={{display: 'flex'}}>
@@ -93,6 +94,7 @@ function MyPageMenuBar() {
                 <Route path='/mypage/MemoList' component={MemoList}/>
                 <Route path='/mypage/MemoDetail' component={MemoDetail}/>
                 <Route path='/mypage/Review' component={Review}/>
+                <Route path='/mypage/EditProfile' component={EditProfile}/>
             </div>
         </div>
   );
