@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import './LoginModal.css';
+import axios from 'axios';
 // import GoogleLogin from 'react-google-login';
 
 function LoginModal(props) {
@@ -40,21 +41,20 @@ function LoginModal(props) {
                                         <input type="password" placeholder="비밀번호를 입력하세요" id="password" onChange={handlePasswordChange}/>
                                         <button className="JoinLoign-button" onClick={(e)=>{
                                           e.preventDefault();
-                                          fetch('http://localhost:8000/login/', {
-                                            method: 'POST',
-                                            headers: {
-                                              'Content-Type': 'application/json'
-                                            },
-                                            body: JSON.stringify(data)
-                                          })
-                                            .then(res => res.json())
-                                            .then(json => {
+                                          axios.post('http://localhost:8000/login/', data, {headers: {
+                                            'Content-Type': 'application/json'
+                                          }})
+                                            .then(response => {
                                               // user data와 token정보가 일치하면 로그인 성공
-                                              if (json.user && json.user.username && json.token) {
+                                              if (
+                                                response.data.user
+                                                  && response.data.user.username
+                                                  && response.data.token
+                                              ) {
                                                 props.userHasAuthenticated(
                                                   true,
-                                                  json.user.username,
-                                                  json.token);
+                                                  response.data.user.username,
+                                                  response.data.token);
                                                 history.push('/');
                                                 props.setModal(true);
                                               } else {
