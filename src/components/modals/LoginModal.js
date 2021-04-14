@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import './LoginModal.css';
+import axios from 'axios';
 // import GoogleLogin from 'react-google-login';
 
 function LoginModal(props) {
@@ -15,12 +16,9 @@ function LoginModal(props) {
   const handleNameChange = (e) => {
     setUsername(e.target.value);
   };
-
   const handlePasswordChange = (e) => {
     setUserPassword(e.target.value);
   };
-
-  console.log(props);
   return (
         <>
             <div className="login-container">
@@ -51,10 +49,8 @@ function LoginModal(props) {
                                             .then(json => {
                                               // user data와 token정보가 일치하면 로그인 성공
                                               if (json.user && json.user.username && json.token) {
-                                                props.userHasAuthenticated(
-                                                  true,
-                                                  json.user.username,
-                                                  json.token);
+                                                // eslint-disable-next-line max-len
+                                                props.userHasAuthenticated(true, json.user.username, json.token);
                                                 history.push('/');
                                                 props.setModal(true);
                                               } else {
@@ -80,10 +76,8 @@ function LoginModal(props) {
                                           }).then(res => res.json())
                                             .then(json => {
                                               if (json.username && json.token) {
-                                                props.userHasAuthenticated(
-                                                  true,
-                                                  json.username,
-                                                  json.token);
+                                                // eslint-disable-next-line max-len
+                                                props.userHasAuthenticated(true, json.username, json.token);
                                                 history.push('/');
                                                 props.setModal(true);
                                               } else {
