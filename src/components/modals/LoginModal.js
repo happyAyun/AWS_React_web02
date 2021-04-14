@@ -7,21 +7,17 @@ function LoginModal(props) {
   let [JoinLoign, setJoinLogin] = useState('로그인');
   const history = useHistory();
 
-  let [userId, setUserId] = useState();
-  let [pw, setPw] = useState();
-  let [pw1, setPw1] = useState();
-  let [nickname, setNickname] = useState('');
-  let [name, setname] = useState('');
-  let [email, setEmail] = useState('');
-  let [phone, setPhone] = useState('');
+  let [username, setUsername] = useState();
+  let [userpassword, setUserPassword] = useState();
 
-  const data = {userId: userId, pw: pw, pw1: pw1, nickname: nickname, email: email, phone: phone};
+  const data = {username: username, password: userpassword};
 
-  const handleIdChange = (e) => {
-    setUserId(e.target.value);
+  const handleNameChange = (e) => {
+    setUsername(e.target.value);
   };
+
   const handlePasswordChange = (e) => {
-    setUserPw(e.target.value);
+    setUserPassword(e.target.value);
   };
 
   console.log(props);
@@ -40,8 +36,8 @@ function LoginModal(props) {
                             JoinLoign === '로그인'
                               ? (
                                     <>
-                                        <input type="user_id" placeholder="아이디를 입력하세요" onChange={handleIdChange}/>
-                                        <input type="pw" placeholder="비밀번호를 입력하세요" id="pw" onChange={handlePasswordChange}/>
+                                        <input type="text" placeholder="아이디를 입력하세요" onChange={handleNameChange}/>
+                                        <input type="password" placeholder="비밀번호를 입력하세요" id="password" onChange={handlePasswordChange}/>
                                         <button className="JoinLoign-button" onClick={(e)=>{
                                           e.preventDefault();
                                           fetch('http://localhost:8000/login/', {
@@ -55,8 +51,10 @@ function LoginModal(props) {
                                             .then(json => {
                                               // user data와 token정보가 일치하면 로그인 성공
                                               if (json.user && json.user.username && json.token) {
-                                                // eslint-disable-next-line max-len
-                                                props.userHasAuthenticated(true, json.user.username, json.token);
+                                                props.userHasAuthenticated(
+                                                  true,
+                                                  json.user.username,
+                                                  json.token);
                                                 history.push('/');
                                                 props.setModal(true);
                                               } else {
@@ -69,14 +67,8 @@ function LoginModal(props) {
                               )
                               : (
                                     <>
-                                        <input type="userId" placeholder="아이디를 입력하세요" onChange={(e)=>setUserId(e.target.value)}/>
-                                        <input type="pw" placeholder="비밀번호를 입력하세요" onChange={(e)=>setPw(e.target.value)}/>
-                                        <input type="pw1" placeholder="비밀번호를 입력하세요" onChange={(e)=>setPw1(e.target.value)}/>
-                                        <input type="name" placeholder="이름을 입력하세요" onChange={(e)=>setname(e.target.value)}/>
-                                        <input type="nickname" placeholder="닉네임을 입력하세요"/>
-                                        <input type="phone" placeholder="핸드폰 번호 입력하세요"/>
-                                        <input type="email" placeholder="이메일을 입력하세요"/>
-                                        <input type="name" placeholder="이름을 입력하세요"/>
+                                        <input type="text" placeholder="아이디를 입력하세요" onChange={handleNameChange}/>
+                                        <input type="password" placeholder="비밀번호를 입력하세요" onChange={handlePasswordChange}/>
                                         <button className="JoinLoign-button" onClick={(e)=>{
                                           e.preventDefault();
                                           fetch('http://localhost:8000/user/', {
@@ -88,8 +80,10 @@ function LoginModal(props) {
                                           }).then(res => res.json())
                                             .then(json => {
                                               if (json.username && json.token) {
-                                                // eslint-disable-next-line max-len
-                                                props.userHasAuthenticated(true, json.username, json.token);
+                                                props.userHasAuthenticated(
+                                                  true,
+                                                  json.username,
+                                                  json.token);
                                                 history.push('/');
                                                 props.setModal(true);
                                               } else {
