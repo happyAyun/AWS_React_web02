@@ -101,7 +101,6 @@ function App() {
             <Route exact path="/login">
             <LoginModal setModal={setModal} userHasAuthenticated={userHasAuthenticated} />
             </Route>
-
         </div>
     </div>
   );
