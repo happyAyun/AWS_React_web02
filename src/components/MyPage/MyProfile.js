@@ -30,7 +30,6 @@ function MyPage() {
               photo: response.data.photo,
               myInfo: response.data.myInfo
             });
-            console.log('====>', profile);
           });
         }
       });
