@@ -17,6 +17,10 @@ function MyPage() {
       await axios.get('http://localhost:8000/user/current/', {headers: {
         Authorization: `JWT ${localStorage.getItem('token')}`
       }}).then(async response => {
+        console.log(response.data.username);
+        setProfile({username: response.data.username});
+        console.log(profile);
+
         if (response.data) {
           await axios.patch('http://localhost:8000/user/auth/profile/' + response.data.id + '/update/', {}, {
             headers:
@@ -26,7 +30,6 @@ function MyPage() {
           }
           ).then(response => {
             setProfile({
-              nickname: response.data.nickname,
               photo: response.data.photo,
               myInfo: response.data.myInfo
             });
@@ -59,7 +62,7 @@ function MyPage() {
                                       </div>
                                       <Item.Content>
                                           <Item.Header as='a'>
-                                              <div className="name">{profile.nickname}</div>
+                                              <div className="name">{profile.username}</div>
                                           </Item.Header>
                                           <Item.Meta>
                                               <div className="content">{profile.myInfo}</div>
