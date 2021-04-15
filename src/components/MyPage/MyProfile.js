@@ -10,18 +10,17 @@ import axios from 'axios';
 function MyPage() {
   const segmentRef = React.useRef();
 
-  const [profile, setProfile] = useState({});
+  const [username, setUsername] = useState();
+  const [photo, setPhoto] = useState();
+  const [myInfo, setMyinfo] = useState();
 
   useEffect(() => {
     const take = async () => {
       await axios.get('http://localhost:8000/user/current/', {headers: {
         Authorization: `JWT ${localStorage.getItem('token')}`
       }}).then(async response => {
-        console.log(response.data.username);
-        setProfile({username: response.data.username});
-        console.log(profile);
-
         if (response.data) {
+          setUsername(response.data.username);
           await axios.patch('http://localhost:8000/user/auth/profile/' + response.data.id + '/update/', {}, {
             headers:
                           {
@@ -29,10 +28,8 @@ function MyPage() {
                           }
           }
           ).then(response => {
-            setProfile({
-              photo: response.data.photo,
-              myInfo: response.data.myInfo
-            });
+            setPhoto(response.data.photo);
+            setMyinfo(response.data.myInfo);
           });
         }
       });
@@ -58,14 +55,14 @@ function MyPage() {
                               <Item.Group divided>
                                   <Item>
                                       <div className="box">
-                                          <img className="profile" src={profile.photo} />
+                                          <img className="profile" src={photo} />
                                       </div>
                                       <Item.Content>
                                           <Item.Header as='a'>
-                                              <div className="name">{profile.username}</div>
+                                              <div className="name">{username}</div>
                                           </Item.Header>
                                           <Item.Meta>
-                                              <div className="content">{profile.myInfo}</div>
+                                              <div className="content">{myInfo}</div>
                                           </Item.Meta>
                                           <Item.Extra>
                                               <div>
