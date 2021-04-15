@@ -20,26 +20,6 @@ function LoginView(props) {
                                         <input type="password" placeholder="비밀번호를 입력하세요" id="password" onChange={handlePasswordChange}/>
                                         <button className="JoinLoign-button" onClick={(e)=>{
                                           e.preventDefault();
-                                          fetch('http://localhost:8000/login/', {
-                                            method: 'POST',
-                                            headers: {
-                                              'Content-Type': 'application/json'
-                                            },
-                                            body: JSON.stringify(data)
-                                          })
-                                            .then(res => res.json())
-                                            .then(json => {
-                                              // user data와 token정보가 일치하면 로그인 성공
-                                              if (json.user && json.user.username && json.token) {
-                                                // eslint-disable-next-line max-len
-                                                props.userHasAuthenticated(true, json.user.username, json.token);
-                                                history.push('/');
-                                                props.setModal(true);
-                                              } else {
-                                                alert('아이디 또는 비밀번호를 확인해주세요.');
-                                              }
-                                            })
-                                            .catch(error => alert(error));
                                         }}>{JoinLoign}</button>
                                     </>
                               )
@@ -47,26 +27,8 @@ function LoginView(props) {
                                     <>
                                         <input type="text" placeholder="아이디를 입력하세요" onChange={handleNameChange}/>
                                         <input type="password" placeholder="비밀번호를 입력하세요" onChange={handlePasswordChange}/>
-                                        <button className="JoinLoign-button" onClick={(e)=>{
+                                        <button className="JoinLoign-button" onClick={(e)=> {
                                           e.preventDefault();
-                                          fetch('http://localhost:8000/user/', {
-                                            method: 'POST',
-                                            headers: {
-                                              'Content-Type': 'application/json'
-                                            },
-                                            body: JSON.stringify(data)
-                                          }).then(res => res.json())
-                                            .then(json => {
-                                              if (json.username && json.token) {
-                                                // eslint-disable-next-line max-len
-                                                props.userHasAuthenticated(true, json.username, json.token);
-                                                history.push('/');
-                                                props.setModal(true);
-                                              } else {
-                                                alert('사용불가능한 아이디입니다.');
-                                              }
-                                            })
-                                            .catch(error => alert(error));
                                         }}
                                         >{JoinLoign}</button>
                                     </>
