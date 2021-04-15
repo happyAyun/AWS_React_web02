@@ -4,33 +4,43 @@ import MemberApi from '../api/MemberApi';
 class MemberStore {
     @observable members = [];
 
-    @observable member = {user: '', user_pk: '', email: '', photo: '', myInfo: ''} ;
+    @observable member = {id: '', user_pk: '', email: '', nickname: '', photo: '', myInfo: '', user_id: ''} ;
 
     @observable message ='';
 
-    MemberApi = new MemberApi();
+    memberApi = new MemberApi();
 
     constructor() {
       makeObservable(this);
     }
 
     @action
-    setMemberProp(user_pk, user) {
+    setMemberProp(name, value) {
       this.member = {
         ...this.member,
-        [user_pk]: user,
+        [name]: value,
       };
     }
 
     @action
-    async addTodo() {
-      const result = await this.todoApi.todoCreate(this.todo.title);
-      if (result == null) {
-        this.message = `${this.todo.title} 일정이 추가되지 않았습니다.`;
+    async signUpMember() {
+      const result = await this.memberApi.memberCreate(this.member);
+      // if (result == null) {
+      //   this.message = `${this.member.nickname} 일정이 추가되지 않았습니다.`;
+      // }
+      this.members = this.members.concat(this.member);
+      const memberList = await this.memberApi.memberList();
+      runInAction(()=>{ this.members = memberList; });
+
+      // user data와 token정보가 일치하면 로그인 성공
+      if (json.user && json.user.username && json.token) {
+        // eslint-disable-next-line max-len
+        props.userHasAuthenticated(true, json.user.username, json.token);
+        history.push('/');
+        props.setModal(true);
+      } else {
+        alert('아이디 또는 비밀번호를 확인해주세요.');
       }
-      // this.todos = this.todos.concat(this.todo);
-      const todoList = await this.todoApi.todoList();
-      runInAction(()=>{ this.todos = todoList; });
     }
 
     @action
