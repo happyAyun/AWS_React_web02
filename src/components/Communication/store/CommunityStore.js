@@ -17,8 +17,8 @@ class CommunityStore {
     @action
     setCommunityProp(name, value) {
       this.community = {
-        ...this.community, // 원래 데이터는 그대로 있고
-        [name]: value, // name의 값만 value로 바뀐다.
+        ...this.community,
+        [name]: value,
       };
     }
 
