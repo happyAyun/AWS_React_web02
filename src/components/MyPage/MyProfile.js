@@ -10,9 +10,21 @@ import axios from 'axios';
 function MyPage() {
   const segmentRef = React.useRef();
 
+  const [userList, setUserList] = useState({});
   const [username, setUsername] = useState();
   const [photo, setPhoto] = useState();
   const [myInfo, setMyinfo] = useState();
+  const [butcheck, setButcheck] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setButcheck(false);
+    console.log(userList);
+    axios
+      .post('http://localhost:8000/user/current/', { userList }, {headers: {
+        Authorization: `JWT ${localStorage.getItem('token')}`}})
+      .then((res) => res.data);
+  };
 
   useEffect(() => {
     const take = async () => {
@@ -36,6 +48,7 @@ function MyPage() {
     };
     take();
   }, []);
+
   return (
       <>
       <div>
@@ -52,31 +65,63 @@ function MyPage() {
                           </Ref>
 
                           <Segment>
-                              <Item.Group divided>
+                              {butcheck === false ? (
+                                  <Item.Group divided>
                                   <Item>
-                                      <div className="box">
-                                          <img className="profile" src={photo} />
-                                      </div>
-                                      <Item.Content>
-                                          <Item.Header as='a'>
-                                              <div className="name">{username}</div>
-                                          </Item.Header>
-                                          <Item.Meta>
-                                              <div className="content">{myInfo}</div>
-                                          </Item.Meta>
-                                          <Item.Extra>
-                                              <div>
-                                              <Link to='/mypage/EditProfile'>
-                                                  <Button floated='right' basic color='yellow' style={{marginLeft: '400px'}}>
-                                                      프로필 수정하기
-                                                      <Icon name='right chevron' />
-                                                  </Button>
-                                              </Link>
-                                              </div>
-                                          </Item.Extra>
-                                      </Item.Content>
+                                  <div className="box">
+                                  <img className="profile" src={photo} />
+                                  </div>
+                                  <Item.Content>
+                                  <Item.Header as='a'>
+                                  <div className="name">{userList.username}</div>
+                                  </Item.Header>
+                                  <Item.Meta>
+                                  <div className="content">{myInfo}</div>
+                                  </Item.Meta>
+                                  <Item.Extra>
+                                  <div>
+
+                                  <Button floated='right' basic color='yellow' style={{marginLeft: '400px'}} onClick={e => { setButcheck(true); }}>>
+                                  프로필 수정하기
+                                  <Icon name='right chevron' />
+                                  </Button>
+
+                                  </div>
+                                  </Item.Extra>
+                                  </Item.Content>
                                   </Item>
-                              </Item.Group>
+                                  </Item.Group>
+                              ) : (
+                                  <Item.Group divided>
+                                      <Item>
+                                          <div className="box">
+                                              <img className="profile" src={photo} />
+                                          </div>
+                                          <Item.Content>
+                                              <Item.Header as='a'>
+                                                  <div className="name">{username}</div>
+                                              </Item.Header>
+                                              <Item.Meta>
+                                                  <div className="content"><input type="text" onChange={e => { setUserList({...userList, myInfo: e.target.value}); }}/></div>
+                                              </Item.Meta>
+                                              <Item.Extra>
+                                                  <div>
+
+                                                      <Button floated='right' basic color='yellow' style={{marginLeft: '400px'}} onClick={
+                                                        handleSubmit
+                                                      }
+                                                      >
+                                                          수정 완료
+                                                          <Icon name='right chevron' />
+                                                      </Button>
+
+                                                  </div>
+                                              </Item.Extra>
+                                          </Item.Content>
+                                      </Item>
+                                  </Item.Group>
+                              )
+                              }
                           </Segment>
                       </Sidebar.Pushable>
                   </Grid.Column>
