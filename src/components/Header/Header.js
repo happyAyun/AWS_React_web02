@@ -6,7 +6,6 @@ import './Header.css';
 function Header(props) {
   const [userprofile, setUserprofile] = useState(false);
   const [userPhoto, setUserPhoto] = useState();
-
   useEffect(()=>{
     fetch('http://localhost:8000/user/current/', {
       headers: {
@@ -18,7 +17,6 @@ function Header(props) {
         // 현재 유저 정보 받아왔다면, 로그인 상태로 state 업데이트 하고
         if (json.id) {
           // 유저정보를 받아왔으면 해당 user의 프로필을 받아온다.
-          console.log(json);
         }fetch('http://localhost:8000/user/auth/profile/' + json.id + '/update/', {
           method: 'PATCH',
           headers: {
@@ -35,7 +33,6 @@ function Header(props) {
       }).catch(error => {
         console.log(error);
       });
-    console.log(props);
   }, [userPhoto]);
 
   return (
@@ -62,7 +59,7 @@ function Header(props) {
                                                     <div className="user-profile">
                                                         <div className="profile-menu">
                                                             <Link to="/mysite"><div className="menu">내가 쓴 글</div></Link>
-                                                            <Link to="/profile"><div className="menu">내 정보</div></Link>
+                                                            <Link to="/mypage"><div className="menu">마이페이</div></Link>
                                                             <Link onClick={props.handleLogout} to="/"><div className="menu">로그아웃</div></Link>
                                                         </div>
                                                     </div>

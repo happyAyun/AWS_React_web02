@@ -4,6 +4,7 @@ import Home from './components/Home';
 import {useEffect, useState} from 'react';
 import Header from './components/Header/Header';
 import LoginModal from './components/modals/LoginModal';
+import jwtDecode from 'jwt-decode';
 
 function App() {
   const [modal, setModal] = useState(false);
@@ -89,6 +90,7 @@ function App() {
         });
     }
   }, [isAuthenticated]);
+
   return (
     <div className="App">
 

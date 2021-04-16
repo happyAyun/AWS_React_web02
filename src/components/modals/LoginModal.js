@@ -38,19 +38,26 @@ function LoginModal(props) {
                                         <input type="password" placeholder="비밀번호를 입력하세요" id="password" onChange={handlePasswordChange}/>
                                         <button className="JoinLoign-button" onClick={(e)=>{
                                           e.preventDefault();
-                                          fetch('http://localhost:8000/login/', {
-                                            method: 'POST',
-                                            headers: {
-                                              'Content-Type': 'application/json'
-                                            },
-                                            body: JSON.stringify(data)
-                                          })
-                                            .then(res => res.json())
-                                            .then(json => {
+                                          axios.post('http://localhost:8000/login/', data, {headers: {
+                                            'Content-Type': 'application/json'
+                                          }})
+                                            .then(response => {
                                               // user data와 token정보가 일치하면 로그인 성공
+<<<<<<< HEAD
                                               if (json.user && json.user.username && json.token) {
                                                 // eslint-disable-next-line max-len
                                                 props.userHasAuthenticated(true, json.user.username, json.token);
+=======
+                                              if (
+                                                response.data.user
+                                                  && response.data.user.username
+                                                  && response.data.token
+                                              ) {
+                                                props.userHasAuthenticated(
+                                                  true,
+                                                  response.data.user.username,
+                                                  response.data.token);
+>>>>>>> 811ab7334f0b070578cd723d04db506099e5853a
                                                 history.push('/');
                                                 props.setModal(true);
                                               } else {

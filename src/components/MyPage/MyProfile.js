@@ -1,15 +1,41 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Icon, Image, Item, Menu} from 'semantic-ui-react';
 import {Grid, Header, Ref, Segment, Sidebar} from 'semantic-ui-react';
 import Chart from './Chart';
 import './MyProfile.css';
 import {Link, Route} from 'react-router-dom';
-import EditProfile from './EditProfile';
+import jwtDecode from 'jwt-decode';
+import axios from 'axios';
 
-function MyPage(props) {
+function MyPage() {
   const segmentRef = React.useRef();
-  const [visible, setVisible] = React.useState(false);
-  const paragraph = <Image src='' />;
+
+  const [username, setUsername] = useState();
+  const [photo, setPhoto] = useState();
+  const [myInfo, setMyinfo] = useState();
+
+  useEffect(() => {
+    const take = async () => {
+      await axios.get('http://localhost:8000/user/current/', {headers: {
+        Authorization: `JWT ${localStorage.getItem('token')}`
+      }}).then(async response => {
+        if (response.data) {
+          setUsername(response.data.username);
+          await axios.patch('http://localhost:8000/user/auth/profile/' + response.data.id + '/update/', {}, {
+            headers:
+                          {
+                            Authorization: `JWT ${localStorage.getItem('token')}`
+                          }
+          }
+          ).then(response => {
+            setPhoto(response.data.photo);
+            setMyinfo(response.data.myInfo);
+          });
+        }
+      });
+    };
+    take();
+  }, []);
   return (
       <>
       <div>
@@ -29,14 +55,14 @@ function MyPage(props) {
                               <Item.Group divided>
                                   <Item>
                                       <div className="box">
-                                          <img className="profile" src="" />
+                                          <img className="profile" src={photo} />
                                       </div>
                                       <Item.Content>
                                           <Item.Header as='a'>
-                                              <div className="name">Choi</div>
+                                              <div className="name">{username}</div>
                                           </Item.Header>
                                           <Item.Meta>
-                                              <div className="content">IFC</div>
+                                              <div className="content">{myInfo}</div>
                                           </Item.Meta>
                                           <Item.Extra>
                                               <div>

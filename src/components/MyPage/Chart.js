@@ -61,8 +61,6 @@ function generateData(count, yrange) {
     x, a
   });
 
-  console.log(series);
-
   return series;
 }
 
