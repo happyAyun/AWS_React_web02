@@ -5,6 +5,7 @@ import {Link, Route} from 'react-router-dom';
 import SubscribeModal from './SubscribeModal';
 
 // 임시 데이터자료
+
 const postList = [
   {
     no: 1,
@@ -43,7 +44,7 @@ const postList = [
   },
 ];
 
-const Books = (props) => {
+function Books(props) {
   const [subModalOn, setSubModalOn] = useState(false);
   // 데이터 id 값 state
   const [indexId, setIndexId] = useState(0);
@@ -102,6 +103,6 @@ const Books = (props) => {
             {renderBooks}
         </div>
   );
-};
+}
 
 export default Books;

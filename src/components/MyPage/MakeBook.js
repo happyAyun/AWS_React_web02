@@ -6,6 +6,7 @@ function MakeBook(props) {
   const [textList, setTextList] = useState({});
 
   const handleSubmit = () => {
+    console.log(textList);
     axios
       .post('http://localhost:8080/book/create/',
         { textList },
@@ -42,7 +43,6 @@ function MakeBook(props) {
                   setTextList({...textList, publisher: event.target.value});
                 }}/></div>
         </div>
-        {console.log(textList)}
         <div>
              <Button onClick={handleSubmit}>출판하기</Button>
         </div>

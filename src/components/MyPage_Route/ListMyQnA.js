@@ -1,8 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import { Message, Button } from 'semantic-ui-react';
-import { ListItem, ListItemText} from '@material-ui/core';
-import {Link} from 'react-router-dom';
-import QnADetail from '../MyPage/QnA/QnADetail';
+import { makeStyles } from '@material-ui/core/styles';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import axios from 'axios';
 
 const postList = [
   {
@@ -21,31 +24,67 @@ const postList = [
   },
 ];
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+  },
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightRegular,
+  },
+}));
+
 function ListMyQnA(props) {
-  const [dataList, setDataList] = useState([]);
+  const classes = useStyles();
+  const [dataList, setDataList] = useState('');
+  const [replyList, setReplyList] = useState('');
 
   useEffect(() => {
-    setDataList(postList);
+    const take = async () => {
+      const {data} = await axios.get('http://localhost:8000/api/qna/', {
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('token')}`
+        }
+      }
+      );
+      // console.log(data);
+      setDataList(data);
+    };
+    take();
   }, []);
 
   return (
-        <div className="qnabox">
-            <Message>
-                <Message.Header>내 질문모임집</Message.Header>
+      <div className={classes.root}>
+        <div className="qnaheader">
+          나의 질문
+        </div>
+        <div className="qnabody">
+          {console.log(dataList)}
+          {console.log(replyList)}
                 {
                     dataList ? dataList.map((item, index) => {
                       return (
-                    <Link to='/mypage/QnADetail'>
-                    <ListItem button>
-                    <ListItemText primary={item.title} style={{width: '500px'}}/>
-                    </ListItem>
-                    </Link>
+                          <Accordion style={{width: '600px'}}>
+                            <AccordionSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header"
+                            >
+                              <Typography className={classes.heading}>{item.qna_title}</Typography>
+                            </AccordionSummary>
+                          <AccordionDetails>
+                            <Typography>
+                              <h1>질문</h1>
+                              {item.qna_content}
+                            </Typography>
+                          </AccordionDetails>
+                          </Accordion>
                       );
                     })
                       : ''
                 }
-            </Message>
         </div>
+      </div>
   );
 }
 
