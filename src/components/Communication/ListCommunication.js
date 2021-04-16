@@ -50,13 +50,13 @@ function ListCommunication(props) {
                       return (
                             <CommonTableRow key={index}>
                                 <CommonTableColumn>
-                                    {communicationList[0].communication_id}
+                                    {item.communication_id}
                                 </CommonTableColumn>
                                 <CommonTableColumn>
-                                     <Link to={`/ViewCommunication/${communicationList[0].communication_title}`}>{communicationList[0].communication_title}</Link>
+                                     <Link to={`/ViewCommunication/${item.communication_title}`}>{item.communication_title}</Link>
                                 </CommonTableColumn>
                                 {/* eslint-disable-next-line max-len */}
-                                <CommonTableColumn>{communicationList[0].communication_date}</CommonTableColumn>
+                                <CommonTableColumn>{item.communication_date}</CommonTableColumn>
                             </CommonTableRow>
                       );
                     }) : ''
