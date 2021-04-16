@@ -14,6 +14,8 @@ import MemoDetail from './Memo/MemoDetail';
 import Review from './MyBook/Review';
 import '../../App.css';
 import EditProfile from './EditProfile';
+import MakeBook from './MakeBook';
+
 function MyPageMenuBar() {
   return (
         <div className="myPageMenu-Bar" style={{display: 'flex'}}>
@@ -95,6 +97,7 @@ function MyPageMenuBar() {
                 <Route path='/mypage/MemoDetail' component={MemoDetail}/>
                 <Route path='/mypage/Review' component={Review}/>
                 <Route path='/mypage/EditProfile' component={EditProfile}/>
+                <Route path='/mypage/MakeBook' component={MakeBook}/>
             </div>
         </div>
   );
