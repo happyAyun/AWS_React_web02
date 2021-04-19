@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Button,
   Icon,
@@ -9,6 +9,7 @@ import './Article.css';
 import Verticalsidebarmenu from './Verticalsidebarmenu';
 import Verticalsidebarmemo from './Verticalsidebarmemo';
 import Verticalsidebarqna from './Verticalsidebarqna';
+import BooksDetail from './BooksDetail';
 
 function exampleReducer(state, action) {
   switch (action.type) {
@@ -23,7 +24,11 @@ function exampleReducer(state, action) {
   }
 }
 
-function Article(props) {
+function Article({location}) {
+  // article, book id
+  const id = location.state.id;
+  const bookId = location.state.bookId;
+
   const [state, dispatch] = React.useReducer(exampleReducer, {
     animation: 'scale down',
     direction: 'right',
@@ -74,6 +79,7 @@ function Article(props) {
                          animation={animation}
                          direction={direction}
                          visible={visible}
+                         bookId={bookId}
                      /> : console.log('error')
                }
                 {
@@ -82,6 +88,7 @@ function Article(props) {
                             animation={animation}
                             direction={direction}
                             visible={visible}
+                            id={bookId}
                         /> : console.log('error')
                 }
                 {
@@ -90,12 +97,13 @@ function Article(props) {
                         animation={animation}
                         direction={direction}
                         visible={visible}
+                        bookId={bookId}
                     /> : console.log('error')
             }
 
               <Sidebar.Pusher dimmed={dimmed && visible}>
                   <div className={visible === true ? 'contentsss' : 'contents'}>
-                      divsdlakdmlsak
+                      <BooksDetail article_id={id}/>\
                   </div>
               </Sidebar.Pusher>
             </Sidebar.Pushable>

@@ -3,7 +3,7 @@ import React from 'react';
 function QnADetail(props) {
   return (
         <div>
-            qnadetail
+            {console.log(data)}
         </div>
   );
 }

@@ -10,11 +10,11 @@ import {Provider} from 'mobx-react';
 
 ReactDOM.render(
     <Provider CommunityStore={CommunityStore}>
-  <React.StrictMode>
-      <BrowserRouter>
-    <App />
-      </BrowserRouter>
-  </React.StrictMode>
+      <React.StrictMode>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </React.StrictMode>
     </Provider>,
     document.getElementById('root')
 );

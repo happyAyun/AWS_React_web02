@@ -1,20 +1,22 @@
 import {Menu, Sidebar} from 'semantic-ui-react';
-import React from 'react';
+import React, {useState} from 'react';
 import './VerticalSidebar.css';
+import MenuDetail from './MenuDetail';
 
-const Verticalsidebarmenu = ({ animation, direction, visible}) => (
+const Verticalsidebarmenu = (props) => (
     <Sidebar
         as={Menu}
-        animation={animation}
-        direction={direction}
+        animation={props.animation}
+        direction={props.direction}
         icon='labeled'
         inverted
         vertical
-        visible={visible}
+        visible={props.visible}
         width='wide'
     >
         <Menu>
-            1
+             <MenuDetail id={props.bookId}/>
+            {/* asdam,sdas */}
         </Menu>
     </Sidebar>
 );

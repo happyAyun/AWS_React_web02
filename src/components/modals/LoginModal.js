@@ -47,8 +47,8 @@ function LoginModal(props) {
                                               // user data와 token정보가 일치하면 로그인 성공
                                               if (
                                                 response.data.user
-                                                  && response.data.user.username
-                                                  && response.data.token
+                                                        && response.data.user.username
+                                                        && response.data.token
                                               ) {
                                                 props.userHasAuthenticated(
                                                   true,
