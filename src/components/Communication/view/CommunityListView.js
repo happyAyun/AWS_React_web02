@@ -2,11 +2,10 @@ import CommonTable from '../CommonTable';
 import CommonTableColumn from '../CommonTableColumn';
 import CommonTableRow from '../CommonTableRow';
 import {Link} from 'react-router-dom';
-import React, { Component } from 'react';
+import React, {Component, useState} from 'react';
 
 function ListCommunication(props) {
-  const {communities, onSelectCommunity} = props;
-
+  const {communities} = props;
   return (
         <div>
             <CommonTable headersName={['글번호', '제목', '등록일']}>
@@ -24,7 +23,11 @@ function ListCommunication(props) {
                                 <CommonTableColumn>{ community.communication_content }</CommonTableColumn>
                             </CommonTableRow>
                       );
-                    })) : ''
+                    })) : (
+                        <CommonTableRow>
+                        <CommonTableColumn>Empty</CommonTableColumn>
+                        </CommonTableRow>
+                    )
                 }
             </CommonTable>
         </div>

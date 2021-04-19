@@ -63,5 +63,4 @@ class CommunityStore {
       });
     }
 }
-
-export default new CommunityStore(); // 싱글턴
+export default new CommunityStore();
