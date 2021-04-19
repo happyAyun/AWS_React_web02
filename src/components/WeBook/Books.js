@@ -3,53 +3,28 @@ import {Grid, ButtonBase, Typography, Paper, Button} from '@material-ui/core';
 import './Books.css';
 import {Link, Route} from 'react-router-dom';
 import SubscribeModal from './SubscribeModal';
-
-// 임시 데이터자료
-
-const postList = [
-  {
-    no: 1,
-    title: '첫번째 게시글입니다.',
-    writer: 'kim',
-    content: '첫번째 게시글 내용입니다.',
-    publisher: 'a'
-  },
-  {
-    no: 2,
-    title: '두번째 게시글입니다.',
-    writer: 'kim',
-    content: '두번째 게시글 내용입니다.',
-    publisher: 'a'
-  },
-  {
-    no: 3,
-    title: '세번째 게시글입니다.',
-    writer: 'kim',
-    content: '세번째 게시글 내용입니다.',
-    publisher: 'a'
-  },
-  {
-    no: 4,
-    title: '네번째 게시글입니다.',
-    writer: 'kim',
-    content: '네번째 게시글 내용입니다.',
-    publisher: 'a'
-  },
-  {
-    no: 5,
-    title: '다섯번째 게시글입니다.',
-    writer: 'kim',
-    content: '다섯번째 게시글 내용입니다.',
-    publisher: 'a'
-  },
-];
+import axios from 'axios';
 
 function Books(props) {
   const [subModalOn, setSubModalOn] = useState(false);
   // 데이터 id 값 state
   const [indexId, setIndexId] = useState(0);
+  const [dataList, setDataList] = useState([]);
 
-  const renderBooks = postList.map((post) => {
+  useEffect(() => {
+    const take = async () => {
+      const {data} = await axios.get('http://localhost:8000/api/book/article/', {
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('token')}`
+        }
+      }
+      );
+      setDataList(data);
+    };
+    take();
+  }, []);
+
+  const renderBooks = dataList.map((post) => {
     // 임시 state
     return (
             <div className="container">
@@ -59,30 +34,36 @@ function Books(props) {
                     수강신청
                 </Button>
                 <div className='root'>
-                    <Link to={'/Article'} style={{textDecoration: 'none'}}>
+                    <Link to={{
+                      pathname: `/Article/${post.article_id}`,
+                      state: {
+                        id: `${post.article_id}`,
+                        bookId: `${post.book_id}`,
+                      }
+                    }} style={{textDecoration: 'none'}}>
                         <Paper className='papers'>
                             <Grid container spacing={5}>
                                 <Grid item>
                                     <ButtonBase className='image'>
-                                        <img className='img' alt="책 이미지" src="/static/images/grid/complex.jpg"/>
+                                        <img className='img' alt={post.article_img} src={post.article_img}/>
                                     </ButtonBase>
                                 </Grid>
                                 <Grid item xs={12} sm container style={{display: 'flex', alignItems: 'center'}}>
                                     <Grid item xs container direction="row" spacing={2}>
                                         <Grid item style={{margin: '0px 200px 0px 100px'}}>
                                             <Typography gutterBottom variant="subtitle1" style={{fontSize: '20px'}}>
-                                                {post.title}
+                                                {post.article_title}
                                             </Typography>
                                             <Typography variant="body2" gutterBottom style={{fontSize: '15  px'}}>
-                                                {post.writer}
+                                                {post.article_views}
                                             </Typography>
                                             <Typography variant="body2" color="textSecondary">
-                                                {post.publisher}
+                                                {post.article_date}
                                             </Typography>
                                         </Grid>
                                         <Grid item style={{marginRight: '100px'}}>
                                             <div style={{cursor: 'pointer'}}>
-                                                {post.content}
+                                                {post.article_content}
                                             </div>
                                         </Grid>
                                     </Grid>

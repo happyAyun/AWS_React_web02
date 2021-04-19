@@ -20,13 +20,13 @@ const Home = () => {
 
           </div>
           <Route path="/" component={Main} exact />
-          <Route path="/Books" component={Books} />
+          <Route path="/Books/" component={Books} />
           <Route path="/ListCommunication" component={ListCommunication} />
           <Route path="/search" component={Search} />
           <Route path="/mypage" component={MyPage}/>
           <Route path="/CreateCommunication" component={CreateCommunication}/>
           <Route exact path='/ViewCommunication/:no' component={ViewCommunication} />
-          <Route path={'/Article'} component={Article}/>
+          <Route path={'/Article/:id'} component={Article}/>
 
       </div>
   );
