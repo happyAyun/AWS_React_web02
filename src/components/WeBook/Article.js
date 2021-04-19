@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import {
   Button,
   Icon,
@@ -10,6 +10,7 @@ import Verticalsidebarmenu from './Verticalsidebarmenu';
 import Verticalsidebarmemo from './Verticalsidebarmemo';
 import Verticalsidebarqna from './Verticalsidebarqna';
 import BooksDetail from './BooksDetail';
+import LangContext from './LangContext';
 
 function exampleReducer(state, action) {
   switch (action.type) {
@@ -25,7 +26,8 @@ function exampleReducer(state, action) {
 }
 
 function Article({location}) {
-  // article, book id
+  // contextAPI 전역변수
+  const [articleId, setArticleId] = useState(null);
   const id = location.state.id;
   const bookId = location.state.bookId;
 
@@ -37,9 +39,17 @@ function Article({location}) {
     key: ''
   });
 
+  useEffect(()=>{
+    if (articleId == null) {
+      setArticleId(id);
+      console.log('초기화');
+    } else {
+      console.log('nonono');
+    }
+  });
+
   const { animation, dimmed, direction, visible, key} = state;
   const vertical = direction === 'bottom' || direction === 'top';
-
   return (
           <div className='container'>
               <div className='buttons'>
@@ -79,7 +89,8 @@ function Article({location}) {
                          animation={animation}
                          direction={direction}
                          visible={visible}
-                         bookId={bookId}
+                         // bookId={bookId}
+                         setArticleId={setArticleId}
                      /> : console.log('error')
                }
                 {
@@ -88,7 +99,7 @@ function Article({location}) {
                             animation={animation}
                             direction={direction}
                             visible={visible}
-                            id={bookId}
+                            // id={bookId}
                         /> : console.log('error')
                 }
                 {
@@ -97,17 +108,20 @@ function Article({location}) {
                         animation={animation}
                         direction={direction}
                         visible={visible}
-                        bookId={bookId}
+                        // bookId={bookId}
                     /> : console.log('error')
             }
-
-              <Sidebar.Pusher dimmed={dimmed && visible}>
+                <LangContext.Provider value={articleId}>
+                <Sidebar.Pusher dimmed={dimmed && visible}>
                   <div className={visible === true ? 'contentsss' : 'contents'}>
-                      <BooksDetail article_id={id}/>\
+                      <BooksDetail articleId={articleId} setArticleId={setArticleId}/>
+                      {/* {console.log('마지막 ' + articleId)} */}
                   </div>
               </Sidebar.Pusher>
+                </LangContext.Provider>
             </Sidebar.Pushable>
-            </div>
+
+          </div>
           </div>
 
   );

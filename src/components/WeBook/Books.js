@@ -6,6 +6,8 @@ import SubscribeModal from './SubscribeModal';
 import axios from 'axios';
 
 function Books(props) {
+  const [articleId, setArticleId] = useState('1');
+
   const [subModalOn, setSubModalOn] = useState(false);
   // 데이터 id 값 state
   const [indexId, setIndexId] = useState(0);

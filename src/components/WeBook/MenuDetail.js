@@ -1,14 +1,15 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import axios from 'axios';
-import {Button, ButtonBase, Grid, Paper, Typography} from '@material-ui/core';
-import {Link} from 'react-router-dom';
+import {Link, Route} from 'react-router-dom';
 
 function MenuDetail(props) {
   const [dataList, setDataList] = useState([]);
 
+  // props.setArticleId('asdkasldknasdlksannl');
+
   useEffect(() => {
     const take = async () => {
-      const {data} = await axios.get('http://localhost:8000/api/book/article/deatil/1', {
+      const {data} = await axios.get('http://localhost:8000/api/book/article/1/', {
         headers: {
           Authorization: `JWT ${localStorage.getItem('token')}`
         }
@@ -21,8 +22,20 @@ function MenuDetail(props) {
 
   const renderBooks = dataList.map((post) => {
     return (
-        <div className="container">
-          {console.log(dataList)}
+        <div>
+          <div>
+            <Link to={{
+              pathname: `/Article/${post.article_id}`,
+              state: {
+                id: `${post.article_id}`,
+              }
+            }} style={{textDecoration: 'none'}}>
+            <button className="movie__title" onClick={()=>{
+              props.setArticleId(post.article_id);
+              window.location.reload();
+            }}>id : {post.article_id} title :{post.article_title}</button>
+            </Link>
+          </div>
         </div>
     );
   });

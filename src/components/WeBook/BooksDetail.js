@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import axios from 'axios';
 
 function BooksDetail(props) {
@@ -6,7 +6,7 @@ function BooksDetail(props) {
 
   useEffect(() => {
     const take = async () => {
-      const {data} = await axios.get(`http://localhost:8000/api/book/article/detail/${props.article_id}/`, {
+      const {data} = await axios.get(`http://localhost:8000/api/book/article/detail/${props.articleId}/`, {
         headers: {
           Authorization: `JWT ${localStorage.getItem('token')}`
         }
