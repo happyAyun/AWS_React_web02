@@ -21,7 +21,6 @@ function LoginModal(props) {
     setUserPassword(e.target.value);
   };
 
-  console.log(props);
   return (
         <>
             <div className="login-container">
