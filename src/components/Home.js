@@ -29,7 +29,7 @@ const Home = () => {
           <Route path="/search" component={Search} />
           <Route path="/mypage" component={MyPage}/>
           <Route exact path='/ViewCommunication/:no' component={ViewCommunication} />
-          <Route path={'/Article/:id'} component={Article}/>
+          <Route path={'/Article/:id'} com ponent={Article}/>
 
       </div>
   );
