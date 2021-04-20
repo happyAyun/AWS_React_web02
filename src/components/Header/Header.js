@@ -2,6 +2,7 @@ import '../../App.css';
 import React, { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import './Header.css';
+import BookCreate from '../WeBook/BookCreate';
 
 function Header(props) {
   const [userprofile, setUserprofile] = useState(false);
@@ -47,10 +48,6 @@ function Header(props) {
                               : (
                                     <>
                                         <Link className="header-dashboard" to="BookCreate"><button>새 글 작성</button></Link>
-                                        <li><a href="/create" onClick={function (e) {
-                                          e.preventDefault();
-                                        }}
-                                        >임시 create</a></li>
                                         <div className="user-container" onClick={()=>{ setUserprofile(!userprofile); }}>
                                             <img src={userPhoto} className="user-image" alt="/"></img>
                                             <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">

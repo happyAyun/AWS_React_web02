@@ -8,6 +8,8 @@ import MyPage from './MyPage/MyPage';
 import ViewCommunication from './Communication/ViewCommunication';
 import Article from './WeBook/Article';
 import CommunityPage from './Communication/view/CommunityPage';
+import BookCreate from './WeBook/BookCreate';
+import ArticleCreate from './WeBook/ArticleCreate';
 
 const Home = () => {
   return (
@@ -25,11 +27,14 @@ const Home = () => {
           <Route path="/Books" component={Books} />
           <Route path="/community" component={CommunityPage}/>
 
+          <Route path="/BookCreate" component={BookCreate}/>
+          <Route path="/ArticleCreate" component={()=><ArticleCreate/>}/>
+
           {/* <Route path="/ListCommunication" component={ListCommunication} /> */}
           <Route path="/search" component={Search} />
           <Route path="/mypage" component={MyPage}/>
           <Route exact path='/ViewCommunication/:no' component={ViewCommunication} />
-          <Route path={'/Article/:id'} com ponent={Article}/>
+          <Route path={'/Article/:id'} component={Article}/>
 
       </div>
   );
