@@ -5,6 +5,10 @@ import CommunityListView from '../view/CommunityListView';
 @inject('CommunityStore')
 @observer
 class ListCommunication extends Component {
+  componentDidMount() {
+    this.props.CommunityStore.selectAll();
+  }
+
   onSetCommunityProp = (name, value) => {
     this.props.CommunityStore.setCommunityProp(name, value);
   };

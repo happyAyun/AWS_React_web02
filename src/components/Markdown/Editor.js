@@ -1,5 +1,6 @@
 import React, {useState, useRef} from 'react';
 import JoditEditor from 'jodit-react';
+import { Button } from 'semantic-ui-react';
 
 // eslint-disable-next-line no-empty-pattern
 const Editor = ({}) => {

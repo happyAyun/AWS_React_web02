@@ -62,5 +62,13 @@ class CommunityStore {
         this.community = result;
       });
     }
+
+    @action
+    async selectAll() {
+      const result = await this.communityApi.communicationList();
+      runInAction(()=>{
+        this.communities = result;
+      });
+    }
 }
 export default new CommunityStore();
