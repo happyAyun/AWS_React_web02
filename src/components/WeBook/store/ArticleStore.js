@@ -10,6 +10,10 @@ class ArticleStore {
 
     @observable index = 0;
 
+    @observable bookId = 0;
+
+    @observable viewState = '';
+
     articleApi = new ArticleApi();
 
     constructor() {
@@ -24,10 +28,16 @@ class ArticleStore {
       };
     }
 
-    // index 저장
+    // article_id 저장
     @action
     setIndexProp(id) {
       this.index = id;
+    }
+
+    // viewState 관리
+    @action
+    setViewState(key) {
+      this.viewState = key;
     }
 
     @action

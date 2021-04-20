@@ -29,16 +29,13 @@ class BookContainer extends Component {
     this.props.ArticleStore.setIndexProp(id);
   }
 
-  onArticleDetail = (id) => {
-    this.props.ArticleStore.selectArticle(id);
-  }
-
   render() {
     const { articles } = this.props.ArticleStore;
     const id = this.props.ArticleStore.index;
+
     return (
         <div>
-          {console.log('first book_id' + id)}
+          {console.log('first article_id' + id)}
           <BookView
               articles={articles}
               id={id}
@@ -47,9 +44,9 @@ class BookContainer extends Component {
               onRemoveArticle={this.onRemoveArticle}
               onModifyArticle={this.onModifyArticle}
               setIndexProp={this.onsetIndexProp}
-              onArticleDetail={this.onArticleDetail}
           />
-          {console.log('last book id' + id)}
+          {console.log('last article_id' + id)}
+          {/* {console.log('last book_id' + bookId)} */}
         </div>
 
     );
