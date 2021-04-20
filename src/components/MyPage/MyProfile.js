@@ -16,9 +16,8 @@ function MyPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setButcheck(false);
-    console.log(userList);
     axios
-      .post('http://localhost:8000/user/current/', { userList }, {headers: {
+      .post('http://localhost:8000/user/myprofile/Edit', { userList }, {headers: {
         Authorization: `JWT ${localStorage.getItem('token')}`}})
       .then((res) => res.data);
   };
@@ -33,7 +32,6 @@ function MyPage() {
     };
     take();
   }, []);
-  console.log(userList);
   return (
       <>
       <div>
@@ -54,7 +52,7 @@ function MyPage() {
                                   <Item.Group divided>
                                   <Item>
                                   <div className="box">
-                                  <img className="profile" src={'http://localhost:8000' + userList.photo} />
+                                  <img className="profile" src={'http://localhost:8000' + userList.photo} alt=""/>
                                   </div>
                                   <Item.Content>
                                   <Item.Header as='a'>
@@ -80,14 +78,20 @@ function MyPage() {
                                   <Item.Group divided>
                                       <Item>
                                           <div className="box">
-                                              <img className="profile" src={photo} />
+                                              <img className="profile" src={'http://localhost:8000' + userList.photo} />
                                           </div>
                                           <Item.Content>
                                               <Item.Header as='a'>
-                                                  <div className="name">{username}</div>
+                                                  <div className="name">{userList.nickname}</div>
                                               </Item.Header>
                                               <Item.Meta>
-                                                  <div className="content"><input type="text" onChange={e => { setUserList({...userList, myInfo: e.target.value}); }}/></div>
+                                                  <div className="content"><input type="text" onChange={e => {
+                                                    console.log(e.target.value);
+                                                    setUserList(
+                                                      {...userList, myInfo: e.target.value}
+                                                    );
+                                                    console.log(userList);
+                                                  }}/></div>
                                               </Item.Meta>
                                               <Item.Extra>
                                                   <div>
