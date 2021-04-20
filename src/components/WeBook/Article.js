@@ -12,7 +12,6 @@ import Verticalsidebarmemo from './Verticalsidebarmemo';
 import Verticalsidebarqna from './Verticalsidebarqna';
 import BooksDetail from './BooksDetail';
 import LangContext from './LangContext';
-import MenuSide from './MenuSide';
 
 function exampleReducer(state, action) {
   switch (action.type) {

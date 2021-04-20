@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import BookView from '../view/BookView';
 
@@ -9,18 +9,51 @@ class BookContainer extends Component {
     this.props.ArticleStore.selectAll();
   }
 
-    onSelectArticle =(id)=>{
-      this.props.ArticleStore.selectArticle(id);
-    }
+  onSetArticleProp = (name, value) => {
+    this.props.ArticleStore.setArticleProp(name, value);
+  };
 
-    render() {
-      return (
-            <div>
-                <BookView comm={this.props.ArticleStore.articles}
-                          onSelectCom={this.onSelectArticle}/>
-            </div>
-      );
-    }
+  onAddArticle = () => {
+    this.props.ArticleStore.addArticle();
+  };
+
+  onRemoveArticle = () => {
+    this.props.ArticleStore.removeArticle();
+  };
+
+  onModifyArticle = () => {
+    this.props.ArticleStore.modifyArticle();
+  };
+
+  onsetIndexProp = (id) => {
+    this.props.ArticleStore.setIndexProp(id);
+  }
+
+  onArticleDetail = (id) => {
+    this.props.ArticleStore.selectArticle(id);
+  }
+
+  render() {
+    const { articles } = this.props.ArticleStore;
+    const id = this.props.ArticleStore.index;
+    return (
+        <div>
+          {console.log('first book_id' + id)}
+          <BookView
+              articles={articles}
+              id={id}
+              onSetArticleProp={this.onSetArticleProp}
+              onAddArticle={this.onAddArticle}
+              onRemoveArticle={this.onRemoveArticle}
+              onModifyArticle={this.onModifyArticle}
+              setIndexProp={this.onsetIndexProp}
+              onArticleDetail={this.onArticleDetail}
+          />
+          {console.log('last book id' + id)}
+        </div>
+
+    );
+  }
 }
 
 export default BookContainer;

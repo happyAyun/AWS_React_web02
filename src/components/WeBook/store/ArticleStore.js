@@ -8,6 +8,8 @@ class ArticleStore {
 
     @observable Message = '';
 
+    @observable index = 0;
+
     articleApi = new ArticleApi();
 
     constructor() {
@@ -20,6 +22,12 @@ class ArticleStore {
         ...this.article,
         [name]: value,
       };
+    }
+
+    // index 저장
+    @action
+    setIndexProp(id) {
+      this.index = id;
     }
 
     @action
@@ -58,6 +66,14 @@ class ArticleStore {
     @action
     async selectArticle(id) {
       const result = await this.articleApi.articleDetail(id);
+      runInAction(() => {
+        this.article = result;
+      });
+    }
+
+    @action
+    async selectArticleBook(id) {
+      const result = await this.articleApi.articleBook(id);
       runInAction(() => {
         this.article = result;
       });

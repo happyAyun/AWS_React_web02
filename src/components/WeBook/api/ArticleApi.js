@@ -23,6 +23,13 @@ class ArticleApi {
         .then(response => response.data);
     }
 
+    // book_id로 분류한 article
+    articleBook(id) {
+      return axios
+        .delete(this.URL + `/${id}/`)
+        .then(response => response.data);
+    }
+
     articleDetail(id) {
       return axios
         .get(this.URL + `detail/${id}/`)

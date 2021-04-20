@@ -23,7 +23,7 @@ function MenuDetail(props) {
         <div>
           <div>
             <Link to={{
-              pathname: `/Article/${post.article_id}`,
+              pathname: `/Articless/${post.article_id}`,
               state: {
                 id: `${post.article_id}`,
               }

@@ -31,10 +31,10 @@ function CreateCommunication(props) {
             </span>
             </ul>
 
-            <div className="form-group">
-                <label htmlFor="inputsm">제목: </label>
-                <input className="form-control input-sm" value={title} type="title" onChange={e => { setTitle(e.target.value); }}/>
-            </div>
+            {/* <div className="form-group"> */}
+            {/*    <label htmlFor="inputsm">제목: </label> */}
+            {/*    <input className="form-control input-sm" value={title} type="title" onChange={e => { setTitle(e.target.value); }}/> */}
+            {/* </div> */}
             <div className="form-group">
                 <label htmlFor="comment">내용: </label>
                 <textarea className="form-control" rows="5" value={content} onChange={e => { setContent(e.target.value); }}/>

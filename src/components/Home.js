@@ -6,9 +6,9 @@ import Books from './WeBook/Books';
 import ListCommunication from './Communication/container/ListCommunication';
 import MyPage from './MyPage/MyPage';
 import ViewCommunication from './Communication/ViewCommunication';
-import Article from './WeBook/Article';
 import CommunityPage from './Communication/view/CommunityPage';
 import BookContainer from './WeBook/container/BookContainer';
+import Articless from './WeBook/container/ArticleDetail';
 
 const Home = () => {
   return (
@@ -30,7 +30,8 @@ const Home = () => {
           <Route path="/search" component={Search} />
           <Route path="/mypage" component={MyPage}/>
           <Route exact path='/ViewCommunication/:no' component={ViewCommunication} />
-          <Route path={'/Article/:id'} component={Article}/>
+          {/* <Route path={'/Article/:id'} component={Article}/> */}
+          <Route path={'/Articless/:id'} component={Articless}/>
 
       </div>
   );
