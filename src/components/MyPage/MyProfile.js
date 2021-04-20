@@ -11,9 +11,6 @@ function MyPage() {
   const segmentRef = React.useRef();
 
   const [userList, setUserList] = useState({});
-  const [username, setUsername] = useState();
-  const [photo, setPhoto] = useState();
-  const [myInfo, setMyinfo] = useState();
   const [butcheck, setButcheck] = useState(false);
 
   const handleSubmit = (e) => {
@@ -28,27 +25,15 @@ function MyPage() {
 
   useEffect(() => {
     const take = async () => {
-      await axios.get('http://localhost:8000/user/current/', {headers: {
-        Authorization: `JWT ${localStorage.getItem('token')}`
-      }}).then(async response => {
-        if (response.data) {
-          setUsername(response.data.username);
-          await axios.patch('http://localhost:8000/user/auth/profile/' + response.data.id + '/update/', {}, {
-            headers:
-                          {
-                            Authorization: `JWT ${localStorage.getItem('token')}`
-                          }
-          }
-          ).then(response => {
-            setPhoto(response.data.photo);
-            setMyinfo(response.data.myInfo);
-          });
+      await axios.get('http://localhost:8000/user/myprofile/', {
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('token')}`
         }
-      });
+      }).then(res => console.log(setUserList(res.data)));
     };
     take();
   }, []);
-
+  console.log(userList);
   return (
       <>
       <div>
@@ -69,14 +54,14 @@ function MyPage() {
                                   <Item.Group divided>
                                   <Item>
                                   <div className="box">
-                                  <img className="profile" src={photo} />
+                                  <img className="profile" src={'http://localhost:8000' + userList.photo} />
                                   </div>
                                   <Item.Content>
                                   <Item.Header as='a'>
-                                  <div className="name">{userList.username}</div>
+                                  <div className="name">{userList.nickname}</div>
                                   </Item.Header>
                                   <Item.Meta>
-                                  <div className="content">{myInfo}</div>
+                                  <div className="content">{userList.myInfo}</div>
                                   </Item.Meta>
                                   <Item.Extra>
                                   <div>
