@@ -9,6 +9,8 @@ import ViewCommunication from './Communication/ViewCommunication';
 import CommunityPage from './Communication/view/CommunityPage';
 import BookContainer from './WeBook/container/BookContainer';
 import Articless from './WeBook/container/ArticleDetail';
+import BookCreate from './WeBook/BookCreate';
+import ArticleCreate from './WeBook/ArticleCreate';
 
 const Home = () => {
   return (
@@ -25,6 +27,9 @@ const Home = () => {
           <Route path="/ListCommunication" component={ListCommunication} />
           <Route path="/Books" component={BookContainer} />
           <Route path="/community" component={CommunityPage}/>
+
+          <Route path="/BookCreate" component={BookCreate}/>
+          <Route path="/ArticleCreate" component={()=><ArticleCreate/>}/>
 
           {/* <Route path="/ListCommunication" component={ListCommunication} /> */}
           <Route path="/search" component={Search} />

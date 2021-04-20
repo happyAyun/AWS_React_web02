@@ -13,23 +13,6 @@ function CreateCommunication(props) {
 
   return (
         <form>
-            <ul>
-                <span className="checkbox">
-                <label><input type="radio" name="check" value="check1" onClick={e => { setCheck(1); }}/> 자유 게시판 </label>
-            </span>
-
-                <span className="checkbox">
-                <label><input type="radio" name="check" value="check2" onClick={e => { setCheck(2); }}/> 중고거래 게시판 </label>
-            </span>
-
-                <span className="checkbox disabled">
-                <label><input type="radio" name="check" value="check3" onClick={e => { setCheck(3); }}/> 멘토링 게시판 </label>
-            </span>
-
-                <span className="checkbox disabled">
-                <label><input type="radio" name="check" value="check4" onClick={e => { setCheck(4); }}/> 스터디 게시판 </label>
-            </span>
-            </ul>
 
             {/* <div className="form-group"> */}
             {/*    <label htmlFor="inputsm">제목: </label> */}
