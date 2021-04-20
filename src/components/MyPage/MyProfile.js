@@ -17,7 +17,7 @@ function MyPage() {
     e.preventDefault();
     setButcheck(false);
     axios
-      .post('http://localhost:8000/user/myprofile/Edit', { userList }, {headers: {
+      .post('http://localhost:8000/user/myprofile/Edit/', { userList }, {headers: {
         Authorization: `JWT ${localStorage.getItem('token')}`}})
       .then((res) => res.data);
   };
