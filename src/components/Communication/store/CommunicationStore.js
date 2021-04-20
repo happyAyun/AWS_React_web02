@@ -1,73 +1,74 @@
-import {makeObservable, action, observable, runInAction} from 'mobx';
-import tmpCommunicationApi from '../api/tmpCommunicationApi';
+import { makeObservable, action, observable, runInAction } from 'mobx';
+import CommunityApi from '../api/CommunityApi';
 
-class CommunicationStore {
-  @observable comm = [];
+class CommunityStore {
+  @observable communities = [];
 
-  @observable com = {
-    communication_id: '',
-    communication_title: '',
-    communication_content: '',
-    communication_img: '',
-    communication_date: '',
-    communication_views: '',
-    communication_category: '',
-  } ;
+  @observable community = { communication_id: '', communication_title: '', communication_content: '', communication_img: '', communication_date: '', communication_views: '', communication_category: '', user_pk: ''};
 
-  @observable message ='';
+  @observable Message = '';
 
-  comApi = new tmpCommunicationApi();
+  communityApi = new CommunityApi();
 
   constructor() {
     makeObservable(this);
   }
 
   @action
-  setComProp(name, value) {
-    this.com = {
-      ...this.com,
+  setCommunityProp(name, value) {
+    this.community = {
+      ...this.community,
       [name]: value,
     };
   }
 
   @action
-  async addCom() {
-    const result = await this.comApi.communityCreate(this.com.communication_title);
-    const comList = await this.comApi.communityList();
-    runInAction(()=>{ this.comm = comList; });
+  async addCommunity() {
+    const result = await this.communityApi.communicationCreate(this.community);
+    if (result == null) {
+      this.message = '추가되지 않았습니다.';
+    }
+    this.communities = this.communities.concat(this.community);
   }
 
   @action
-  async removeCom() {
-    await this.comApi.communityDelete(this.todo.id);
-    // this.todos = this.todos.filter((element) => element.id !== this.todo.id);
-    const result = await this.comApi.communityList();
-    runInAction(()=>{ this.comm = result; });
-    runInAction(()=>{ this.com = {}; });
+  async removeCommunity() {
+    await this.communityApi.communicationDelete(this.community.communication_id);
+    const result = await this.communityApi.communicationList();
+    runInAction(() => {
+      this.communities = result;
+    });
+    runInAction(() => {
+      this.community = {};
+    });
   }
 
   @action
-  async modifyCom() {
-    await this.comApi.communityUpdate(this.todo.id, this.todo.title);
-    // this.todos = this.todos.map((element) =>
-    // element.id === this.todo.id ? this.todo : element);
-    const result = await this.comApi.communityList();
-    runInAction(()=>{ this.comm = result; });
-    runInAction(()=>{ this.com = {}; });
+  async modifyCommunity() {
+    await this.communityApi.communicationUpdate(this.community.communication_id, this.community);
+    const result = await this.communityApi.communicationList();
+    runInAction(() => {
+      this.communities = result;
+    });
+    runInAction(() => {
+      this.community = {};
+    });
   }
 
   @action
-  async selectCom(id) {
-    const result = await this.comApi.communityDetail(id);
-    runInAction(()=>{ this.com = result; });
-    // this.todo =this.todos.find((element) => element.id === id)
+  async selectCommunity(id) {
+    const result = await this.communityApi.communicationDetail(id);
+    runInAction(() => {
+      this.community = result;
+    });
   }
 
   @action
   async selectAll() {
-    const result = await this.comApi.communityList();
-    runInAction(() => { this.comm = result; });
+    const result = await this.communityApi.communicationList();
+    runInAction(()=>{
+      this.communities = result;
+    });
   }
 }
-
-export default new CommunicationStore();
+export default new CommunityStore();

@@ -5,8 +5,6 @@ import {Link, Route} from 'react-router-dom';
 function MenuDetail(props) {
   const [dataList, setDataList] = useState([]);
 
-  // props.setArticleId('asdkasldknasdlksannl');
-
   useEffect(() => {
     const take = async () => {
       const {data} = await axios.get('http://localhost:8000/api/book/article/1/', {
@@ -30,10 +28,7 @@ function MenuDetail(props) {
                 id: `${post.article_id}`,
               }
             }} style={{textDecoration: 'none'}}>
-            <button className="movie__title" onClick={()=>{
-              props.setArticleId(post.article_id);
-              window.location.reload();
-            }}>id : {post.article_id} title :{post.article_title}</button>
+            <button className="movie__title">id : {post.article_id} title :{post.article_title}</button>
             </Link>
           </div>
         </div>

@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-class CommunityApi {
-    URL = 'http://localhost:8000/api/community/';
+class ArticleApi {
+    URL = 'http://localhost:8000/api/book/article/';
 
-    communicationCreate(data) {
+    articleCreate(data) {
       return axios
         .post(this.URL + 'create/', { data: `${data}` })
         .then(response => response.data); // resolve
@@ -11,27 +11,31 @@ class CommunityApi {
       // .finally(()=>{}); // resolve, reject 모든 경우
     }
 
-    communicationUpdate(id, data) {
+    articleUpdate(id, data) {
       return axios
         .put(this.URL + `update/${id}/`, { data: `${data}` })
         .then(response => response.data);
     }
 
-    communicationDelete(id) {
+    articleDelete(id) {
       return axios
         .delete(this.URL + `delete/${id}/`)
         .then(response => response.data);
     }
 
-    communicationDetail(id) {
+    articleDetail(id) {
       return axios
         .get(this.URL + `detail/${id}/`)
         .then(response => response.data);
     }
 
-    communicationList() {
-      return axios.get(this.URL).then(response => response.data);
+    articleList() {
+      return axios.get(this.URL + '', {
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('token')}`
+        }})
+        .then(response => response.data);
     }
 }
 
-export default CommunityApi;
+export default ArticleApi;
