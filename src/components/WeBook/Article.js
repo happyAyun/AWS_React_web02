@@ -1,4 +1,5 @@
 import React, {useEffect, useState, useContext} from 'react';
+
 import {
   Button,
   Icon,
@@ -89,7 +90,7 @@ function Article({location}) {
                          animation={animation}
                          direction={direction}
                          visible={visible}
-                         // bookId={bookId}
+                         bookId={bookId}
                          setArticleId={setArticleId}
                      /> : console.log('error')
                }
@@ -115,7 +116,7 @@ function Article({location}) {
                 <Sidebar.Pusher dimmed={dimmed && visible}>
                   <div className={visible === true ? 'contentsss' : 'contents'}>
                       <BooksDetail articleId={articleId} setArticleId={setArticleId}/>
-                      {/* {console.log('마지막 ' + articleId)} */}
+
                   </div>
               </Sidebar.Pusher>
                 </LangContext.Provider>

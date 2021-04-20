@@ -22,4 +22,4 @@ const Verticalsidebarmemo = ({ animation, direction, visible}) => (
     </Sidebar>
 );
 
-export default Verticalsidebarmemo;
+// export default Verticalsidebarmemo;

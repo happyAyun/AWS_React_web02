@@ -19,4 +19,4 @@ const Verticalsidebarqna = ({ animation, direction, visible}) => (
     </Sidebar>
 );
 
-export default Verticalsidebarqna;
+// export default Verticalsidebarqna;

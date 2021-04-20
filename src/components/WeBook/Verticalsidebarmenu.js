@@ -23,4 +23,4 @@ function Verticalsidebarmenu(props) {
   );
 }
 
-export default Verticalsidebarmenu;
+// export default Verticalsidebarmenu;

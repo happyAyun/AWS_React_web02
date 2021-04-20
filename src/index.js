@@ -6,10 +6,11 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import CommunityStore from './components/Communication/store/CommunityStore';
+import ArticleStore from './components/WeBook/store/ArticleStore';
 import {Provider} from 'mobx-react';
 
 ReactDOM.render(
-    <Provider CommunityStore={CommunityStore}>
+    <Provider CommunityStore={CommunityStore} ArticleStore={ArticleStore}>
       <React.StrictMode>
         <BrowserRouter>
           <App />
