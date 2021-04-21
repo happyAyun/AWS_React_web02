@@ -10,7 +10,6 @@ function BookView(props) {
   const change = (e) =>{
     console.log(e.target.value);
     props.setIndexProp(e.target.value);
-    props.onArticleDetail(props.id);
   };
 
   return (
@@ -44,7 +43,7 @@ function BookView(props) {
                                                           {post.article_title}
                                                       </Typography>
                                                       <Typography variant="body2" gutterBottom style={{fontSize: '15  px'}}>
-                                                          {post.article_views}
+                                                          {post.book_id}
                                                       </Typography>
                                                       <Typography variant="body2" color="textSecondary">
                                                           {post.article_date}
