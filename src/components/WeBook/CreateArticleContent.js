@@ -2,11 +2,11 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
-function CreateContent(props) {
+function CreateArticleContent(props) {
   const [articleMakeList, setArticleMakeList] = useState({article_title: '', article_content: ''});
 
   const InsertArticle = ()=>{
-    console.log(articleMakeList);
+    // console.log(articleMakeList);
     // axios.post('http://localhost:8000/api/article/create/', {
     //   data:
     //         articleMakeList
@@ -49,4 +49,4 @@ function CreateContent(props) {
   );
 }
 
-export default CreateContent;
+export default CreateArticleContent;
