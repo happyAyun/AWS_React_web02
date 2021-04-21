@@ -26,7 +26,7 @@ function ListCourse(props) {
                         <Card>
                             <Image src='/images/avatar/large/matthew.png' wrapped ui={false} />
                             <Card.Content>
-                                <Card.Header></Card.Header>
+                                <Card.Header>y</Card.Header>
                                 <Card.Meta>
                                     <span className='date'>Joined in 2015</span>
                                 </Card.Meta>
