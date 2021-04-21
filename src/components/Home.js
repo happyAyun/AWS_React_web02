@@ -29,7 +29,7 @@ const Home = () => {
           <Route path="/community" component={CommunityPage}/>
 
           <Route path="/BookCreate" component={BookCreate}/>
-          <Route path="/ArticleCreate" component={()=><ArticleCreate/>}/>
+          <Route path={'/ArticleCreate/:book_title'} component={ArticleCreate}/>
 
           {/* <Route path="/ListCommunication" component={ListCommunication} /> */}
           <Route path="/search" component={Search} />

@@ -47,7 +47,7 @@ function Header(props) {
                               ? <Link to="/login"><button className="header-btn">로그인</button></Link>
                               : (
                                     <>
-                                        <Link className="header-dashboard" to="BookCreate"><button>새 글 작성</button></Link>
+                                        <Link className="header-dashboard" to="/BookCreate"><button>새 글 작성</button></Link>
                                         <div className="user-container" onClick={()=>{ setUserprofile(!userprofile); }}>
                                             <img src={userPhoto} className="user-image" alt="/"></img>
                                             <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
