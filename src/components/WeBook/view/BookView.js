@@ -1,18 +1,18 @@
-import React, {Component, useState} from 'react';
+import React, {Component, useEffect, useState} from 'react';
 import {Button, ButtonBase, Grid, Paper, Typography} from '@material-ui/core';
 import {Link} from 'react-router-dom';
 import SubscribeModal from '../SubscribeModal';
 import './BookView.css';
+import axios from 'axios';
 
 function BookView(props) {
   const {articles} = props;
   const [subModalOn, setSubModalOn] = useState(false);
 
   const change = (e) =>{
-    console.log(e.target.value);
+    console.log('index' + e.target.value);
     props.setIndexProp(e.target.value);
   };
-
   return (
       <div>
           {
@@ -20,10 +20,10 @@ function BookView(props) {
               Array.isArray(articles) && articles.length ? (articles.map(post => {
                 return (
                       <div className='bookContainer' >
-                          <Link to={`/Articless/${post.articleId}`} style={{textDecoration: 'none'}}>
+                          <Link to={`/Articless/${articles.articleId}`} style={{textDecoration: 'none'}}>
                           <button variant="contained" color="primary"
                                   style={{height: '140px', backgroundColor: '#BF8450'}}
-                                  value={post.articleId}
+                                  value={post.bookId}
                                   onClick={change}
                                   >
                               글보기
@@ -44,7 +44,7 @@ function BookView(props) {
                                                           {post.articleTitle}
                                                       </Typography>
                                                       <Typography variant="body2" gutterBottom style={{fontSize: '15  px'}}>
-                                                          {post.bookId}
+                                                          {post.articleId}
                                                       </Typography>
                                                       <Typography variant="body2" color="textSecondary">
                                                           {post.articleDate}

@@ -1,5 +1,3 @@
-
-
 function AriticleCategory(props) {
   return (
         <div>

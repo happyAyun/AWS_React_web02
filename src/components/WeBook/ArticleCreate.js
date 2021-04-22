@@ -1,11 +1,20 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import AriticleCategory from './AriticleCategory';
+import Control from './Control';
+import ReadContent from './ReadContent';
+import CreateArticleContent from './CreateArticleContent';
 import axios from 'axios';
 
-function AriticleCreate() {
+function AriticleCreate({location}) {
   const [ArticleTitle, setArticleTitle] = useState('');
   const [mode, setMode] = useState('read');
+  const [bookList, setBookList] = useState([]);
+  const [articleList, setArticleList] = useState([]);
 
-  console.log(mode);
+  // const {bookTitle} = props.location.state;
+  console.log(location.state.bookTitle);
+
+  // console.log(mode);
   let title = null;
   let content = null;
   let article = null;
@@ -13,17 +22,36 @@ function AriticleCreate() {
   if (mode === 'read') {
     article = <ReadContent></ReadContent>;
   } else if (mode === 'create') {
-    article = <CreateContent onSubmit={function (title, content) {
+    article = <CreateArticleContent onSubmit={function (title, content) {
       console.log(title, content);
+      const tmp = {title: title, content: content};
+      setArticleList(articleList.concat(tmp));
+      console.log('1', articleList);
     }.bind()
-    }></CreateContent>;
+    }></CreateArticleContent>;
   }
+
+  // useEffect(() => {
+  //   const searchId = ()=>{
+  //     axios.post('http://localhost:8000/api/book/detail/', {
+  //       data:
+  //             location.state.bookTitle
+  //     }).then((response) => {
+  //       if (response.data != null) {
+  //         // console.log(bookMakeList.book_title);
+  //       }
+  //     });
+  //   };
+  //   searchId();
+  //   console.log(response);
+  // }, []);
 
   return (
         <div>
             <form>
+
                 <div className="form-group">
-                    <label htmlFor="inputsm" >책 제목:</label>
+                    <label htmlFor="inputsm" >책 제목: {location.state.bookTitle}</label>
 
                 </div>
 
