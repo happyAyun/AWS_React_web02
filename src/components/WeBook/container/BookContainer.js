@@ -6,7 +6,8 @@ import BookView from '../view/BookView';
 @observer
 class BookContainer extends Component {
   componentDidMount() {
-    this.props.ArticleStore.selectAll();
+    // this.props.ArticleStore.selectAll();
+    this.props.ArticleStore.selectArticleBook(this.props.location.state.bookId);
   }
 
   onSetArticleProp = (name, value) => {
@@ -29,16 +30,24 @@ class BookContainer extends Component {
     this.props.ArticleStore.setIndexProp(id);
   }
 
+  onsetArticleBook = (id) => {
+    this.props.ArticleStore.selectArticleBook(id);
+  }
+
   render() {
     const { articles } = this.props.ArticleStore;
+    const bookId = this.props.location.state.bookId;
     const id = this.props.ArticleStore.index;
 
     return (
         <div>
-          {console.log('first article_id' + id)}
+          {/* {console.log('bookId +' + this.props.location.state.bookId)} */}
+          {/* {console.log('저장될 id' + id)} */}
+          {/* {console.log('테스트 ' + this.props.ArticleStore.selectArticleBook(bookId))} */}
           <BookView
               articles={articles}
               id={id}
+              bookId={bookId}
               onSetArticleProp={this.onSetArticleProp}
               onAddArticle={this.onAddArticle}
               onRemoveArticle={this.onRemoveArticle}

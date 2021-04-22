@@ -35,7 +35,7 @@ function ArticleListView(props) {
                   dataList.map((post) => {
                     return (
                     <div>
-                        {post.articleId}
+                      타이틀제목
                         {post.articleTitle}
                     </div>
                     );

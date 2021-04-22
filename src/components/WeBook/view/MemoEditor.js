@@ -90,11 +90,16 @@ function MemoEditor(props) {
               onEditorStateChange={onEditorStateChange}
           />
         </MyBlock>
-          <IntroduceContent dangerouslySetInnerHTML={{ __html: editorToHtml }} />
+          <input dangerouslySetInnerHTML={{ __html: editorToHtml }} onChange={(e)=>{
+            console.log(e.target.dangerouslySetInnerHTML);
+          }
+          } />
         <div>
           <button
               onClick={() => {
                 console.log({ __html: editorToHtml });
+                // props.onSetMemoProp('memoContent', { __html: editorToHtml });
+                // console.log(props.memoContent);
               }}
           >
             로그 확인용 버튼
