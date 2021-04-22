@@ -11,6 +11,7 @@ import BookContainer from './WeBook/container/BookContainer';
 import Articless from './WeBook/container/ArticleDetail';
 import BookCreate from './WeBook/BookCreate';
 import ArticleCreate from './WeBook/ArticleCreate';
+import S3upload from './S3upload';
 
 const Home = () => {
   return (
@@ -20,6 +21,7 @@ const Home = () => {
            <Link to="/Books">우리들의 도서관</Link>
               <Link to="/community">커뮤니케이션</Link>
             <Link to="/search">도서찾기</Link>
+              <Link to="/S3upload">파일업로</Link>
 
           </div>
           <Route path="/" component={Main} exact />
@@ -37,6 +39,7 @@ const Home = () => {
           <Route exact path='/ViewCommunication/:no' component={ViewCommunication} />
           {/* <Route path={'/Article/:id'} component={Article}/> */}
           <Route path={'/Articless/:id'} component={Articless}/>
+          <Route path={'/S3upload'} component={S3upload} />
 
       </div>
   );
