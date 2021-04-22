@@ -5,18 +5,6 @@ import axios from 'axios';
 function CreateArticleContent(props) {
   const [articleMakeList, setArticleMakeList] = useState({article_title: '', article_content: ''});
 
-  const InsertArticle = ()=>{
-    // console.log(articleMakeList);
-    // axios.post('http://localhost:8000/api/article/create/', {
-    //   data:
-    //         articleMakeList
-    // }).then((response) => {
-    //   if (response.data != null) {
-    //     console.log(response.data);
-    //   }
-    // });
-  };
-
   return (
       <article>
           <h2>create</h2>
@@ -39,7 +27,7 @@ function CreateArticleContent(props) {
                   <textarea className="form-control" rows="5" name="content" placeholder="content" onChange= {e => setArticleMakeList({...articleMakeList, article_content: e.target.value})}/>
               </div>
               <p>
-                  <button type="submit" className="btn btn-primary" onClick={InsertArticle()}>추가하기</button>
+                  <button type="submit" className="btn btn-primary" >추가하기</button>
               </p>
 
           </form>
