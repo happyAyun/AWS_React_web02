@@ -57,10 +57,10 @@ function LoginModal(props) {
                                                 history.push('/');
                                                 props.setModal(true);
                                               } else {
-                                                alert('아이디 또는 비밀번호를 확인해주세요.');
+                                                // alert('아이디 또는 비밀번호를 확인해주세요.');
                                               }
-                                            })
-                                            .catch(error => alert(error));
+                                            });
+                                          // .catch(error => alert(error));
                                         }}>{JoinLoign}</button>
                                     </>
                               )
@@ -86,10 +86,10 @@ function LoginModal(props) {
                                                 history.push('/');
                                                 props.setModal(true);
                                               } else {
-                                                alert('사용불가능한 아이디입니다.');
+                                                // alert('사용불가능한 아이디입니다.');
                                               }
-                                            })
-                                            .catch(error => alert(error));
+                                            });
+                                          // .catch(error => alert(error));
                                         }}
                                         >{JoinLoign}</button>
                                     </>

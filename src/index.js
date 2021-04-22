@@ -7,10 +7,11 @@ import {BrowserRouter} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import CommunityStore from './components/Communication/store/CommunityStore';
 import ArticleStore from './components/WeBook/store/ArticleStore';
+import MemoStore from './components/WeBook/store/MemoStore';
 import {Provider} from 'mobx-react';
 
 ReactDOM.render(
-    <Provider CommunityStore={CommunityStore} ArticleStore={ArticleStore}>
+    <Provider CommunityStore={CommunityStore} ArticleStore={ArticleStore} MemoStore={MemoStore}>
       <React.StrictMode>
         <BrowserRouter>
           <App />

@@ -7,9 +7,6 @@ import {
   Sidebar,
 } from 'semantic-ui-react';
 import './Article.css';
-import Verticalsidebarmenu from './Verticalsidebarmenu';
-import Verticalsidebarmemo from './Verticalsidebarmemo';
-import Verticalsidebarqna from './Verticalsidebarqna';
 import BooksDetail from './BooksDetail';
 import LangContext from './LangContext';
 

@@ -5,6 +5,8 @@ import './Search.css';
 const Search = () => {
   const [documents, setDocuments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  // 검색어 state
+  const [term, setTerm] = useState('');
 
   useEffect(() => {
     const take = async () => {
@@ -15,7 +17,7 @@ const Search = () => {
             Authorization: 'KakaoAK d810699d948758e4d87e68dd78bb3e90',
           },
           params: {
-            query: '어린왕자',
+            query: term,
           },
         }
       );
@@ -24,18 +26,17 @@ const Search = () => {
       setIsLoading(false);
     };
     take();
-  }, []);
+  }, [term]);
 
   const renderResults = documents.map((document) => {
     return (
-                <div className="movie">
+                <div className="interpark">
                     <a href={document.url}
                     >
                         <img src={document.thumbnail} alt={document.title} title={document.title} />
-                        <div className="movie__data">
-                            <h3 className="movie__title">{document.title}</h3>
-
-                            <p className="movie__summary">{document.contents.slice(0, 150)}...</p>
+                        <div className="interpark__data">
+                            <h3 className="interpark__title">{document.title}</h3>
+                            <p className="interpark__summary">{document.contents.slice(0, 150)}...</p>
                         </div>
                     </a>
                 </div>
@@ -45,17 +46,19 @@ const Search = () => {
   return (
             <div>
                 <div className="ui form">
-                    <label>Enter Search Term</label>
+                    <label>검색어를 입력하세요</label>
                     <input
-                        className="input" />
+                        className="input" value={term}
+                        onChange={e => setTerm(e.target.value)}
+                    />
                 </div>
-                <section className="container">
+                <section className="bookContainer">
                     {isLoading ? (
-                        <div className="loader">
+                        <div className="bookLoader">
                             <span className="loader__text">loading...</span>
                         </div>
                     ) : (
-                        <div className="movies">
+                        <div className="interparks">
                             {renderResults}
                         </div>
                     )}

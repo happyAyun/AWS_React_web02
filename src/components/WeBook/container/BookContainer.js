@@ -46,7 +46,6 @@ class BookContainer extends Component {
               setIndexProp={this.onsetIndexProp}
           />
           {console.log('last article_id' + id)}
-          {/* {console.log('last book_id' + bookId)} */}
         </div>
 
     );

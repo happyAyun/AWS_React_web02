@@ -4,7 +4,7 @@ import ArticleApi from '../api/ArticleApi';
 class ArticleStore {
     @observable articles = [];
 
-    @observable article = { article_id: '', article_title: ''};
+    @observable article = { articleId: '', articleTitle: ''};
 
     @observable Message = '';
 
@@ -13,6 +13,8 @@ class ArticleStore {
     @observable bookId = 0;
 
     @observable viewState = '';
+
+    @observable memo = '';
 
     articleApi = new ArticleApi();
 
@@ -38,6 +40,12 @@ class ArticleStore {
     @action
     setViewState(key) {
       this.viewState = key;
+    }
+
+    // memo 관리
+    @action
+    setMemoState(content) {
+      this.memo = content;
     }
 
     @action

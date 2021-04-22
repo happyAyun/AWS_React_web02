@@ -1,13 +1,10 @@
 import React, {useState} from 'react';
 import {Button, FormControl, Modal, Container, Form} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 
 function SubscribeModal(props) {
   return (
         <div className="container">
             <div className="LoginLogin" >
-
-                {/* { console.log(props.index)} */}
                 <Modal
                     show={props.show}
                     onHide={props.onHide}
