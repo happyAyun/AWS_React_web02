@@ -61,16 +61,6 @@ function MyPageMenuBar() {
                 </Menu.Item>
 
                 <Menu.Item>
-                    <Menu.Header>나의 커뮤니케이션 활동</Menu.Header>
-
-                    <Menu.Menu>
-                        <Link to='/mypage/ListMyCommunication'>
-                            나의 게시글
-                        </Link>
-                    </Menu.Menu>
-                </Menu.Item>
-
-                <Menu.Item>
                     <Menu.Header>내 정보</Menu.Header>
 
                     <Menu.Menu>

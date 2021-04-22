@@ -1,43 +1,55 @@
 import React, {useEffect, useState} from 'react';
-import { Card, Icon, Image } from 'semantic-ui-react';
+import {Button, Card, Grid, Icon, Image} from 'semantic-ui-react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 function ListCourse(props) {
-  const [datalist, setDataList] = useState();
+  const [dataList, setDataList] = useState([]);
 
   useEffect(() => {
     const take = async () => {
       const {data} = await axios.get('http://localhost:8000/api/book/signbook/',
         { headers:
-                        { Authorization: `JWT ${localStorage.getItem('token')}`,
-                        }
+                {
+                  Authorization: `JWT ${localStorage.getItem('token')}`,
+                }
         });
       setDataList(data);
+      console.log(dataList);
     };
     take();
   }, []);
-  console.log(datalist);
+
   return (
-        <div>
-            <Card>
-                <Image src='/images/avatar/large/matthew.png' wrapped ui={false} />
-                <Card.Content>
-                    <Card.Header>Matthew</Card.Header>
-                    <Card.Meta>
-                        <span className='date'>Joined in 2015</span>
-                    </Card.Meta>
-                    <Card.Description>
-                        Matthew is a musician living in Nashville.
-                    </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                    <a>
-                        <Icon name='user' />
-                        22 Friends
-                    </a>
-                </Card.Content>
-            </Card>
-        </div>
+      <div>
+
+          { console.log(dataList) }
+          <div className=''>
+              <Grid columns={3}>
+                  {
+                      dataList ? dataList.map((item) => {
+                        return (
+                          <Link to={`mypage/ListWrite/${item.bookId}`}>
+                              <Card>
+                                  <Image src='/images/avatar/large/matthew.png' wrapped ui={false}/>
+                                  <Card.Content>
+                                      <Card.Header>{item.bookTitle}</Card.Header>
+                                      <Card.Meta>
+                                          <span className='date'>{item.bookWritter}</span>
+                                      </Card.Meta>
+                                      <Card.Description>
+                                          {item.bookPublisher}
+                                      </Card.Description>
+                                  </Card.Content>
+                              </Card>
+                          </Link>
+                        );
+                      })
+                        : '등록된 수강신청 항목이 존재하지 않습니다.'
+                  }
+              </Grid>
+          </div>
+      </div>
   );
 }
 
