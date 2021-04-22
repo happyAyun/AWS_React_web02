@@ -1,8 +1,4 @@
 import React, {useState} from 'react';
-import AriticleCategory from './AriticleCategory';
-import Control from './Control';
-import ReadContent from './ReadContent';
-import CreateContent from './CreateContent';
 import axios from 'axios';
 
 function AriticleCreate() {

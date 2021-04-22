@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import ArticleEditor from './ArticleEditor';
+import ArticleQna from './ArticleQna';
 
 function ArticleListView(props) {
   const {articles} = props;
@@ -14,7 +15,7 @@ function ArticleListView(props) {
 
   useEffect(() => {
     const take = async () => {
-      const {data} = await axios.get(`http://localhost:8000/api/book/detail/${article.book_id}/`, {
+      const {data} = await axios.get(`http://localhost:8000/api/book/detail/${article.bookId}/`, {
         headers: {
           Authorization: `JWT ${localStorage.getItem('token')}`
         }
@@ -33,8 +34,8 @@ function ArticleListView(props) {
                   dataList.map((post) => {
                     return (
                     <div>
-                        {post.book_id}
-                        {post.book_title}
+                        {post.bookId}
+                        {post.bookTitle}
                     </div>
                     );
                   })
@@ -43,15 +44,24 @@ function ArticleListView(props) {
             {/* qna */}
             {
                 viewState === 'qna' && (
-                    <div>qnaqnaqna</div>
+                    <div>
+                      <ArticleQna
+                        bookId={article.bookId}
+                      />
+                    </div>
                 )
             }
             {/* 메모 */}
             {
                 viewState === 'memo' && (
+                    <>
                     <div>
                       <ArticleEditor />
                     </div>
+                      <div>
+                        <button>저장</button>
+                      </div>
+                    </>
                 )
             }
         </div>

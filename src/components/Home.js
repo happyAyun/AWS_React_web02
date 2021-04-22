@@ -2,7 +2,6 @@ import React from 'react';
 import {Link, Route} from 'react-router-dom';
 import Main from './Main';
 import Search from './Search';
-import Books from './WeBook/Books';
 import ListCommunication from './Communication/container/ListCommunication';
 import MyPage from './MyPage/MyPage';
 import ViewCommunication from './Communication/ViewCommunication';

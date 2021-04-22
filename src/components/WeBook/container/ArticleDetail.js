@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
-import ArticleView from '../view/ArticleView';
 import ArticleDeatilView from '../view/ArticleDeatilView';
 import ArticleListView from '../view/ArticleListView';
 

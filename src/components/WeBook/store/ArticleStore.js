@@ -4,7 +4,7 @@ import ArticleApi from '../api/ArticleApi';
 class ArticleStore {
     @observable articles = [];
 
-    @observable article = { article_id: '', article_title: ''};
+    @observable article = { articleId: '', articleTitle: ''};
 
     @observable Message = '';
 
