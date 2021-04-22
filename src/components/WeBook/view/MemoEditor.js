@@ -2,11 +2,15 @@ import React, {useEffect, useState} from 'react';
 import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import styled from 'styled-components';
+import jwtDecode from 'jwt-decode';
 
 // convertToRaw: editorState 객체가 주어지면 원시 JS 구조로 변환.
-import { EditorState, convertToRaw } from 'draft-js';
+import { EditorState, convertToRaw, ContentState } from 'draft-js';
 // convertToRaw로 변환시켜준 원시 JS 구조를 HTML로 변환.
 import draftToHtml from 'draftjs-to-html';
+import htmlToDraft from 'html-to-draftjs';
+
+import axios from 'axios';
 
 const MyBlock = styled.div`
   .wrapper-class {
@@ -28,13 +32,15 @@ const IntroduceContent = styled.div`
   border-radius: 0.75rem;
   overflow: hidden;
   padding: 1.5rem;
-  width: 50%;
+  width: 80%;
   margin: 0 auto;
   margin-bottom: 4rem;
 `;
 
-const ArticleEditor = () => {
+function MemoEditor(props) {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
+  const UserId = jwtDecode(localStorage.token);
+  let m = '';
 
   const onEditorStateChange = (editorState) => {
     setEditorState(editorState);
@@ -43,6 +49,20 @@ const ArticleEditor = () => {
   const editorToHtml = draftToHtml(
     convertToRaw(editorState.getCurrentContent())
   );
+  const memoContent = props.memoContent;
+  const htmlToEditor = memoContent;
+
+  useEffect(() => {
+    // 에디터 초기값 설정
+    const blocksFromHtml = htmlToDraft(htmlToEditor);
+    if (blocksFromHtml) {
+      const {contentBlocks, entityMap} = blocksFromHtml;
+      const contentState = ContentState.createFromBlockArray(contentBlocks, entityMap);
+      // ContentState를 EditorState기반으로 새 개체를 반환한다고 하더군요
+      const editorState = EditorState.createWithContent(contentState);
+      setEditorState(editorState);
+    }
+  }, []);
 
   return (
       <div>
@@ -65,11 +85,12 @@ const ArticleEditor = () => {
               localization={{
                 locale: 'ko',
               }}
+              value='123'
               editorState={editorState}
               onEditorStateChange={onEditorStateChange}
           />
         </MyBlock>
-        <IntroduceContent dangerouslySetInnerHTML={{ __html: editorToHtml }} />
+          <IntroduceContent dangerouslySetInnerHTML={{ __html: editorToHtml }} />
         <div>
           <button
               onClick={() => {
@@ -81,6 +102,6 @@ const ArticleEditor = () => {
         </div>
       </div>
   );
-};
+}
 
-export default ArticleEditor;
+export default MemoEditor;

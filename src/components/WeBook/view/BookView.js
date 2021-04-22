@@ -23,7 +23,7 @@ function BookView(props) {
                           <Link to={`/Articless/${articles.articleId}`} style={{textDecoration: 'none'}}>
                           <button variant="contained" color="primary"
                                   style={{height: '140px', backgroundColor: '#BF8450'}}
-                                  value={post.bookId}
+                                  value={post.articleId}
                                   onClick={change}
                                   >
                               글보기
@@ -44,7 +44,7 @@ function BookView(props) {
                                                           {post.articleTitle}
                                                       </Typography>
                                                       <Typography variant="body2" gutterBottom style={{fontSize: '15  px'}}>
-                                                          {post.articleId}
+                                                          {post.bookId}
                                                       </Typography>
                                                       <Typography variant="body2" color="textSecondary">
                                                           {post.articleDate}

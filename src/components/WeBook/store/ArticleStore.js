@@ -14,6 +14,8 @@ class ArticleStore {
 
     @observable viewState = '';
 
+    @observable memo = '';
+
     articleApi = new ArticleApi();
 
     constructor() {
@@ -38,6 +40,12 @@ class ArticleStore {
     @action
     setViewState(key) {
       this.viewState = key;
+    }
+
+    // memo 관리
+    @action
+    setMemoState(content) {
+      this.memo = content;
     }
 
     @action

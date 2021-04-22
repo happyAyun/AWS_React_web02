@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import { Table } from 'semantic-ui-react';
+import axios from 'axios';
 
 function ArticleDeatilView(props) {
   const {articles} = props;
@@ -8,10 +9,22 @@ function ArticleDeatilView(props) {
   const id = props.id;
   const { onArticleDetail } = props;
 
-  // useEffect(()=>{
-  //   onArticleDetail(id);
-  // });
-
+  // useEffect(() => {
+  //   const take = async () => {
+  //     await axios.post('http://localhost:8000/api/memo/create/',{
+  //       data:{
+  //
+  //       }
+  //     } {
+  //       headers: {
+  //         Authorization: `JWT ${localStorage.getItem('token')}`
+  //       },
+  //     }
+  //     );
+  //     setDataList(data);
+  //   };
+  //   take();
+  // }, []);
   return (
       <Table celled>
           <Table.Header>

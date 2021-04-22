@@ -63,7 +63,7 @@ class ArticleDetail extends Component {
                       </div>
                     <div style={{display: 'flex', flexDirection: 'column'}}>
                       <button onClick={this.onViewState} value='menu'>목차다</button>
-                      <button onClick={this.onViewState} value='qna'>큐앤에이</button>
+                      {/* <button onClick={this.onViewState} value='qna'>큐앤에이</button> */}
                       <button onClick={this.onViewState} value='memo'>메모</button>
                     </div>
                   </>
@@ -94,7 +94,7 @@ class ArticleDetail extends Component {
                     </div>
                     <div style={{display: 'flex', flexDirection: 'column'}}>
                       <button onClick={this.onViewState} value=''>목차</button>
-                      <button onClick={this.onViewState} value=''>큐앤에이</button>
+                      {/* <button onClick={this.onViewState} value=''>큐앤에이</button> */}
                       <button onClick={this.onViewState} value=''>메모</button>
                     </div>
               </>
