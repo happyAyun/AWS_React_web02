@@ -15,17 +15,12 @@ const config = {
   secretAccessKey: secretAccessKey,
 };
 
+let picUrl = '';
+
 const S3upload = (picinfo) => {
-  const [picUrl, setPicUrl] = useState();
-
-  const handleUpload = async (file) => {
-    uploadFile(file, config)
-      .then(data => setPicUrl(data.location))
-      .catch(err => console.error(err));
-  };
-
-  console.log(picUrl);
-
+  uploadFile(picinfo, config)
+    .then(data => picUrl = data.location)
+    .catch(err => console.error(err));
   return picUrl;
 };
 
