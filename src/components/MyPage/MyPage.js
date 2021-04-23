@@ -46,9 +46,6 @@ function MyPageMenuBar() {
                             내가 등록한 책
                         </Link>
                         <br/><br/>
-                        <Link to='/mypage/ListCourseReview'>
-                            수강평 확인하기
-                        </Link>
                     </Menu.Menu>
                 </Menu.Item>
 
