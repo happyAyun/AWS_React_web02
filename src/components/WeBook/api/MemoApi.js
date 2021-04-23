@@ -41,8 +41,6 @@ class MemoApi {
             Authorization: `JWT ${localStorage.getItem('token')}`
           }})
         .then(response => response.data);
-      // .create(()=>{}) // 예외발생 reject
-      // .finally(()=>{}); // resolve, reject 모든 경우
     }
 }
 

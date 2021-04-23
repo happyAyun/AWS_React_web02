@@ -4,7 +4,7 @@ import ArticleApi from '../api/ArticleApi';
 class ArticleStore {
     @observable articles = [];
 
-    @observable article = { articleId: '', articleTitle: ''};
+    @observable article = { articleId: '', articleTitle: '', articleImg: '', articleDate: '', articleViews: ''};
 
     @observable Message = '';
 
@@ -93,7 +93,7 @@ class ArticleStore {
     async selectArticleBook(id) {
       const result = await this.articleApi.articleBook(id);
       runInAction(() => {
-        this.article = result;
+        this.articles = result;
       });
     }
 

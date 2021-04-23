@@ -26,7 +26,7 @@ class ArticleApi {
     // book_id로 분류한 article
     articleBook(id) {
       return axios
-        .delete(this.URL + `/${id}/`)
+        .get(this.URL + `${id}/`)
         .then(response => response.data);
     }
 
