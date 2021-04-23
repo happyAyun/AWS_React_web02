@@ -18,25 +18,15 @@ const config = {
 const S3upload = (picinfo) => {
   const [picUrl, setPicUrl] = useState();
 
-  const [selectedFile, setSelectedFile] = useState(null);
-
-  const handleFileInput = (e) => {
-    setSelectedFile(e.target.files[0]);
-  };
-
   const handleUpload = async (file) => {
     uploadFile(file, config)
       .then(data => setPicUrl(data.location))
       .catch(err => console.error(err));
   };
-  console.log(selectedFile);
+
   console.log(picUrl);
 
-  return <div>
-    <div>React S3 File Upload</div>
-    <input type="file" onChange={handleFileInput}/>
-    <button onClick={() => handleUpload(selectedFile)}> Upload to S3</button>
-  </div>;
+  return picUrl;
 };
 
 export default S3upload;
