@@ -4,15 +4,18 @@ import {Link} from 'react-router-dom';
 import SubscribeModal from '../SubscribeModal';
 import './BookView.css';
 import axios from 'axios';
+import jwtDecode from 'jwt-decode';
 
 function BookView(props) {
   const {articles} = props;
   const [subModalOn, setSubModalOn] = useState(false);
+  const UserId = jwtDecode(localStorage.token);
 
   const change = (e) =>{
     console.log('index' + e.target.value);
     props.setIndexProp(e.target.value);
   };
+
   return (
       <div>
           {
@@ -63,7 +66,7 @@ function BookView(props) {
                       </div>
                 );
               })) : (
-                  <div>로그인필요</div>
+                  <div>작성된 글이 없습니다</div>
               )
           }
           <div>

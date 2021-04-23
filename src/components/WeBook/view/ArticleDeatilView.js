@@ -9,22 +9,6 @@ function ArticleDeatilView(props) {
   const id = props.id;
   const { onArticleDetail } = props;
 
-  // useEffect(() => {
-  //   const take = async () => {
-  //     await axios.post('http://localhost:8000/api/memo/create/',{
-  //       data:{
-  //
-  //       }
-  //     } {
-  //       headers: {
-  //         Authorization: `JWT ${localStorage.getItem('token')}`
-  //       },
-  //     }
-  //     );
-  //     setDataList(data);
-  //   };
-  //   take();
-  // }, []);
   return (
       <Table celled>
           <Table.Header>

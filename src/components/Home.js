@@ -6,7 +6,8 @@ import ListCommunication from './Communication/container/ListCommunication';
 import MyPage from './MyPage/MyPage';
 import ViewCommunication from './Communication/ViewCommunication';
 import CommunityPage from './Communication/view/CommunityPage';
-import BookContainer from './WeBook/container/BookContainer';
+import BookContainer from './WeBook/view/MainBook';
+import List from './WeBook/container/BookContainer';
 import Articless from './WeBook/container/ArticleDetail';
 import BookCreate from './WeBook/BookCreate';
 import ArticleCreate from './WeBook/ArticleCreate';
@@ -37,6 +38,7 @@ const Home = () => {
           <Route path="/mypage" component={MyPage}/>
           <Route exact path='/ViewCommunication/:no' component={ViewCommunication} />
           {/* <Route path={'/Article/:id'} component={Article}/> */}
+          <Route path={'/List'} component={List}/>
           <Route path={'/Articless/:id'} component={Articless}/>
           <Route path={'/S3upload'} component={S3upload} />
 
