@@ -1,11 +1,8 @@
-import React, {Component, useState} from 'react';
+import React, {useState} from 'react';
 import {Link, Route} from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
 import Main from './Main';
 import Search from './Search';
 import ListCommunication from './Communication/container/ListCommunication';
@@ -18,7 +15,6 @@ import Articless from './WeBook/container/ArticleDetail';
 import BookCreate from './WeBook/BookCreate';
 import ArticleCreate from './WeBook/ArticleCreate';
 import S3upload from './S3upload';
-import { Menu } from 'semantic-ui-react';
 import './Home.css';
 
 const Home = () => {
