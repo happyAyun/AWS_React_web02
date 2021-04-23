@@ -8,7 +8,7 @@ function ListWrite(props) {
 
   useEffect(() => {
     const take = async () => {
-      const {data} = await axios.get('http://localhost:8000/api/book/', {
+      const {data} = await axios.get('http://localhost:8000/api/book/mybooklist/', {
         headers: {
           Authorization: `JWT ${localStorage.getItem('token')}`
         }
@@ -39,12 +39,6 @@ function ListWrite(props) {
                                         <Card.Description>
                                           {item.bookPublisher}
                                         </Card.Description>
-                                    </Card.Content>
-                                    <Card.Content extra>
-                                        <a>
-                                            <Icon name='user'/>
-                                          {item.bookLike}
-                                        </a>
                                     </Card.Content>
                                 </Card>
                       </Link>
