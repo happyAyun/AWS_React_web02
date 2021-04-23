@@ -8,13 +8,14 @@ function ListWrite(props) {
 
   useEffect(() => {
     const take = async () => {
-      const {data} = await axios.get('http://localhost:8000/api/book/', {
+      const {data} = await axios.get('http://localhost:8000/api/book/mybooklist/', {
         headers: {
           Authorization: `JWT ${localStorage.getItem('token')}`
         }
       }
       );
       setDataList(data);
+      console.log(dataList);
     };
     take();
   }, []);
@@ -22,35 +23,22 @@ function ListWrite(props) {
   return (
 
         <div>
-
-          { console.log(dataList) }
-            <div>
-                <Link to='/mypage/MakeBook'>
-                    <Button>책 만들기</Button>
-                </Link>
-            </div>
             <div className=''>
             <Grid columns={3}>
             {
                 dataList ? dataList.map((item) => {
                   return (
-                      <Link to={`mypage/ListWrite/${item.book_id}`}>
+                      <Link to={`mypage/ListWrite/${item.bookId}`}>
                                 <Card>
                                     <Image src='/images/avatar/large/matthew.png' wrapped ui={false}/>
                                     <Card.Content>
-                                        <Card.Header>{item.book_title}</Card.Header>
+                                        <Card.Header>{item.bookTitle}</Card.Header>
                                         <Card.Meta>
-                                            <span className='date'>{item.book_writter}</span>
+                                            <span className='date'>{item.bookWritter}</span>
                                         </Card.Meta>
                                         <Card.Description>
-                                          {item.book_publisher}
+                                          {item.bookPublisher}
                                         </Card.Description>
-                                    </Card.Content>
-                                    <Card.Content extra>
-                                        <a>
-                                            <Icon name='user'/>
-                                          {item.book_like}
-                                        </a>
                                     </Card.Content>
                                 </Card>
                       </Link>
