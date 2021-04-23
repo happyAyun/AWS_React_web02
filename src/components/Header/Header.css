@@ -93,3 +93,9 @@
     cursor: pointer;
     padding: 0.75rem 1rem;
 }
+
+.titleFonts{
+    color : black;
+    font-size: 90%;
+    font-family: "cookie";
+}

@@ -52,7 +52,7 @@ const Search = () => {
                         onChange={e => setTerm(e.target.value)}
                     />
                 </div>
-                <section className="bookContainer">
+                <section className="bookContainerss">
                     {isLoading ? (
                         <div className="bookLoader">
                             <span className="loader__text">loading...</span>

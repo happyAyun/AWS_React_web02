@@ -41,7 +41,7 @@ function Header(props) {
             <div className="header">
                 <div className="header-nav">
                     <div className="header-nav-links">
-                        <Link className="header-logo" to="/">Velog</Link>
+                        <Link className="header-logo" to="/" style={{textDecoration: 'none'}}><div className='titleFonts'>BookShelf</div></Link>
                         {
                             props.modal === false
                               ? <Link to="/login"><button className="header-btn">로그인</button></Link>
