@@ -5,6 +5,7 @@ import jwtDecode from 'jwt-decode';
 
 function MainBook(props) {
   const [dataList, setDataList] = useState([]);
+  const data = {};
 
   useEffect(() => {
     const take = async () => {
@@ -32,18 +33,25 @@ function MainBook(props) {
             {post.bookId}
               <button value={post.bookId} onClick={(e)=>{
                 console.log(e.target.value);
-                axios.post('http://localhost:8000/api/memo/create/', {
-                  data: {
-                    memoTitle: '',
-                    memoContent: '',
-                    bookId: post.bookId
-                  }
-                }, {
+                const tmp = axios.get(`http://localhost:8000/api/memo/myMemo/${post.bookId}/`, {
                   headers: {
                     Authorization: `JWT ${localStorage.getItem('token')}`
                   }
-                });
-                console.log(post.bookId);
+                }
+                );
+                console.log(tmp);
+                // axios.post('http://localhost:8000/api/memo/create/', {
+                //   data: {
+                //     memoTitle: '메모장',
+                //     memoContent: '123',
+                //     bookId: post.bookId
+                //   }
+                // }, {
+                //   headers: {
+                //     Authorization: `JWT ${localStorage.getItem('token')}`
+                //   }
+                // });
+                // console.log(post.bookId);
               }}>책 목록 보기</button>
             </Link>
           </div>
