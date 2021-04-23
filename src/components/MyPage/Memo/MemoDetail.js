@@ -10,7 +10,7 @@ import {
 import axios from 'axios';
 
 function MemoDetail({location}) {
-  const [detail, setDetail] = useState();
+  const [detail, setDetail] = useState([]);
   const memoId = location.state.memoId;
 
   useEffect(() => {
@@ -30,12 +30,11 @@ function MemoDetail({location}) {
         <Grid.Column>
               <Segment secondary>
                 <Header as='h3'>{detail.memoId}</Header>
-                <p>When you will click there, the sidebar will be closed.</p>
               </Segment>
 
             <Segment>
-              <Header as='h3'>Application Content</Header>
-              <Image src='/images/wireframe/paragraph.png' />
+              <Header as='h3'>{detail.memoTitle}</Header>
+                {detail.memoContent}
             </Segment>
         </Grid.Column>
       </Grid>
