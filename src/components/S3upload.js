@@ -15,13 +15,14 @@ const config = {
   secretAccessKey: secretAccessKey,
 };
 
-let picUrl = '';
+let Urls = '';
 
-const S3upload = (picinfo) => {
-  uploadFile(picinfo, config)
-    .then(data => picUrl = data.location)
+const S3upload = async picinfo => {
+  await uploadFile(picinfo, config)
+    .then(
+      data => Urls = data.location)
     .catch(err => console.error(err));
-  return picUrl;
+  return Urls;
 };
 
 export default S3upload;

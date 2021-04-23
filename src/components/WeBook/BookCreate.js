@@ -4,37 +4,43 @@ import axios from 'axios';
 import S3upload from '../S3upload';
 
 function BookCreate(props) {
-  const [BookImg, setBookImg] = useState();
+  const [BookImg, setBookImg] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
   const [bookMakeList, setBookMakeList] = useState({
     bookTitle: '',
     bookWritter: '',
-    bookPublisher: '',
-    bookImg: ''});
-
+    bookPublisher: ''
+  });
+  
   const [flag, setFlag] = useState(false);
   const [bookId, setBookId] = useState('');
 
   const [imgBase64, setImgBase64] = useState(''); // 파일 base64
   const [imgFile, setImgFile] = useState(null);// 파일
-  const InsertBook = ()=>{
-    setBookImg(S3upload(imgFile));
-    // axios.post('http://localhost:8000/api/book/create/', {
-    //   data:
-    //     bookMakeList
-    // }, {
-    //   headers: {
-    //     Authorization: `JWT ${localStorage.getItem('token')}`,
-    //   }
-    // }).then((response) => {
-    //   setBookId(response.data.bookId);
-    //   setFlag(true);
-    // }
-    //
-    // );
+
+  const addBook = () => {
+    S3upload(imgFile).then(res => setBookImg(res));
+    setFlag(true);
   };
-  // console.log(BookImg);
-  // console.log(imgBase64);
+
+  const InsertBook = async ()=> {
+    // S3upload(imgFile).then(res => setBookImg(res));
+    // setBookMakeList({...bookMakeList, bookImg: BookImg});
+
+    await axios.post('http://localhost:8000/api/book/create/', {
+      bookMakeList,
+      BookImg
+    }, {
+      headers: {
+        Authorization: `JWT ${localStorage.getItem('token')}`,
+      }
+    }).then((response) => {
+      setBookId(response.data.bookId);
+    }
+    );
+  };
+  console.log(BookImg);
+
   return (
         <div>
                 <img style={{width: '150px', height: '150px'}} src={imgBase64} />
@@ -70,7 +76,7 @@ function BookCreate(props) {
                     <input className="form-control input-sm" onChange={e => setBookMakeList({...bookMakeList, bookPublisher: e.target.value})}/>
                 </div>
                 { flag
-                  ? <button type="submit" className="btn btn-primary" >
+                  ? <button type="submit" className="btn btn-primary" onClick={InsertBook}>
                     <Link
                         className="header-dashboard" to={{
 
@@ -81,7 +87,7 @@ function BookCreate(props) {
                           }
                         }}
                     >넘어가기</Link>
-                    </button> : <button type="submit" className="btn btn-primary" onClick={InsertBook}>글작성하기</button>
+                    </button> : <button type="submit" className="btn btn-primary" onClick={addBook} >글작성하기</button>
                 }
 
         </div>
