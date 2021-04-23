@@ -57,7 +57,6 @@
     "jest-circus": "26.6.0",
     "jest-resolve": "26.6.0",
     "jest-watch-typeahead": "0.6.1",
-    "jodit-react": "^1.0.74",
     "jquery": "^3.6.0",
     "json": "^10.0.0",
     "jwt-decode": "^3.1.2",
