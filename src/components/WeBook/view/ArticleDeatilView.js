@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import { Table } from 'semantic-ui-react';
 import axios from 'axios';
+import './ArticleDetail.css';
 
 function ArticleDeatilView(props) {
   const {articles} = props;
@@ -10,29 +11,10 @@ function ArticleDeatilView(props) {
   const { onArticleDetail } = props;
 
   return (
-      <Table celled>
-          <Table.Header>
-              <Table.Row>
-                  <Table.HeaderCell>title : {article.articleTitle}</Table.HeaderCell>
-              </Table.Row>
-          </Table.Header>
-
-          <Table.Body>
-                          <Table.Row>
-                              <Table.Cell>
-                                  content : {article.articleContent}
-                              </Table.Cell>
-                          </Table.Row>
-              <Table.Row>
-                  <Table.Cell>
-                      date : {article.articleDate}
-                  </Table.Cell>
-              </Table.Row>
-                  <Table.Row>
-                      <Table.Cell>img : {article.articleImg}</Table.Cell>
-                  </Table.Row>
-          </Table.Body>
-      </Table>
+      <div className='articleContainers'>
+          <div className='articleTitle'>{article.articleTitle}</div>
+          <div className="articleContent">{article.articleContent}</div>
+      </div>
 
   );
 }

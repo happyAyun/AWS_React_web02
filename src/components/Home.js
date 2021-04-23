@@ -1,5 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link, Route} from 'react-router-dom';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 import Main from './Main';
 import Search from './Search';
 import ListCommunication from './Communication/container/ListCommunication';
@@ -12,17 +15,29 @@ import Articless from './WeBook/container/ArticleDetail';
 import BookCreate from './WeBook/BookCreate';
 import ArticleCreate from './WeBook/ArticleCreate';
 import S3upload from './S3upload';
+import './Home.css';
 
 const Home = () => {
+  const [activeItem, setActiveItem] = useState();
+  const handleItemClick = (e, { name }) => setActiveItem({ activeItem: name });
+
   return (
+      <>
       <div className="main-bar">
           <div className="menu-Bar">
-          <Link to="/">홈</Link>
-           <Link to="/Books">우리들의 도서관</Link>
-              <Link to="/community">커뮤니케이션</Link>
-            <Link to="/search">도서찾기</Link>
-              <Link to="/S3upload">파일업로</Link>
-
+              <AppBar position="static">
+                  <Tabs aria-label="simple tabs example" centered>
+                      <Link to="/" style={{textDecoration: 'none', color: 'white'}}>
+                          <Tab label="홈" />
+                      </Link>
+                      <Link to="/Books" style={{textDecoration: 'none', color: 'white'}}>
+                          <Tab label="우리들의도서관" />
+                      </Link>
+                      <Link to="/search" style={{textDecoration: 'none', color: 'white'}}>
+                          <Tab label="도서찾기" />
+                      </Link>
+                  </Tabs>
+              </AppBar>
           </div>
           <Route path="/" component={Main} exact />
           <Route path="/Books/api/" component={BookContainer} />
@@ -41,8 +56,8 @@ const Home = () => {
           <Route path={'/List'} component={List}/>
           <Route path={'/Articless/:id'} component={Articless}/>
           <Route path={'/S3upload'} component={S3upload} />
-
       </div>
+</>
   );
 };
 

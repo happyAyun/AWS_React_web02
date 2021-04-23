@@ -13,6 +13,7 @@ import './MainBook.css';
 
 function MainBook(props) {
   const [dataList, setDataList] = useState([]);
+  const data = {};
 
   const useStyles = makeStyles({
     root: {

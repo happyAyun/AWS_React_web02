@@ -3,8 +3,6 @@ import {Button, Icon, Image, Item, Menu} from 'semantic-ui-react';
 import {Grid, Header, Ref, Segment, Sidebar} from 'semantic-ui-react';
 import Chart from './Chart';
 import './MyProfile.css';
-import {Link, Route} from 'react-router-dom';
-import jwtDecode from 'jwt-decode';
 import axios from 'axios';
 
 function MyPage() {
@@ -78,7 +76,7 @@ function MyPage() {
                                   <Item.Group divided>
                                       <Item>
                                           <div className="box">
-                                              <img className="profile" src={userList.photo} />
+                                              <img className="profile" src={userList.photo}  />
                                           </div>
                                           <Item.Content>
                                               <input

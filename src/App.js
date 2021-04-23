@@ -95,7 +95,6 @@ function App() {
     <div className="App">
 
         <div>
-            <Link className="mainView" to="/">Bookshelf</Link>
             <Header modal={modal} handleLogout={handleLogout}/>
         </div>
         <div>
