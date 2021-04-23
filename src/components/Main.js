@@ -6,7 +6,7 @@ const Main = () => {
   return (
         <div>
            <Slideshow/>
-            <Editor />
+            {/* <Editor /> */}
         </div>
   );
 };
