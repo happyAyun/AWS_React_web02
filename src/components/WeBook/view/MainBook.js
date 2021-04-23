@@ -34,8 +34,6 @@ function MainBook(props) {
                 console.log(e.target.value);
                 axios.post('http://localhost:8000/api/memo/create/', {
                   data: {
-                    memoTitle: '',
-                    memoContent: '',
                     bookId: post.bookId
                   }
                 }, {

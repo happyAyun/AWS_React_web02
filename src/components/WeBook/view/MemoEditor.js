@@ -90,10 +90,10 @@ function MemoEditor(props) {
               onEditorStateChange={onEditorStateChange}
           />
         </MyBlock>
-          <input dangerouslySetInnerHTML={{ __html: editorToHtml }} onChange={(e)=>{
-            console.log(e.target.dangerouslySetInnerHTML);
-          }
-          } />
+           < IntroduceContent dangerouslySetInnerHTML={{ __html: editorToHtml }} onChange={(e)=>{
+             console.log(e.target.dangerouslySetInnerHTML);
+           }
+           } />
         <div>
           <button
               onClick={() => {
