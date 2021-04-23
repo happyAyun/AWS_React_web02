@@ -15,7 +15,7 @@ const config = {
   secretAccessKey: secretAccessKey,
 };
 
-const S3upload = () => {
+const S3upload = (picinfo) => {
   const [picUrl, setPicUrl] = useState();
 
   const [selectedFile, setSelectedFile] = useState(null);
