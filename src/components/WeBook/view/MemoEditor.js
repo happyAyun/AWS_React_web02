@@ -3,6 +3,7 @@ import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import styled from 'styled-components';
 import jwtDecode from 'jwt-decode';
+import './MemoEditor.css';
 
 // convertToRaw: editorState 객체가 주어지면 원시 JS 구조로 변환.
 import { EditorState, convertToRaw, ContentState } from 'draft-js';
@@ -94,15 +95,15 @@ function MemoEditor(props) {
             console.log(e.target.dangerouslySetInnerHTML);
           }
           } />
-        <div>
-          <button
+        <div style={{textAlign: 'center', marginBottom: '20px'}}>
+          <button className='memoBtn'
               onClick={() => {
                 console.log({ __html: editorToHtml });
                 // props.onSetMemoProp('memoContent', { __html: editorToHtml });
                 // console.log(props.memoContent);
               }}
           >
-            로그 확인용 버튼
+            저장
           </button>
         </div>
       </div>

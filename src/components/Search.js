@@ -44,7 +44,7 @@ const Search = () => {
   });
 
   return (
-            <div>
+            <div style={{marginTop: '20px', padding: '10px' }}>
                 <div className="ui form">
                     <label>검색어를 입력하세요</label>
                     <input

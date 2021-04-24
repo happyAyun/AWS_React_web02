@@ -81,3 +81,8 @@
     font-family: "cookie";
     src: url("./font/Perfograma-Regular.ttf");
 }
+
+@font-face {
+    font-family: "quicksand";
+    src: url("./font/Quicksand-Regular.ttf")
+}

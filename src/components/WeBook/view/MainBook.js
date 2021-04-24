@@ -46,6 +46,7 @@ function MainBook(props) {
                 bookId: post.bookId
               }
             }}>
+
             {post.bookId}
               <button value={post.bookId} onClick={(e)=>{
                 console.log(e.target.value);
@@ -60,6 +61,7 @@ function MainBook(props) {
                 }
                 );
               }}>책 목록 보기</button>
+
               <Card className={classes.root}>
                 <CardActionArea>
                   <CardMedia

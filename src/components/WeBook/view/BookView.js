@@ -24,8 +24,8 @@ function BookView(props) {
                 return (
                       <div className='bookContainer' >
                           <Link to={`/Articless/${articles.articleId}`} style={{textDecoration: 'none'}}>
-                          <button variant="contained" color="primary"
-                                  style={{height: '140px', backgroundColor: '#BF8450'}}
+                          <button variant="contained"
+                                  style={{height: '140px', backgroundColor: '#6a79cd', color: '#fff', border: 'none', borderRadius: '5px'}}
                                   value={post.articleId}
                                   onClick={change}
                                   >
@@ -37,7 +37,8 @@ function BookView(props) {
                                       <Grid container spacing={5}>
                                           <Grid item>
                                               <ButtonBase className='image'>
-                                                  <img className='img' alt={post.articleImg} src={post.articleImg}/>
+                                                  {/* eslint-disable-next-line max-len */}
+                                                  {/* <img className='img' alt={post.articleImg} src={post.articleImg}/> */}
                                               </ButtonBase>
                                           </Grid>
                                           <Grid item xs={12} sm container style={{display: 'flex', alignItems: 'center'}}>

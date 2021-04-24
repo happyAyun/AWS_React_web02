@@ -3,8 +3,6 @@ import {Button, Icon, Image, Item, Menu} from 'semantic-ui-react';
 import {Grid, Header, Ref, Segment, Sidebar} from 'semantic-ui-react';
 import Chart from './Chart';
 import './MyProfile.css';
-import {Link, Route} from 'react-router-dom';
-import jwtDecode from 'jwt-decode';
 import axios from 'axios';
 
 function MyPage() {
@@ -54,12 +52,10 @@ function MyPage() {
                                   <Item.Group divided>
                                   <Item>
                                   <div className="box">
-                                  <img className="profile" src={'http://localhost:8000' + userList.photo} />
+                                  <img className="profile" src={userList.photo} />
                                   </div>
                                   <Item.Content>
-                                  <Item.Header as='a'>
                                   <div className="name">{userList.nickname}</div>
-                                  </Item.Header>
                                   <Item.Meta>
                                   <div className="content">{userList.myInfo}</div>
                                   </Item.Meta>
@@ -80,14 +76,18 @@ function MyPage() {
                                   <Item.Group divided>
                                       <Item>
                                           <div className="box">
-                                              <img className="profile" src={photo} />
+                                              <img className="profile" src={userList.photo} />
                                           </div>
                                           <Item.Content>
-                                              <Item.Header as='a'>
-                                                  <div className="name">{username}</div>
-                                              </Item.Header>
+                                              <input
+                                                  value={userList.nickname}
+                                                  onChange={
+                                                      e=>setUserList(
+                                                        {...userList, nickname: e.target.value}
+                                                      )
+                                                  }/>
                                               <Item.Meta>
-                                                  <div className="content"><input type="text" onChange={e => { setUserList({...userList, myInfo: e.target.value}); }}/></div>
+                                                  <div className="content"><input type="text" value={userList.myInfo} onChange={e => { setUserList({...userList, myInfo: e.target.value}); }}/></div>
                                               </Item.Meta>
                                               <Item.Extra>
                                                   <div>
