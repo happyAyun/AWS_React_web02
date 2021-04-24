@@ -109,7 +109,7 @@ function MemoEditor(props) {
                     Authorization: `JWT ${localStorage.getItem('token')}`
                   }
                 });
-                console.log('props 변경됨' + props.memo.memoContent);
+                alert('저장되었습니다');
               }}
           >
             저장
