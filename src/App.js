@@ -92,8 +92,7 @@ function App() {
   }, [isAuthenticated]);
 
   return (
-    <div className="App">
-
+    <div className="App" style={{height: '150vh'}}>
         <div>
             <Header modal={modal} handleLogout={handleLogout}/>
         </div>

@@ -67,7 +67,7 @@ function BookView(props) {
                       </div>
                 );
               })) : (
-                  <div>작성된 글이 없습니다</div>
+                  <div style={{marginTop: '50px'}}>작성된 글이 없습니다</div>
               )
           }
           <div>

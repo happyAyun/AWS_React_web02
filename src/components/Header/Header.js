@@ -49,7 +49,7 @@ function Header(props) {
                               : (
                                     <>
                                         <Button inverted color='brown'>
-                                            <Link to="/BookCreate" style={{color: 'brown'}}>새 글 작성하기</Link>
+                                            <Link to="/BookCreate" style={{color: 'brown', textDecoration: 'none'}}><div>새 글 작성하기</div></Link>
                                         </Button>
                                         &nbsp;&nbsp;&nbsp;
                                         <div className="user-container" onClick={()=>{ setUserprofile(!userprofile); }}>
