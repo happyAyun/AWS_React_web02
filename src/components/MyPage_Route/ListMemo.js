@@ -1,31 +1,46 @@
-import React from 'react';
-import { Button, Icon, Image, Item, Label } from 'semantic-ui-react';
-import {Link} from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import { List } from 'semantic-ui-react';
+import {Link, Route} from 'react-router-dom';
+import axios from 'axios';
+
 const paragraph = <Image src='/images/wireframe/short-paragraph.png' />;
 
 function ListMemo(props) {
+  const [dataList, setDataList] = useState([]);
+  useEffect(() => {
+    const take = async () => {
+      const {data} = await axios.get('http://localhost:8000/api/memo/', {
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('token')}`
+        }
+      });
+      setDataList(data);
+      console.log(dataList);
+    };
+    take();
+  }, []);
+
   return (
         <div>
-          <Item.Group divided>
-
-            <Item>
-              <Item.Image src='/images/wireframe/image.png' />
-
-              <Item.Content>
-                <Item.Header as='a'>Watchmen</Item.Header>
-                <Item.Meta>
-                  <span className='cinema'>IFC</span>
-                </Item.Meta>
-                <Item.Description>{paragraph}</Item.Description>
-                <Item.Extra>
-                  <Link to='/mypage/MemoList'> <button>메모장 보기</button></Link>
-                    <Icon name='right chevron' />
-                </Item.Extra>
-              </Item.Content>
-            </Item>
-          </Item.Group>
+            {console.log(dataList)}
+            {
+                dataList ? dataList.map((item) => {
+                  return (
+                      <List>
+                          <List.Icon name='marker' />
+                            <Link to={{
+                              pathname: `/mypage/MemoDetail/${item.memoId}`,
+                              state: {
+                                memoId: item.memoId
+                              }
+                            }}>
+                            <List.Header as='a'>{item.memoTitle}</List.Header>
+                        </Link>
+                      </List>
+                  );
+                }) : <>'현재 등록된 메모가 없습니다.'</>
+            }
         </div>
   );
 }
-
 export default ListMemo;
