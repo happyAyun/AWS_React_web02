@@ -97,6 +97,7 @@ function MainBook(props) {
                           }
                         });
                         console.log('메모가 새로 생성되었습니다 +' + post.bookId);
+                        alert('새로운 메모가 생성되었습니다');
                       });
                     }}>
                     책 목록 보기

@@ -45,13 +45,10 @@ class ArticleStore {
 
     @action
     async modifyMemo() {
-      await this.memoApi.memoUpdate(this.memo.communication_id, this.memo);
-      const result = await this.memoApi.memoList();
+      await this.memoApi.memoUpdate(this.memo.memoId, this.memo);
+      const result = await this.memoApi.memoDetail(this.memo.memoId);
       runInAction(() => {
-        this.memos = result;
-      });
-      runInAction(() => {
-        this.memo = {};
+        this.memo = result;
       });
     }
 

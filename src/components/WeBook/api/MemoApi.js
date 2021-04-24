@@ -34,6 +34,14 @@ class MemoApi {
         .then(response => response.data);
     }
 
+    memoDetail(id) {
+      return axios.get(this.URL + `detail/${id}/`, {
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('token')}`
+        }
+      }).then(response => response.data);
+    }
+
     memoMyList(id) {
       return axios
         .get(this.URL + `myMemo/${id}/`, {
