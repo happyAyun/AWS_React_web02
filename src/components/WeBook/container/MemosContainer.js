@@ -21,7 +21,7 @@ class MemosContainer extends Component {
       this.props.MemoStore.removeMemo();
     };
 
-    onModifyMemo = () => {
+    onsetModifyMemo = () => {
       this.props.MemoStore.modifyMemo();
     };
 
@@ -51,8 +51,11 @@ class MemosContainer extends Component {
             : (<div>
                   <MemoEditor
                       memos={memos}
+                      memo={memo}
                       memoContent = {memoContent}
                       onSetMemoProp = {this.onSetMemoProp}
+                      onsetModifyMemo = {this.onsetModifyMemo}
+                      onMemoContent = {this.onMemoContent}
                   />
                 </div>)
           }

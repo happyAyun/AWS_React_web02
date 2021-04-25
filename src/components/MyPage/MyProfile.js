@@ -76,7 +76,7 @@ function MyPage() {
                                   <Item.Group divided>
                                       <Item>
                                           <div className="box">
-                                              <img className="profile" src={userList.photo}  />
+                                              <img className="profile" src={userList.photo} />
                                           </div>
                                           <Item.Content>
                                               <input

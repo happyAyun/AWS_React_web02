@@ -36,7 +36,7 @@ function BookCreate(props) {
   // console.log(BookImg);
   // console.log(imgBase64);
   return (
-        <div>
+        <div style={{marginTop: '40px'}}>
                 <img style={{width: '150px', height: '150px'}} src={imgBase64} />
                 <div>
                     <input type="file" name="imgFile" id="imgFile" onChange={(event) => {

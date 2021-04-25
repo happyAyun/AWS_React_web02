@@ -13,12 +13,29 @@ import './MainBook.css';
 
 function MainBook(props) {
   const [dataList, setDataList] = useState([]);
-  const data = {};
+  let memoContent;
 
   const useStyles = makeStyles({
     root: {
       maxWidth: 345,
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center'
     },
+    sub: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      marginBottom: '10px',
+      marginTop: '10px'
+    },
+    img: {
+      borderRadius: '6px'
+    },
+    title: {
+      fontWeight: 'bold'
+    }
   });
 
   const classes = useStyles();
@@ -40,49 +57,62 @@ function MainBook(props) {
   const doc = dataList.map((post) => {
     return (
         <div className='subBox'>
-            <Link to={{
-              pathname: '/List/',
-              state: {
-                bookId: post.bookId
-              }
-            }}>
               <Card className={classes.root}>
-                <CardActionArea>
-                  <CardMedia
-                      component="img"
-                      height="140"
-                      image="{dataList.bookImg}"
-                  />
+                <CardActionArea className={classes.sub}>
+                  <img className={classes.img} src={post.bookImg} alt=""/>
                   <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {post.bookId} &nbsp; {post.bookTitle}
+                    <Typography className={classes.title} gutterBottom variant="h5" component="h2">
+                      {post.bookTitle}
                     </Typography>
+                    {post.bookWritter}
+                    {/* {post.bookIntro} */}
                   </CardContent>
                 </CardActionArea>
                 <CardActions>
-                  <Button size="small" color="primary" value={post.bookId} onClick={(e)=>{
-                    console.log(e.target.value);
-                    axios.post('http://localhost:8000/api/memo/create/', {
-                      data: {
-                        bookId: post.bookId
-                      }
-                    }, {
-                      headers: {
-                        Authorization: `JWT ${localStorage.getItem('token')}`
-                      }
-                    });
-                    console.log(post.bookId);
-                  }}>책 목록 보기</Button>
+                  <Link to={{
+                    pathname: '/List/',
+                    state: {
+                      bookId: post.bookId
+                    }
+                  }} style={{textDecoration: 'none'}}>
+                    {/* 메모가 있으면 콘솔에 date 출력, 없으면 생성 */}
+                    <Button onClick={()=>{
+                      axios.get(`http://localhost:8000/api/memo/myMemo/${post.bookId}/`, {
+                        headers: {
+                          Authorization: `JWT ${localStorage.getItem('token')}`
+                        }
+                      }).then((response)=>{
+                        if (response.data.memoDate) {
+                          console.log('메모가 존재합니다');
+                        }
+                      }).catch((response)=>{
+                        console.log(response);
+                        axios.post('http://localhost:8000/api/memo/create/', {
+                          data: {
+                            bookId: post.bookId
+                          }
+                        }, {
+                          headers: {
+                            Authorization: `JWT ${localStorage.getItem('token')}`
+                          }
+                        });
+                        console.log('메모가 새로 생성되었습니다 +' + post.bookId);
+                        alert('새로운 메모가 생성되었습니다');
+                      });
+                    }}>
+                    책 목록 보기
+                    </Button>
+                  </Link>
                 </CardActions>
               </Card>
-            </Link>
+
         </div>
     );
   });
 
   return (
         <div>
-          { dataList
+          { dataList && localStorage.token
             ? (
                 <div>
                 <div className='MainBox'>
@@ -91,8 +121,8 @@ function MainBook(props) {
                 </div>
             )
             : (
-                  <div>
-                    none
+                  <div style={{marginTop: '40px', textAlign: 'center'}}>
+                    로그인이 필요합니다
                   </div>
             )}
         </div>

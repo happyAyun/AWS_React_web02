@@ -3,6 +3,7 @@ import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import styled from 'styled-components';
 import jwtDecode from 'jwt-decode';
+import './MemoEditor.css';
 
 // convertToRaw: editorState 객체가 주어지면 원시 JS 구조로 변환.
 import { EditorState, convertToRaw, ContentState } from 'draft-js';
@@ -42,15 +43,18 @@ function MemoEditor(props) {
   const UserId = jwtDecode(localStorage.token);
   let m = '';
 
-  const onEditorStateChange = (editorState) => {
-    setEditorState(editorState);
-  };
-
   const editorToHtml = draftToHtml(
     convertToRaw(editorState.getCurrentContent())
   );
-  const memoContent = props.memoContent;
+  const memoContent = props.memo.memoContent;
   const htmlToEditor = memoContent;
+
+  const onEditorStateChange = (editorState) => {
+    setEditorState(editorState);
+    props.onSetMemoProp(
+      'memoContent', editorToHtml
+    );
+  };
 
   useEffect(() => {
     // 에디터 초기값 설정
@@ -85,7 +89,6 @@ function MemoEditor(props) {
               localization={{
                 locale: 'ko',
               }}
-              value='123'
               editorState={editorState}
               onEditorStateChange={onEditorStateChange}
           />
@@ -94,15 +97,22 @@ function MemoEditor(props) {
             console.log(e.target.dangerouslySetInnerHTML);
           }
           } />
-        <div>
-          <button
+        <div style={{textAlign: 'center', marginBottom: '20px'}}>
+          <button className='memoBtn'
               onClick={() => {
-                console.log({ __html: editorToHtml });
-                // props.onSetMemoProp('memoContent', { __html: editorToHtml });
-                // console.log(props.memoContent);
+                console.log(props.memo.memoId);
+                axios.put(`http://localhost:8000/api/memo/update/${props.memo.memoId}/`, {
+                  memoId: props.memo.memoId,
+                  memoContent: props.memo.memoContent
+                }, {
+                  headers: {
+                    Authorization: `JWT ${localStorage.getItem('token')}`
+                  }
+                });
+                alert('저장되었습니다');
               }}
           >
-            로그 확인용 버튼
+            저장
           </button>
         </div>
       </div>

@@ -44,7 +44,7 @@ class ArticleDetail extends Component {
       const viewState = this.props.ArticleStore.viewState;
 
       return (
-          <div className='articleContainer' style={{display: 'flex'}}>
+          <div className='articleContainer' style={{display: 'flex', marginTop: '30px'}}>
             {
               viewState === '' ? (
                   <>
@@ -61,15 +61,15 @@ class ArticleDetail extends Component {
                             onArticleDetail={this.onArticleDetail}
                         />
                       </div>
-                    <div style={{display: 'flex', flexDirection: 'column'}}>
-                      <button onClick={this.onViewState} value='menu'>목차다</button>
+                    <div style={{display: 'flex', flexDirection: 'column', width: '80px'}}>
+                      <button className='articleBtn' onClick={this.onViewState} value='menu'>menu</button>
                       {/* <button onClick={this.onViewState} value='qna'>큐앤에이</button> */}
-                      <button onClick={this.onViewState} value='memo'>메모</button>
+                      <button className='articleBtn' onClick={this.onViewState} value='memo'>memo</button>
                     </div>
                   </>
               ) : (
                   <>
-                    <div className='afterMenu' style={{width: '50%'}}>
+                    <div className='afterMenu' style={{width: '60%'}}>
                       <ArticleDeatilView
                       articles={articles}
                       article={article}
@@ -82,7 +82,7 @@ class ArticleDetail extends Component {
                       onArticleDetail={this.onArticleDetail}
                       />
                     </div>
-                    <div style={{width: '40%'}}>
+                    <div style={{width: '30%'}}>
                       <ArticleListView
                       viewState={viewState}
                       articles={articles}
@@ -92,10 +92,10 @@ class ArticleDetail extends Component {
                       onArticleDetail={this.onArticleDetail}
                       />
                     </div>
-                    <div style={{display: 'flex', flexDirection: 'column'}}>
-                      <button onClick={this.onViewState} value=''>목차</button>
+                    <div style={{display: 'flex', flexDirection: 'column', width: '80px'}}>
+                      <button className='articleBtn' onClick={this.onViewState} value=''>menu</button>
                       {/* <button onClick={this.onViewState} value=''>큐앤에이</button> */}
-                      <button onClick={this.onViewState} value=''>메모</button>
+                      <button className='articleBtn' onClick={this.onViewState} value=''>memo</button>
                     </div>
               </>
               )

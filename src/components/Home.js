@@ -25,7 +25,7 @@ const Home = () => {
       <>
       <div className="main-bar">
           <div className="menu-Bar">
-              <AppBar position="static">
+              <AppBar position="static" style={{zIndex: '0'}}>
                   <Tabs aria-label="simple tabs example" centered>
                       <Link to="/" style={{textDecoration: 'none', color: 'white'}}>
                           <Tab label="홈" />
