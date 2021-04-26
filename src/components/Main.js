@@ -3,7 +3,7 @@ import ReactPlayer from 'react-player';
 
 const Main = () => {
   return (
-        <div>
+        <div className='player-wrapper'>
             <ReactPlayer
                 className='react-player'
                 url='https://youtu.be/x7y15qSvxmU'
