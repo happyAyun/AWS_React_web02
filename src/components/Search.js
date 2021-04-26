@@ -21,7 +21,6 @@ const Search = () => {
           },
         }
       );
-      console.log(data.documents);
       setDocuments(data.documents);
       setIsLoading(false);
     };

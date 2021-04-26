@@ -6,7 +6,6 @@ function MakeBook(props) {
   const [textList, setTextList] = useState({});
 
   const handleSubmit = () => {
-    console.log(textList);
     axios
       .post('http://choi1994.iptime.org:8080/book/create/',
         { textList },

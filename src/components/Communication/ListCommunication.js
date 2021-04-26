@@ -29,7 +29,6 @@ function ListCommunication(props) {
     };
     take();
   }, []);
-  console.log('list', communicationList);
 
   return (
         <div>

@@ -76,17 +76,14 @@ function App() {
                   userHasAuthenticated(true, json.user.username, json.token);
                 })
                 .catch(error => {
-                  console.log(error);
                 });
             })
             .catch(error => {
               handleLogout();
-              console.log(error);
             });
         })
         .catch(error => {
           handleLogout();
-          console.log(error);
         });
     }
   }, [isAuthenticated]);

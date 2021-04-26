@@ -7,9 +7,7 @@ function CreateCommunication(props) {
   const [check, setCheck] = useState(0);
 
   const onSubmit = (e)=>{
-    console.log(title);
   };
-  console.log(check);
 
   return (
         <form>

@@ -73,7 +73,6 @@ function SignupModal(props) {
 
   const onSubmitHandler = (e) =>{
     // e.preventDefault();
-    console.log(Password1);
     // let body = {
     //   id: Id,
     //   name: Name,

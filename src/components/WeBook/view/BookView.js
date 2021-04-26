@@ -12,7 +12,6 @@ function BookView(props) {
   const UserId = jwtDecode(localStorage.token);
 
   const change = (e) =>{
-    console.log('index' + e.target.value);
     props.setIndexProp(e.target.value);
   };
 

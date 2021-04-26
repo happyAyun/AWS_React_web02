@@ -14,7 +14,6 @@ function MyPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setButcheck(false);
-    console.log(userList);
     axios
       .post('http://choi1994.iptime.org:8000/user/current/', { userList }, {headers: {
         Authorization: `JWT ${localStorage.getItem('token')}`}})
@@ -27,11 +26,10 @@ function MyPage() {
         headers: {
           Authorization: `JWT ${localStorage.getItem('token')}`
         }
-      }).then(res => console.log(setUserList(res.data)));
+      }).then();
     };
     take();
   }, []);
-  console.log(userList);
   return (
       <>
       <div>

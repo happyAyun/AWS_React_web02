@@ -15,14 +15,12 @@ function ListMemo(props) {
         }
       });
       setDataList(data);
-      console.log(dataList);
     };
     take();
   }, []);
 
   return (
         <div>
-            {console.log(dataList)}
             {
                 dataList ? dataList.map((item) => {
                   return (

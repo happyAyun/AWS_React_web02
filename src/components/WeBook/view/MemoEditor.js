@@ -92,13 +92,11 @@ function MemoEditor(props) {
           />
         </MyBlock>
           <IntroduceContent dangerouslySetInnerHTML={{ __html: editorToHtml }} onChange={(e)=>{
-            console.log(e.target.dangerouslySetInnerHTML);
           }
           } />
         <div style={{textAlign: 'center', marginBottom: '20px'}}>
           <button className='memoBtn'
               onClick={() => {
-                console.log(props.memo.memoId);
                 axios.put(`http://choi1994.iptime.org:8000/api/memo/update/${props.memo.memoId}/`, {
                   memoId: props.memo.memoId,
                   memoContent: props.memo.memoContent

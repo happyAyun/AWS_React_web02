@@ -40,9 +40,7 @@ function Article({location}) {
   useEffect(()=>{
     if (articleId == null) {
       setArticleId(id);
-      console.log('초기화');
     } else {
-      console.log('nonono');
     }
   });
 

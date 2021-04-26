@@ -41,9 +41,6 @@ class BookContainer extends Component {
 
     return (
         <div>
-          {/* {console.log('bookId +' + this.props.location.state.bookId)} */}
-          {/* {console.log('저장될 id' + id)} */}
-          {/* {console.log('테스트 ' + this.props.ArticleStore.selectArticleBook(bookId))} */}
           <BookView
               articles={articles}
               id={id}
@@ -54,7 +51,6 @@ class BookContainer extends Component {
               onModifyArticle={this.onModifyArticle}
               setIndexProp={this.onsetIndexProp}
           />
-          {console.log('last article_id' + id)}
         </div>
 
     );
