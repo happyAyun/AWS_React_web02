@@ -15,10 +15,11 @@ const config = {
   secretAccessKey: secretAccessKey,
 };
 
-let picUrl = '';
+let picUrl;
 
-const S3upload = (picinfo) => {
-  uploadFile(picinfo, config)
+const S3upload = (picking) => {
+  console.log(picking);
+  uploadFile(picking, config)
     .then(data => picUrl = data.location)
     .catch(err => console.error(err));
   return picUrl;
