@@ -45,7 +45,7 @@ function AriticleCreate({location}) {
   }
 
   const InsertArticle = ()=>{
-    axios.post('http://localhost:8000/api/book/article/create/' + bookId + '/', {
+    axios.post('http://choi1994.iptime.org:8000/api/book/article/create/' + bookId + '/', {
       data:
             articleList
     }, {

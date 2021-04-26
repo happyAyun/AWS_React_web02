@@ -101,7 +101,7 @@ function MemoEditor(props) {
           <button className='memoBtn'
               onClick={() => {
                 console.log(props.memo.memoId);
-                axios.put(`http://localhost:8000/api/memo/update/${props.memo.memoId}/`, {
+                axios.put(`http://choi1994.iptime.org:8000/api/memo/update/${props.memo.memoId}/`, {
                   memoId: props.memo.memoId,
                   memoContent: props.memo.memoContent
                 }, {

@@ -9,7 +9,7 @@ function ListMemo(props) {
   const [dataList, setDataList] = useState([]);
   useEffect(() => {
     const take = async () => {
-      const {data} = await axios.get('http://localhost:8000/api/memo/', {
+      const {data} = await axios.get('http://choi1994.iptime.org:8000/api/memo/', {
         headers: {
           Authorization: `JWT ${localStorage.getItem('token')}`
         }

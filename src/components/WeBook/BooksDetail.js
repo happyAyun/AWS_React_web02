@@ -6,7 +6,7 @@ function BooksDetail(props) {
 
   useEffect(() => {
     const take = async () => {
-      const {data} = await axios.get(`http://localhost:8000/api/book/article/detail/${props.articleId}/`, {
+      const {data} = await axios.get(`http://choi1994.iptime.org:8000/api/book/article/detail/${props.articleId}/`, {
         headers: {
           Authorization: `JWT ${localStorage.getItem('token')}`
         }

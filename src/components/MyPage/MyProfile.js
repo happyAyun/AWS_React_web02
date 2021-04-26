@@ -16,14 +16,14 @@ function MyPage() {
     setButcheck(false);
     console.log(userList);
     axios
-      .post('http://localhost:8000/user/current/', { userList }, {headers: {
+      .post('http://choi1994.iptime.org:8000/user/current/', { userList }, {headers: {
         Authorization: `JWT ${localStorage.getItem('token')}`}})
       .then((res) => res.data);
   };
 
   useEffect(() => {
     const take = async () => {
-      await axios.get('http://localhost:8000/user/myprofile/', {
+      await axios.get('http://choi1994.iptime.org:8000/user/myprofile/', {
         headers: {
           Authorization: `JWT ${localStorage.getItem('token')}`
         }

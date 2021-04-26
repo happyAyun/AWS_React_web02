@@ -8,7 +8,7 @@ function MakeBook(props) {
   const handleSubmit = () => {
     console.log(textList);
     axios
-      .post('http://localhost:8080/book/create/',
+      .post('http://choi1994.iptime.org:8080/book/create/',
         { textList },
         {headers: {'Content-Type': 'application/json'}})
       .then((res) => res.data);

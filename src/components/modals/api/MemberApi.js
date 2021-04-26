@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 class MemberApi {
-    URL = 'http://localhost:8000/user/'
+    URL = 'http://choi1994.iptime.org:8000/user/'
 
     Login() {
       return fetch(url, {

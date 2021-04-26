@@ -15,7 +15,7 @@ function Books(props) {
 
   useEffect(() => {
     const take = async () => {
-      const {data} = await axios.get('http://localhost:8000/api/book/article/', {
+      const {data} = await axios.get('http://choi1994.iptime.org:8000/api/book/article/', {
         headers: {
           Authorization: `JWT ${localStorage.getItem('token')}`
         }
