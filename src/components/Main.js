@@ -1,10 +1,14 @@
 import React from 'react';
-import Slideshow from './Slideshow';
 
 const Main = () => {
   return (
         <div>
-           <Slideshow/>
+            <ReactPlayer
+                className='react-player'
+                url='https://www.youtube.com/watch?v=ysz5S6PUM-U'
+                width='100%'
+                height='100%'
+            />
         </div>
   );
 };
