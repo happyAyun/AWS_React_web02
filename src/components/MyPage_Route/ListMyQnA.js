@@ -47,7 +47,6 @@ function ListMyQnA(props) {
         }
       }
       );
-      // console.log(data);
       setDataList(data);
     };
     take();
@@ -59,8 +58,6 @@ function ListMyQnA(props) {
           나의 질문
         </div>
         <div className="qnabody">
-          {console.log(dataList)}
-          {console.log(replyList)}
                 {
                     dataList ? dataList.map((item, index) => {
                       return (

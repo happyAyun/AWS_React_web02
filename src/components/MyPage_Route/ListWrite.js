@@ -15,7 +15,6 @@ function ListWrite(props) {
       }
       );
       setDataList(data);
-      console.log(dataList);
     };
     take();
   }, []);

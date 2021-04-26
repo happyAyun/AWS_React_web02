@@ -15,15 +15,13 @@ function ListCourse(props) {
                 }
         });
       setDataList(data);
-      console.log(dataList);
+
     };
     take();
   }, []);
 
   return (
       <div>
-
-          { console.log(dataList) }
           <div className=''>
               <Grid columns={3}>
                   {

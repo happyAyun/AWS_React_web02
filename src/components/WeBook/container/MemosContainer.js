@@ -34,7 +34,6 @@ class MemosContainer extends Component {
       const { memos } = this.props.MemoStore;
       const memo = this.props.MemoStore.memo;
       const memoContent = this.props.MemoStore.memo.memoContent;
-      console.log(memoContent);
 
       return (
           <div>

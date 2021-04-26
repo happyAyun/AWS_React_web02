@@ -1,15 +1,7 @@
 import React, {useState} from 'react';
 
 function CreateCommunication(props) {
-  const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [writer, setWriter] = useState('');
-  const [check, setCheck] = useState(0);
-
-  const onSubmit = (e)=>{
-    console.log(title);
-  };
-  console.log(check);
 
   return (
         <form>

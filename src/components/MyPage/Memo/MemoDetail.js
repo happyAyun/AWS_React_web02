@@ -37,7 +37,7 @@ function MemoDetail({location}) {
     };
     take();
   }, []);
-  // console.log(detail);
+
   return (
      <Grid columns={1}>
         <Grid.Column>

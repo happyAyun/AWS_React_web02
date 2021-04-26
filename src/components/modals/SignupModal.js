@@ -71,29 +71,7 @@ function SignupModal(props) {
     }
   };
 
-  const onSubmitHandler = (e) =>{
-    // e.preventDefault();
-    console.log(Password1);
-    // let body = {
-    //   id: Id,
-    //   name: Name,
-    //   password: Password1,
-    //   nickname: Nickname,
-    //   email: Email,
-    //   phone: Phonenumber
-    //
-    // };
-
-    // dispatch(registerUser(body))
-    //   .then(response =>{
-    //     if (response.payload.success) {
-    //       alert('회원가입이 완료되었습니다!');
-    //       props.history.push('/login'); // react 에서의 페이지 이동 코드
-    //     } else {
-    //       alert('Error!!');
-    //     }
-    //   });
-  };
+  const onSubmitHandler = (e) =>{  };
 
   return (
         <Modal

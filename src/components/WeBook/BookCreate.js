@@ -29,7 +29,6 @@ function BookCreate(props) {
       }
     }).then((response) => {
       setBookId(response.data.bookId);
-      console.log(bookMakeList);
     }
     );
   };

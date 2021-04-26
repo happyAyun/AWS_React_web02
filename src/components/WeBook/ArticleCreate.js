@@ -31,7 +31,6 @@ function AriticleCreate({location}) {
     article = <CreateArticleContent onSubmit={function (title, content) {
       const tmp = {articleTitle: title, articleContent: content, bookId: bookId};
       setArticleList(articleList.concat(tmp));
-      console.log(articleList);
     }.bind()
     }></CreateArticleContent>;
   } else if (mode === 'update') {
@@ -39,7 +38,6 @@ function AriticleCreate({location}) {
         onSubmit={function (title, content) {
           const tmp = {articleTitle: title, articleContent: content, bookId: bookId};
           setArticleList(articleList.concat(tmp));
-          console.log(articleList);
         }.bind()
         }></UpdateArticleContent>;
   }

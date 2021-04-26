@@ -83,10 +83,8 @@ function MainBook(props) {
                         }
                       }).then((response)=>{
                         if (response.data.memoDate) {
-                          console.log('메모가 존재합니다');
                         }
                       }).catch((response)=>{
-                        console.log(response);
                         axios.post('http://localhost:8000/api/memo/create/', {
                           data: {
                             bookId: post.bookId
@@ -96,7 +94,6 @@ function MainBook(props) {
                             Authorization: `JWT ${localStorage.getItem('token')}`
                           }
                         });
-                        console.log('메모가 새로 생성되었습니다 +' + post.bookId);
                         alert('새로운 메모가 생성되었습니다');
                       });
                     }}>
