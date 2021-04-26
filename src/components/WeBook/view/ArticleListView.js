@@ -1,14 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import MemoEditor from './MemoEditor';
-import ArticleQna from './ArticleQna';
 import MemosContainer from '../container/MemosContainer';
 import './ArticleListView.css';
 
 import { makeStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 
 const useStyles = makeStyles((theme) => ({
   root: {

@@ -5,9 +5,7 @@ import styled from 'styled-components';
 import jwtDecode from 'jwt-decode';
 import './MemoEditor.css';
 
-// convertToRaw: editorState 객체가 주어지면 원시 JS 구조로 변환.
 import { EditorState, convertToRaw, ContentState } from 'draft-js';
-// convertToRaw로 변환시켜준 원시 JS 구조를 HTML로 변환.
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
 
@@ -46,7 +44,7 @@ function MemoEditor(props) {
   const editorToHtml = draftToHtml(
     convertToRaw(editorState.getCurrentContent())
   );
-  const memoContent = props.memo.memoContent;
+  const memoContent = props.memoContent;
   const htmlToEditor = memoContent;
 
   const onEditorStateChange = (editorState) => {
