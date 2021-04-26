@@ -17,14 +17,6 @@ function AriticleCreate({location}) {
   let readTitle = null;
   let readCotent = null;
 
-  // getReadContent(){
-  //     var i=0;
-  //     while(i<articleList.length){
-  //         var data=articleList.articleTitle;
-  //         if
-  //     }
-  //   }
-
   if (mode === 'read') {
     article = <ReadContent></ReadContent>;
   } else if (mode === 'create') {
@@ -33,15 +25,15 @@ function AriticleCreate({location}) {
       setArticleList(articleList.concat(tmp));
       console.log(articleList);
     }.bind()
-    }></CreateArticleContent>;
+}/>;
   } else if (mode === 'update') {
     article = <UpdateArticleContent
-        onSubmit={function (title, content) {
-          const tmp = {articleTitle: title, articleContent: content, bookId: bookId};
-          setArticleList(articleList.concat(tmp));
-          console.log(articleList);
-        }.bind()
-        }></UpdateArticleContent>;
+    onSubmit={function (title, content) {
+      const tmp = {articleTitle: title, articleContent: content, bookId: bookId};
+      setArticleList(articleList.concat(tmp));
+      console.log(articleList);
+    }.bind()
+    }/>;
   }
 
   const InsertArticle = ()=>{
