@@ -75,15 +75,12 @@ function MainBook(props) {
                       bookId: post.bookId
                     }
                   }} style={{textDecoration: 'none'}}>
-                    {/* 메모가 있으면 콘솔에 date 출력, 없으면 생성 */}
                     <Button onClick={()=>{
                       axios.get(`http://choi1994.iptime.org:8000/api/memo/myMemo/${post.bookId}/`, {
                         headers: {
                           Authorization: `JWT ${localStorage.getItem('token')}`
                         }
                       }).then((response)=>{
-                        if (response.data.memoDate) {
-                        }
                       }).catch((response)=>{
                         axios.post('http://choi1994.iptime.org:8000/api/memo/create/', {
                           data: {
