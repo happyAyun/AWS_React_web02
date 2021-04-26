@@ -8,10 +8,23 @@ import {
 } from 'semantic-ui-react';
 
 import axios from 'axios';
+import styled from 'styled-components';
 
 function MemoDetail({location}) {
   const [detail, setDetail] = useState([]);
   const memoId = location.state.memoId;
+
+  const IntroduceContent = styled.div`
+  position: relative;
+  border: 0.0625rem solid #d7e2eb;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  padding: 1.5rem;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 4rem;
+    width: 500px;
+`;
 
   useEffect(() => {
     const take = async () => {
@@ -32,12 +45,9 @@ function MemoDetail({location}) {
                 <Header as='h3'>{detail.memoId}</Header>
               </Segment>
 
-            <Segment>
-              <Header as='h3'>{detail.memoTitle}</Header>
-                {detail.memoContent}
-            </Segment>
+            <IntroduceContent dangerouslySetInnerHTML={{ __html: detail.memoContent }} />
         </Grid.Column>
-      </Grid>
+     </Grid>
   );
 }
 
