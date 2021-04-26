@@ -22,6 +22,7 @@ module.exports = {
     'no-template-curly-in-string': 'off',
     'linebreak-style': 'off',
     'comma-dangle': 'off',
-    'no-return-assign': 'off'
+    'no-return-assign': 'off',
+    'no-restricted-globals': 'off'
   },
 };
