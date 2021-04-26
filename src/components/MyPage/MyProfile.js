@@ -26,7 +26,7 @@ function MyPage() {
         headers: {
           Authorization: `JWT ${localStorage.getItem('token')}`
         }
-      }).then();
+      }).then(res => setUserList(res.data));
     };
     take();
   }, []);
