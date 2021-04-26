@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 class ArticleApi {
-    URL = 'http://choi1994.iptime.org:8000/api/book/article/';
+    URL = 'http://localhost:8000/api/book/article/';
 
     articleCreate(data) {
       return axios

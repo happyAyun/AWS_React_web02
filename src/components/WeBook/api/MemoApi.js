@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 class MemoApi {
-    URL = 'http://choi1994.iptime.org:8000/api/memo/';
+    URL = 'http://localhost:8000/api/memo/';
 
     memoCreate(data) {
       return axios

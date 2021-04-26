@@ -19,22 +19,7 @@ function BookCreate(props) {
   const [imgFile, setImgFile] = useState(null);// 파일
   const InsertBook = ()=>{
     setBookImg(S3upload(imgFile));
-    // axios.post('http://localhost:8000/api/book/create/', {
-    //   data:
-    //     bookMakeList
-    // }, {
-    //   headers: {
-    //     Authorization: `JWT ${localStorage.getItem('token')}`,
-    //   }
-    // }).then((response) => {
-    //   setBookId(response.data.bookId);
-    //   setFlag(true);
-    // }
-    //
-    // );
   };
-  // console.log(BookImg);
-  // console.log(imgBase64);
   return (
         <div style={{marginTop: '40px'}}>
                 <img style={{width: '150px', height: '150px'}} src={imgBase64} />

@@ -40,7 +40,7 @@ function LoginModal(props) {
                                         <input type="password" placeholder="비밀번호를 입력하세요" id="password" onChange={handlePasswordChange}/>
                                         <button className="JoinLoign-button" onClick={(e)=>{
                                           e.preventDefault();
-                                          axios.post('http://choi1994.iptime.org:8000/login/', data, {headers: {
+                                          axios.post('http://localhost:8000/login/', data, {headers: {
                                             'Content-Type': 'application/json'
                                           }})
                                             .then(response => {
@@ -70,7 +70,7 @@ function LoginModal(props) {
                                         <input type="password" placeholder="비밀번호를 입력하세요" onChange={handlePasswordChange}/>
                                         <button className="JoinLoign-button" onClick={(e)=>{
                                           e.preventDefault();
-                                          fetch('http://choi1994.iptime.org:8000/user/', {
+                                          fetch('http://localhsot:8000/user/', {
                                             method: 'POST',
                                             headers: {
                                               'Content-Type': 'application/json'

@@ -42,7 +42,7 @@ function MainBook(props) {
 
   useEffect(() => {
     const take = async () => {
-      const {data} = await axios.get('http://choi1994.iptime.org:8000/api/book/', {
+      const {data} = await axios.get('http://localhost:8000/api/book/', {
         headers: {
           Authorization: `JWT ${localStorage.getItem('token')}`
         }
@@ -77,7 +77,7 @@ function MainBook(props) {
                   }} style={{textDecoration: 'none'}}>
                     {/* 메모가 있으면 콘솔에 date 출력, 없으면 생성 */}
                     <Button onClick={()=>{
-                      axios.get(`http://choi1994.iptime.org:8000/api/memo/myMemo/${post.bookId}/`, {
+                      axios.get(`http://localhost:8000/api/memo/myMemo/${post.bookId}/`, {
                         headers: {
                           Authorization: `JWT ${localStorage.getItem('token')}`
                         }
@@ -87,7 +87,7 @@ function MainBook(props) {
                         }
                       }).catch((response)=>{
                         console.log(response);
-                        axios.post('http://choi1994.iptime.org:8000/api/memo/create/', {
+                        axios.post('http://localhost:8000/api/memo/create/', {
                           data: {
                             bookId: post.bookId
                           }

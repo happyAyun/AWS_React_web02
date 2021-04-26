@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 class CommunityApi {
-    URL = 'http://choi1994.iptime.org:8000/api/community/'; // /api/community/
+    URL = 'http://localhost:8000/api/community/'; // /api/community/
 
     communicationCreate(data) {
       return axios
