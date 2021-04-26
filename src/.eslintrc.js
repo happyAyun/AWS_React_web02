@@ -23,6 +23,5 @@ module.exports = {
     'linebreak-style': 'off',
     'comma-dangle': 'off',
     'no-return-assign': 'off',
-    'no-restricted-globals': 'off',
   },
 };
