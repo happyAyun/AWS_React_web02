@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import './Header.css';
 import BookCreate from '../WeBook/BookCreate';
+import { Button, Segment } from 'semantic-ui-react';
 
 function Header(props) {
   const [userprofile, setUserprofile] = useState(false);
@@ -41,13 +42,16 @@ function Header(props) {
             <div className="header">
                 <div className="header-nav">
                     <div className="header-nav-links">
-                        <Link className="header-logo" to="/">Velog</Link>
+                        <Link className="header-logo" to="/" style={{textDecoration: 'none'}}><div className='titleFonts'>BookShelf</div></Link>
                         {
                             props.modal === false
                               ? <Link to="/login"><button className="header-btn">로그인</button></Link>
                               : (
                                     <>
-                                        <Link className="header-dashboard" to="/BookCreate"><button>새 글 작성</button></Link>
+                                        <Button inverted color='brown'>
+                                            <Link to="/BookCreate" style={{color: 'brown'}}>새 글 작성하기</Link>
+                                        </Button>
+                                        &nbsp;&nbsp;&nbsp;
                                         <div className="user-container" onClick={()=>{ setUserprofile(!userprofile); }}>
                                             <img src={userPhoto} className="user-image" alt="/"></img>
                                             <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
@@ -59,7 +63,6 @@ function Header(props) {
                                               ? (
                                                     <div className="user-profile">
                                                         <div className="profile-menu">
-                                                            <Link to="/mysite"><div className="menu">내가 쓴 글</div></Link>
                                                             <Link to="/mypage"><div className="menu">마이페이</div></Link>
                                                             <Link onClick={props.handleLogout} to="/"><div className="menu">로그아웃</div></Link>
                                                         </div>

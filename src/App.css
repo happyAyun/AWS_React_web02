@@ -76,3 +76,8 @@
     flex-direction: row;
     margin-bottom: 1%;
 }
+
+@font-face {
+    font-family: "cookie";
+    src: url("./font/Perfograma-Regular.ttf");
+}

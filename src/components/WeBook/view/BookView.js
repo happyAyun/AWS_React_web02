@@ -17,7 +17,7 @@ function BookView(props) {
   };
 
   return (
-      <div>
+      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
           {
               // axios 데이터 출력
               Array.isArray(articles) && articles.length ? (articles.map(post => {

@@ -22,27 +22,27 @@ function MyPageMenuBar() {
             <div style={{float: 'left'}}>
             <Menu vertical >
                 <Menu.Item>
-                    <Link to='/mypage'><Menu.Header>마이 페이지</Menu.Header></Link>
+                    <Link to='/mypage' style={{color: 'black' }}><Menu.Menu>마이페이지</Menu.Menu></Link>
                 </Menu.Item>
                 <Menu.Item>
-                    <Menu.Header>나의 학습관리</Menu.Header>
+                    <Menu.Header>학습관리</Menu.Header>
 
                     <Menu.Menu>
-                        <Link to='/mypage/ListCourse'>
+                        <Link to='/mypage/ListCourse' style={{color: 'black'}}>
                             나의 수강 목록
                         </Link>
                         <br/><br/>
-                        <Link to='/mypage/ListMemo'>
+                        <Link to='/mypage/ListMemo' style={{color: 'black'}}>
                             나의 메모장
                         </Link>
                     </Menu.Menu>
                 </Menu.Item>
 
                 <Menu.Item>
-                    <Menu.Header>나의 등록한 책</Menu.Header>
+                    <Menu.Header>등록한 책</Menu.Header>
 
                     <Menu.Menu>
-                        <Link to='/mypage/ListWrite'>
+                        <Link to='/mypage/ListWrite' style={{color: 'black'}}>
                             내가 등록한 책
                         </Link>
                         <br/><br/>
@@ -52,7 +52,7 @@ function MyPageMenuBar() {
                 <Menu.Item>
                     <Menu.Header>내 정보</Menu.Header>
                     <Menu.Menu>
-                        <Link to='/mypage/ChangeMyInfo'>
+                        <Link to='/mypage/ChangeMyInfo' style={{color: 'black'}}>
                             개인 정보 수정
                         </Link>
                     </Menu.Menu>
